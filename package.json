@@ -2,6 +2,9 @@
   "name": "fernfolio-11ty-template",
   "version": "1.0.0",
   "description": "The super simple portfolio template built with Eleventy and Netlify CMS",
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "scripts": {
     "start": "cross-env npm-run-all build:sass --parallel watch:*",
     "build": "cross-env npm-run-all build:sass build:scripts build:eleventy",
