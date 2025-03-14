@@ -1,5 +1,5 @@
 ---
-title: This post contains a code sample
+title: how to edit shopify theme
 metaDescription: Add code samples to your markdown files
 date: 2019-01-01T00:00:00.000Z
 summary: Add code samples to your markdown files
