@@ -1,18 +1,18 @@
 ---
-title: Cat Translation API
+title: aeuoeu
 emoji: 😺
 metaDescription: This is a sample meta description. If one is not present in your page/project's front matter, the default metadata.desciption will be used instead.
 date: 2019-01-01T00:00:00.000Z
-summary: API to translate cat speech to english
+summary: an unpronounceable clothing brand
 tags:
-  - golang
-  - graphQL
+  - entrepeneurship
+  - branding
   - aws
 ---
 
-### Task
+### aeu.. what?
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+A clothing brand that started as a joke.
 
 ### Solution
 
