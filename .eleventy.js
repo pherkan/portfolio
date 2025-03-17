@@ -1,5 +1,7 @@
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const sass = require("sass");
+const fs = require("fs");
 const imageShortcode = require('./src/_11ty/shortcodes/image-shortcode');
 const markdownLibrary = require('./src/_11ty/libraries/markdown-library');
 const minifyHtml = require('./src/_11ty/utils/minify-html');
@@ -28,18 +30,35 @@ module.exports = function (eleventyConfig) {
   // Merge data instead of overriding
   eleventyConfig.setDataDeepMerge(true);
 
-  // Trigger a build when files in this directory change
+  // ✅ Automatically Compile SCSS to CSS
+  eleventyConfig.on("beforeBuild", () => {
+    try {
+      const result = sass.renderSync({
+        file: "src/assets/scss/main.scss",
+        outputStyle: "compressed"
+      });
+
+      // Write the compiled CSS file
+      fs.writeFileSync("src/assets/css/main.css", result.css);
+      console.log("✅ SCSS compiled successfully!");
+    } catch (error) {
+      console.error("❌ SCSS compilation failed:", error);
+    }
+  });
+
+  // ✅ Ensure CSS and SCSS are properly handled
+  eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
   eleventyConfig.addWatchTarget('./src/assets/scss/');
 
-  // Minify HTML output
+  // ✅ Minify HTML output
   eleventyConfig.addTransform('htmlmin', minifyHtml);
 
-  // Don't process folders with static assets
+  // ✅ Don't process folders with static assets
   eleventyConfig.addPassthroughCopy('./src/favicon.ico');
   eleventyConfig.addPassthroughCopy('./src/admin');
   eleventyConfig.addPassthroughCopy('./src/assets/img');
 
-  // Allow Turbolinks to work in development mode
+  // ✅ Allow Turbolinks to work in development mode
   eleventyConfig.setBrowserSyncConfig(browserSyncConfig);
 
   return {

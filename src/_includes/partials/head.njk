@@ -7,7 +7,7 @@
 
   {# Canonical URL #}
   {% if canonical %}
-    <link rel="canonical" href="{{ canonical }}" />
+  <link rel="canonical" href="{{ canonical | url }}" />
   {% endif %}
 
 
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   {# CSS #}
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
 
   {# Javascript #}
   <script>
@@ -38,5 +38,5 @@
       themeConfig.theme = (useSystemTheme && prefersDark) ? 'dark' : defaultTheme;
     }
   </script>
-  <script defer src="/assets/js/main.bundle.js"></script>
+  <script defer src="{{ '/assets/js/main.bundle.js' | url }}"></script>
 </head>

@@ -8,24 +8,47 @@ eleventyNavigation:
   key: About
   order: 1
 ---
+# i’m a product manager working at the intersection of AI, accessibility, and inclusive design
 
-### who is pherkan
-product manager
+i have a unique background in **industrial design engineering (BSc)** and **design for interaction (MSc)**.  
+my journey began in **UX research**, progressed into **product design**, and now, as a **product manager at envision**, i lead the development of groundbreaking AI-powered solutions for people who are blind or have low vision.
 
-### Why?
+## my work at envision
+at **envision**, i work on products like the **envision glasses**—an AI-powered wearable that converts visual information into speech, enhancing **independence and accessibility** for thousands globally.  
 
-**Reason #1:** I wanted a portfolio that was simple, fast, accessible, and integrated with a git-powered cms. Existing templates didn't perfectly fit my needs, so I decided to build my own template.
+my role involves:
+- defining **product strategy**
+- balancing **user needs** with **technological possibilities**
+- leading a **cross-functional team** in a fast-paced **startup environment**
 
-**Reason #2:** I wanted to learn more about [Eleventy](https://www.11ty.dev/) and static site generators in general. Building Fernfolio was a good excuse to dive deeper on that topic.
+## what i do
+as a **product manager**, i leverage:
+- **figma** for design and prototyping  
+- **notion** for agile project management  
+- analytics tools like **google analytics** and **mixpanel** for data-driven insights  
 
-### How do I edit content?
-Once your site is deployed and configured, add `/admin` to the end of the url (not using localhost) and hit refresh. From there, you should be able to login and see see the content management dashboard. You should be able to change most content here (e.g. page text, images, logo, articles, projects, etc.).
+my familiarity with backend tools such as **firebase** and **gradio** enables me to collaborate effectively with technical teams, ensuring that our **AI and machine learning models** align seamlessly with our product vision.  
 
-### Further customizations
-If you want to take your customizations further, you will need to modify the project source code. Some customizations, like changing theme colors and fonts, are straightforward (those can be modified in the `variables.scss` file). Other customizations will require more in-depth solutions.
+i combine:
+- **data analysis**
+- **user observation**
+- **interviews**
+- **co-creation workshops**  
 
-If you get stuck or just have a question, feel free to create a [Github issue](https://github.com/TylerMRoderick/fernfolio-11ty-template/issues) and I will try to point you in the right direction.
+to ground our products in real-world feedback.
 
-Thanks for checking out Fernfolio 👋 - [Tyler M. Roderick](https://www.tylerroderick.com/)
+## my approach
+i’m committed to **continuous iteration** and **inclusive design**, updating our products **monthly** with new features shaped by our **user community**.  
 
-![Fern in Hand](/src/assets/img/fern-forest.jpeg "Fern in Hand")
+with a strong foundation in **accessibility standards**, i ensure that our solutions are:
+- **functional**
+- **empowering** for users  
+
+collaboration is key to my process, and i’m adept at **bridging diverse teams**, from development to customer support, to keep projects **aligned** and **innovative**.
+
+## looking forward
+i’m driven by a vision to push the boundaries of **assistive technology**, ensuring that AI remains a tool for **inclusivity** and **transformation**.  
+
+my goal is to keep creating products that make a lasting, **positive impact** on people’s lives—**empowering individuals** with the tools they need to **navigate their world independently**.
+
+![pherkan with cat](/src/assets/img/pherkan_cat.jpeg "photo of pherkan on his laptop with katmer, a british longhair cat")
