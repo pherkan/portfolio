@@ -19,7 +19,7 @@ tags:
 
 Having a rental car, we found it most convenient to park in Shkodër. That way we were also able to leave the majority of our things in the car. And to be honest; for this two-day escapade, you really don’t need to pack your entire wardrobe. Luckily, Valbona National Park also has some restaurants and markets for essentials. Though, do bring an empty bottle as the guesthouses often have pure mountain water you can refill with.
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*rFQdj5blooH2RQ-OvVsC2w.jpeg)
+![](/assets/img/image-0.jpeg)
 
 One of the buses in Shköder going to the Komani Lake Tunnel
 
@@ -27,7 +27,7 @@ One of the buses in Shköder going to the Komani Lake Tunnel
 
 The buses to the location of where the ferry leaves, are located in front of Rozafa hotel. When you go early in the morning, you can’t miss the many buses that are all going towards the ferry, in specific to the Komani Lake tunnel. The ride is about 1–1.5 hours. Tickets can be purchased online for €12, but if you’re feeling spontaneous, you can snag one at the bus stop for €10. To avoid any last-minute rush, we suggest securing your ticket online.
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*GYTScK3YohFUIOxNUEyCkA.jpeg)
+![](/assets/img/image-1.jpeg)
 
 Taken from inside the bus
 
@@ -35,15 +35,15 @@ Taken from inside the bus
 
 As you approach the tunnel, expect a short wait, about an hour or so. Then, the tranquil waters of Komani Lake beckon. The route to Fierze is a visual treat, but here’s another essential tip: avoid the ferry’s rear to escape the motor’s drone and try to get a spot at the front. While the landscape is definitely a treat to the eyes, I do have to admit, after a couple of hours, I was ready for the next leg of the journey.
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*fG9un1dpyQF9px5DjQWzlQ.jpeg)
+![](/assets/img/image-2.jpeg)
 
 A group of people inside the tunnel walking towards the ferry
 
-![Two cars on a ferry, taken from the side.](https://miro.medium.com/v2/resize:fit:1400/1*208Xnr3ItqIf1xqWGSQPaw.jpeg)
+![Two cars on a ferry, taken from the side.](/assets/img/two-cars-on-a-ferry-taken-from-the-side.jpeg)
 
 Smoke coming from the back of the ferry
 
-![Cars and a bus on a ferry with a nice view on the back](https://miro.medium.com/v2/resize:fit:1400/1*i0_lfzE2nxHvNNdTRrrouA.jpeg)
+![Cars and a bus on a ferry with a nice view on the back](/assets/img/cars-and-a-bus-on-a-ferry-with-a-nice-view-on-the-back.jpeg)
 
 View from the ferry with some cars and buses on it
 
@@ -51,7 +51,7 @@ View from the ferry with some cars and buses on it
 
 On arrival, many hop onto their pre-arranged tours. But for spontaneous souls like us, local transport awaits, costing around €10 per person. Soon, we were unwinding in a quaint guesthouse, with the Valbona mountains painting a majestic backdrop. Pure bliss!
 
-![View of greenery and mountains](https://miro.medium.com/v2/resize:fit:1400/1*_r9GvW-FkhRonB6w9vhdOg.jpeg)
+![View of greenery and mountains](/assets/img/view-of-greenery-and-mountains.jpeg)
 
 ## **Trail Time: Valbona to Theth**
 
@@ -59,7 +59,7 @@ Our day began at 7 am, and by 8, we were on the trail. Our guesthouse graciously
 
 Reaching the peak took us about three hours, with a couple of short breaks. While we found it quite manageable, we’ve heard that for some, the total journey can stretch between 7 to 10 hours. The descent, however, is deceptively longer, so allocate ample time. The trek from Valbona to Theth can feel endless, but the promise of the quaint town of Theth keeps the spirits high. We arrived at around 1 pm at Theth, thinking maybe a later start wouldn’t have hurt.
 
-![View of a mountain peak](https://miro.medium.com/v2/resize:fit:1400/1*PNkGhvpHtnnjXxg0BAmbSQ.jpeg)
+![View of a mountain peak](/assets/img/view-of-a-mountain-peak.jpeg)
 
 View from the Theth peak
 
@@ -67,7 +67,7 @@ View from the Theth peak
 
 Theth, with its handful of restaurants and cozy spots, offers a peaceful respite. While the town might seem sleepy, a local supermarket ensures you’re stocked up on essentials.
 
-![A stone river with a nice background and a brown house in the back.](https://miro.medium.com/v2/resize:fit:1400/1*SfQtXkQm676dXv5H4fwmBw.jpeg)
+![A stone river with a nice background and a brown house in the back.](/assets/img/a-stone-river-with-a-nice-background-and-a-brown-house-in-the-back.jpeg)
 
 Theth
 
@@ -75,7 +75,7 @@ Theth
 
 The ride back posed its challenges. Mixed reviews online about bus timings kept us on our toes. But fortune favored us, and we managed a shared ride back to Shkodër which cost us also around €10,- per person. This was also the most terrifying ride we’ve ever had, but we arrived safely. A word of advice? Maybe pre-book your return during off-peak seasons.
 
-![Inside of a bus](https://miro.medium.com/v2/resize:fit:1400/1*RO_oRdXApv1xwupgk2LqeA.jpeg)
+![Inside of a bus](/assets/img/inside-of-a-bus.jpeg)
 
 Our ‘crazy’ driver dropping us off in Shköder
 
