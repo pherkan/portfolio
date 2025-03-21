@@ -1,23 +1,101 @@
 ---
-title: This is the third example post which has a slightly longer title than the
-  others
+title: Adding a custom font to your Shopify store (for free)
 date: 2020-01-01T08:00:00.000Z
-summary: Organically grow the holistic world view of disruptive innovation
+summary: Upgrading your Shopify webshop with a personal custom font/typeface,
+  without having to pay for a plug-in/app.
+metaDescription: How-to add a custom font/typeface to your Shopify store (for free).
 tags:
-  - tech
-  - politics
+  - webdevelopment
+  - shopify
 ---
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+![Thumbnail showing the text: adding a custom font to your shopify store.](https://miro.medium.com/v2/resize:fit:1400/1*ltVO7fdNGDFYYyJkYgPOSw.jpeg)
 
-```css
-pre,
-code {
-	line-height: 1.5;
+This is a step-by-step tutorial on how to use a custom font for your Shopify store. There are a few paid apps that also help you in using a custom font, but personally I don’t think it’s worth the monthly costs and it’s relatively easy to do it for free.
+
+**So, let’s start!**
+
+1. Find a custom font that you’d like to use on your store. There are many websites that offer free and paid fonts that you can use.
+2. Make sure the font is in **WOFF** and **WOFF2** format. If that is not the case and your font is in TTF format, use a website like <https://cloudconvert.com/ttf-to-woff> to convert your font in both formats.
+
+3. Open Shopify and click on ‘Online Store’
+
+![A screenshot showing ‘Online Store’ below Sales Channels](https://miro.medium.com/v2/resize:fit:1000/1*EgTYV6chBWhW0FkjNWmbDA.jpeg)
+
+4. Click on the three dots next to ‘Customize’ and tap on ‘Edit code’.
+
+![A screenshot showing a pop-up with ‘Edit code’ which is located below ‘Download theme file’](https://miro.medium.com/v2/resize:fit:1000/1*i9yzDWavytg0n3VEIySf9A.jpeg)
+
+5. On the left side, open the Assets folder and click on ‘Add a new asset’.
+
+![Screenshot showing folders with below the ‘Assets’ stating ‘Add a new asset’.](https://miro.medium.com/v2/resize:fit:1000/1*mwHD1EdK8VUKWgeB0tTtXQ.jpeg)
+
+6. Upload both the WOFF and WOFF2 file of your font that you’d like to use, either by clicking on ‘Add file’ or dragging the files in the box.
+
+![Screenshot showing the option to ‘Add file’](https://miro.medium.com/v2/resize:fit:1000/1*wdMtym_Uuj3dRo3VHq-3rw.jpeg)
+
+7. Now in the assets directory, open the base css file. In some themes this might be called **‘theme.scss.liquid’**, in others it might be called **‘base.css’**.
+
+8. Scroll all the way down and paste the following code:
+
+```
+@font-face {
+    font-family: ‘Font Name;
+    src: url(‘font-name.woff2') format('woff2'),
+         url(‘font-name.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 ```
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+Make sure that the name of ‘font-name.woff2’ and ‘font-name.woff’ is exactly the same as you have uploaded it to the assets folder.
 
-## Section Header
+9. Now we need to choose where you’d like to use the font. Let’s say you’d like to apply it to all headings H1, H2 and H3. Than paste the following code:
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+```
+h0, h1, h2, h3 {
+    font-family: 'Font Name'
+  }
+```
+
+Just to keep things clear for yourself (and for others), I would also add the following comment lines:
+
+```
+/* start custom code for font replacement */
+
+All of the code given above here.
+
+/* end custom code for font replacement */
+```
+
+10. Finally, what is usually a bit more difficult is making sure that all of the fonts on your website are replaced with your custom font. For that, open the web inspector.
+
+Safari: Develop > Show Web Inspector (or shortcut: option + cmd + i)
+
+Chrome: View > Developer > Inspect Elements
+
+![Screensoht showing Web Inspector on Safari](https://miro.medium.com/v2/resize:fit:1000/1*kH3YZq39lifeT8td2yctAg.jpeg)
+
+11. Than click on the ‘Start element selection’ (or shortcut: shift + cmd + C).
+
+![Screenshot showing the icon for start element section.](https://miro.medium.com/v2/resize:fit:1000/1*-CURdVvyGjKd_JBnGc5ipQ.jpeg)
+
+12. Choose the element of which you’d like to change the font. In my case it’s a paragraph (p):
+
+![Screenshot showing a text and the start element selection shows it’s a paragraph.](https://miro.medium.com/v2/resize:fit:1000/1*KzuAIcuk0j6Zvyv_tUC-Vw.jpeg)
+
+13. Now go back to your base css file and paste the following code:
+
+```
+p {
+font-family: 'Font Name'
+}
+```
+
+Keep in mind this is only for a paragraph. In my own Shopify store, I needed to add many more elements and my code is looking as follows:
+
+```
+.banner__text, div, span, .span, button, p, a, h4, .h4, h5, .h5, .button, .product-form__input, .label, .price, li
+   { font-family: "gt_walsheim_proregular" }
+```
+
+I hope this step-by-step tutorial helps you in customising the font of your Shopify store. If you see any mistakes or if you still have any trouble changing the font on your store, don’t hesitate to reach out to me.
