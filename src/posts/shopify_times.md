@@ -35,7 +35,7 @@ The javascript file pretty much speaks for itself. You can change the text to yo
 
 In the folder ‘Snippets’ create a new snippet and call it something like **_top-info-bar.liquid_**. We will display the opening times on this top bar as can be seen below.
 
-![Showing the time in the right corner of the website](/src/assets/img/openingtimes3.png)
+![Showing the time in the right corner of the website](/src/assets/img/openingtimes3.jpeg)
 
 Showing your custom text based on what day of the week it is.
 
