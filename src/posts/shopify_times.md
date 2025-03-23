@@ -43,15 +43,19 @@ Showing your custom text based on what day of the week it is.
 
 Firstly add the javascript we created before by referring to it in the following way:
 
+{% raw %}
 ```
 <head>{{ 'openljs.js' | asset_url | script_tag }}</head>
 ```
+{% raw %}
 
 After that you can create whatever top bar you would like. The one I used is by creating one div with class top-info-bar.
 
+{% raw %}
 ```
 <div class="top-info-bar">    <div id="left-ljs">   // You can put text or images here  </div>    <div id="mid-ljs">  // You can put text or images here  </div>    <div id="openljs"></div>  </div>
 ```
+{% raw %}
 
 The left and middle part can be filled with whatever text, icons or images you would like.
 
