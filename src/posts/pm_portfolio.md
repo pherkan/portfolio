@@ -8,12 +8,11 @@ tags:
   - Product Management
 permalink: "/posts/from-no-code-comfort-to-coding-confidence-a-designers-journey-beyond-wordpress/"
 ---
-# From No-Code Comfort to Coding Confidence: A Designer’s Journey Beyond WordPress
 
 Ever since I started my career, I've noticed a recurring challenge in my circle of designer friends and colleagues: we always gravitate toward no-code solutions because they're quick, accessible, and simply get the job done. However, while these drag-and-drop tools are convenient, I began to wonder what I was missing by not diving into the world of code. If you're feeling stuck with an outdated, clunky portfolio or are tempted by the simplicity of no-code platforms, this article is for you. I’m sharing my personal journey of moving away from an old WordPress setup—plagued by high hosting costs, security issues, and legacy content—and embracing the code route that not only saved money but also enriched my technical skills and deepened my understanding of modern web development.
 
-## Why I Decided to Move On
 
+## Why I Decided to Move On
 My old WordPress portfolio had served me well in my early days, but several factors made it clear that I needed to evolve:
 
 - **Cost and Security Concerns:** My website was hosted on an expensive platform, and after it got hacked—cluttering it with bloatware—I knew it was time for a change.
@@ -21,8 +20,8 @@ My old WordPress portfolio had served me well in my early days, but several fact
 - **Time Constraints:** Between full-time work, getting married, and [renovating a house](https://www.youtube.com/watch?v=aGTbGuxJpR8&list=PLyJjd5kOQVok-eHna_Ha5LDXtp8nNJHFM), there simply wasn’t enough time to keep the site updated.
 - **Digital Home That Evolves:** I wanted a space that could serve as both a personal blog and a professional portfolio. Having left Instagram and X, I was looking for my own platform where I could share content freely without being tied to social media.
 
-## Exploring Alternatives: Ready-Made & No-Code Solutions
 
+## Exploring Alternatives: Ready-Made & No-Code Solutions
 I began by exploring several no-code platforms:
 - **Super.so, Webflow, and Squarespace:** These tools offer attractive templates and intuitive GUIs—ideal for those who want to avoid coding.
 - **Ghost and Framer:** Although Ghost impressed with its modern design, and Framer looked promising at first, both turned out to be quite expensive for a portfolio website.
