@@ -2,7 +2,7 @@
 title: How to redirect to a different URL when selecting a variant on your
   Shopify product page
 date: 2020-10-15T12:23:39.598Z
-summary: Modify Fernfolio to meet your needs
+summary: Redirecting to a different page when choosing a variant in Shopify
 tags:
   - Shopify
   - Webdevelopment
