@@ -4,8 +4,8 @@ title: How to redirect to a different URL when selecting a variant on your
 date: 2020-10-15T12:23:39.598Z
 summary: Modify Fernfolio to meet your needs
 tags:
-  - environment
-  - sport
+  - Shopify
+  - Webdevelopment
 ---
 ![Screenshot of a product page with 2 variants.](/src/assets/img/screenshot-of-a-product-page-with-2-variants.jpeg)
 

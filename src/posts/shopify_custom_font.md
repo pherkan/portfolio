@@ -5,8 +5,8 @@ summary: Upgrading your Shopify webshop with a personal custom font/typeface,
   without having to pay for a plug-in/app.
 metaDescription: How-to add a custom font/typeface to your Shopify store (for free).
 tags:
-  - webdevelopment
-  - shopify
+  - Shopify
+  - Webdevelopment
 ---
 ![Thumbnail showing the text: adding a custom font to your shopify store.](/src/assets/img/shopify_font2.webp)
 
