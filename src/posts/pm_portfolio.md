@@ -1,12 +1,12 @@
 ---
-title: "From No-Code Comfort to Coding Confidence: A Designer’s Journey Beyond WordPress"
-slug: "from-no-code-comfort-to-coding-confidence-a-designers-journey-beyond-wordpress"
+title: "From No-Code Comfort to Coding Confidence: A Designer's Journey Beyond WordPress"
 date: 2025-03-23T10:34:03.530Z
 summary: Transforming my outdated WordPress portfolio into a custom-coded website with Netlify, GitHub, and 11ty. Embracing code unlocked invaluable technical skills and creative freedom.
 metaDescription: Explore my journey from no-code comfort to coding confidence as I build a custom portfolio using modern web development tools, saving costs and gaining new skills.
 tags:
   - Webdevelopment
   - Product Management
+permalink: "/posts/from-no-code-comfort-to-coding-confidence-a-designers-journey-beyond-wordpress/"
 ---
 # From No-Code Comfort to Coding Confidence: A Designer’s Journey Beyond WordPress
 
