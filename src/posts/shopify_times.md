@@ -19,7 +19,7 @@ Firstly go to the edit code part of your Shopify store. You can do this easily b
 
 Create a blank file, give it a name and use the **_.js.liquid_**\-extension.
 
-![Screenshot of creating a blank file](/Users/pherkan/portfolio/src/assets/img/openingtimes1.png)
+![Screenshot of creating a blank file](/src/assets/img/openingtimes1.png)
 
 ## Step 3: Copy the Javascript code.
 
@@ -29,13 +29,13 @@ Go to [this link](https://gist.github.com/pherkan/c036fcfc88eba577515c528cdf5740
 
 The javascript file pretty much speaks for itself. You can change the text to your liking. Case 1 = Monday, Case 2 = Tuesday etc. Default value is what will be shown if the other cases do not match the day of the week.
 
-![Code showing the day and dates](/Users/pherkan/portfolio/src/assets/img/openingtimes2.png)
+![Code showing the day and dates](/src/assets/img/openingtimes2.png)
 
 ## **Step 6: Create a new snippet.**
 
 In the folder ‘Snippets’ create a new snippet and call it something like **_top-info-bar.liquid_**. We will display the opening times on this top bar as can be seen below.
 
-![Showing the time in the right corner of the website](/Users/pherkan/portfolio/src/assets/img/openingtimes3.png)
+![Showing the time in the right corner of the website](/src/assets/img/openingtimes3.png)
 
 Showing your custom text based on what day of the week it is.
 
@@ -65,6 +65,6 @@ The important part is the last div; that will be kept empty as it will get the d
 
 After we have created the snippet, this part can be used wherever you want. I have put it in the theme.liquid so it always shows on top of the page. You will need to place it after the body as can be seen below.
 
-![Code showing body include budda wireframe](/Users/pherkan/portfolio/src/assets/img/openingtimes4.png)
+![Code showing body include budda wireframe](/src/assets/img/openingtimes4.png)
 
 And that’s about it. If you have any questions, suggestions or other tips don’t hesitate to contact me. Have a nice day.
