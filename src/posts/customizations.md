@@ -7,7 +7,7 @@ tags:
   - environment
   - sport
 ---
-![Screenshot of a product page with 2 variants.](https://cdn-images-1.medium.com/max/1600/1*Q3S5qsEeTOyAPTtQaGMdVw.jpeg)
+![Screenshot of a product page with 2 variants.](/src/assets/img/screenshot-of-a-product-page-with-2-variants.jpeg)
 
 
 
@@ -23,7 +23,7 @@ Shopify lets you create variants for your products, which is useful. However, so
 
 make sure that you have created the variants of your products. So if you have three products, create 3 separate products.
 
-![Screenshot showing 3 products that are active.](https://cdn-images-1.medium.com/max/1600/1*FcwquW5jTvVlwA4agh-dkA.jpeg)
+![Screenshot showing 3 products that are active.](/src/assets/img/screenshot-showing-3-products-that-are-active.jpeg)
 
 Screenshot of 3 active products
 
@@ -31,7 +31,7 @@ Screenshot of 3 active products
 
 Scroll down and check what the product handle is of each of your products as we will need this later. Note this down, or remember it. :-)
 
-![](https://cdn-images-1.medium.com/max/1600/1*aDVX2qPtDvu3WmXL6GuMBQ.jpeg)
+![](/src/assets/img/image-2.jpeg)
 
 Product handle
 
@@ -41,7 +41,7 @@ The handle is the part after /products/…
 
 Now we will need to know what the css styling is of the existing variant buttons. For that, open the product page in your browser, inspect the element and tap on the variant button. In my case, my unique product has still two variants. If yours doesn’t; make sure to have a variant so you can select the variant button.
 
-![Screenshot showing inspect element and one variant button being targeted.](https://cdn-images-1.medium.com/max/1600/1*e8c4ZC-kE5pmZ30Efu5uUQ.jpeg)
+![Screenshot showing inspect element and one variant button being targeted.](/src/assets/img/screenshot-showing-inspect-element-and-one-variant-button-being-targeted.jpeg)
 
 Inspect elements (left), targeted variant button (right).
 
@@ -79,7 +79,7 @@ color: rgb(var( - color-foreground));
 
 Now we will add this css code in a separate file. We can do this by going to ‘Online store’, afterwards to ‘Edit code’. Scroll down to ‘Assets’ and tap on ‘Add a new asset’. Choose the ‘Blank file’ and give it a name (e.g. ‘custombutton’).
 
-![screenshot showing add a new asset and a user interface to create a blank file and enter a name for the file](https://cdn-images-1.medium.com/max/1600/1*_3j0AK_P0qsVCZSkMX63FA.jpeg)
+![screenshot showing add a new asset and a user interface to create a blank file and enter a name for the file](/src/assets/img/screenshot-showing-add-a-new-asset-and-a-user-interface-to-create-a-blank-file-and-enter-a-name-for-the-file.jpeg)
 
 Add a new asset (left), create a blank file named custombutton (right)
 
@@ -105,9 +105,11 @@ Keep in mind, in this example I assume the product’s handle is ‘handle1’, 
 
 Now we are going to make sure these buttons use the correct styling, for that we add the following code **at the top** of **main-product.liquid**
 
+{% raw %}
 ```
 {{ 'custombutton.css' | asset_url | stylesheet_tag }}
 ```
+{% raw %}
 
 This will make sure to use the correct/same styling as the variant button.
 
@@ -123,7 +125,7 @@ The image below shows ‘Variant 1’ which consists of 3 sub-variants: Handle 1
 
 Variant 2 is a ‘real’ variant that allows your customers to change a variant of a certain product without leaving that page.
 
-![Screenshot of a product page with 2 variants.](https://cdn-images-1.medium.com/max/1600/1*Q3S5qsEeTOyAPTtQaGMdVw.jpeg)
+![Screenshot of a product page with 2 variants.](/src/assets/img/screenshot-of-a-product-page-with-2-variants.jpeg)
 
 
 

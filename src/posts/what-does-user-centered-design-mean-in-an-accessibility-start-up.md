@@ -14,7 +14,7 @@ tags:
   - envision
   - ux
 ---
-![Illustration of a person in a wheelchair using the Envision Glasses and a person with a guide dog on the right also using the Envision Glasses. Text in between the two people says ‘User-centered design at Envision’ with the Envision logo on the right-bottom.](https://miro.medium.com/v2/resize:fit:1400/1*SevVHqNWSCNWpoOdKp5jiQ.jpeg)
+![Illustration of a person in a wheelchair using the Envision Glasses and a person with a guide dog on the right also using the Envision Glasses. Text in between the two people says ‘User-centered design at Envision’ with the Envision logo on the right-bottom.](/src/assets/img/usercentreddesign.webp)
 
 This is a blogpost I’ve written for Envision, the company I’ve been a part of since 2019. For the original post, please visit this link: <https://www.letsenvision.com/blog/user-centered-design-at-envision>
 

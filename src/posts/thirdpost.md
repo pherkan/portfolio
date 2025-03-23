@@ -8,7 +8,7 @@ tags:
   - webdevelopment
   - shopify
 ---
-![Thumbnail showing the text: adding a custom font to your shopify store.](https://miro.medium.com/v2/resize:fit:1400/1*ltVO7fdNGDFYYyJkYgPOSw.jpeg)
+![Thumbnail showing the text: adding a custom font to your shopify store.](/src/assets/img/shopify_font2.webp)
 
 This is a step-by-step tutorial on how to use a custom font for your Shopify store. There are a few paid apps that also help you in using a custom font, but personally I don’t think it’s worth the monthly costs and it’s relatively easy to do it for free.
 
@@ -19,19 +19,19 @@ This is a step-by-step tutorial on how to use a custom font for your Shopify sto
 
 3. Open Shopify and click on ‘Online Store’
 
-![A screenshot showing ‘Online Store’ below Sales Channels](https://miro.medium.com/v2/resize:fit:1000/1*EgTYV6chBWhW0FkjNWmbDA.jpeg)
+![A screenshot showing ‘Online Store’ below Sales Channels](/src/assets/img/shopify_font3.webp)
 
 4. Click on the three dots next to ‘Customize’ and tap on ‘Edit code’.
 
-![A screenshot showing a pop-up with ‘Edit code’ which is located below ‘Download theme file’](https://miro.medium.com/v2/resize:fit:1000/1*i9yzDWavytg0n3VEIySf9A.jpeg)
+![A screenshot showing a pop-up with ‘Edit code’ which is located below ‘Download theme file’](/src/assets/img/shopify_font4.webp)
 
 5. On the left side, open the Assets folder and click on ‘Add a new asset’.
 
-![Screenshot showing folders with below the ‘Assets’ stating ‘Add a new asset’.](https://miro.medium.com/v2/resize:fit:1000/1*mwHD1EdK8VUKWgeB0tTtXQ.jpeg)
+![Screenshot showing folders with below the ‘Assets’ stating ‘Add a new asset’.](/src/assets/img/shopify_font5.webp)
 
 6. Upload both the WOFF and WOFF2 file of your font that you’d like to use, either by clicking on ‘Add file’ or dragging the files in the box.
 
-![Screenshot showing the option to ‘Add file’](https://miro.medium.com/v2/resize:fit:1000/1*wdMtym_Uuj3dRo3VHq-3rw.jpeg)
+![Screenshot showing the option to ‘Add file’](/src/assets/img/shopify_font6.webp)
 
 7. Now in the assets directory, open the base css file. In some themes this might be called **‘theme.scss.liquid’**, in others it might be called **‘base.css’**.
 
@@ -73,15 +73,15 @@ Safari: Develop > Show Web Inspector (or shortcut: option + cmd + i)
 
 Chrome: View > Developer > Inspect Elements
 
-![Screensoht showing Web Inspector on Safari](https://miro.medium.com/v2/resize:fit:1000/1*kH3YZq39lifeT8td2yctAg.jpeg)
+![Screenshot showing Web Inspector on Safari](/src/assets/img/shopify_font7.webp)
 
 11. Than click on the ‘Start element selection’ (or shortcut: shift + cmd + C).
 
-![Screenshot showing the icon for start element section.](https://miro.medium.com/v2/resize:fit:1000/1*-CURdVvyGjKd_JBnGc5ipQ.jpeg)
+![Screenshot showing the icon for start element section.](/src/assets/img/shopify_font8.webp)
 
 12. Choose the element of which you’d like to change the font. In my case it’s a paragraph (p):
 
-![Screenshot showing a text and the start element selection shows it’s a paragraph.](https://miro.medium.com/v2/resize:fit:1000/1*KzuAIcuk0j6Zvyv_tUC-Vw.jpeg)
+![Screenshot showing a text and the start element selection shows it’s a paragraph.](/src/assets/img/shopify_font9.webp)
 
 13. Now go back to your base css file and paste the following code:
 
