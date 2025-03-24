@@ -59,7 +59,32 @@ footer {
   margin-top: auto;
 }
 
-h1,
+/* h1 only */
+h1 {
+  line-height: 1.1;
+  font-family: var(--font-family-caprasimo); /* Use our new variable */
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+
+  &:focus,
+  &:hover {
+    .header-anchor {
+      border-bottom: none;
+      opacity: 1;
+    }
+  }
+
+  :root[data-theme="dark"] & {
+    color: var(--color-title-dark);
+  }
+}
+
+/* h2–h6 keep Inclusive Sans (or your heading font) */
 h2,
 h3,
 h4,
@@ -75,7 +100,8 @@ h6 {
   -ms-word-break: break-all;
   word-break: break-word;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     .header-anchor {
       border-bottom: none;
       opacity: 1;
