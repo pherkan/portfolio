@@ -9,6 +9,8 @@ tags:
 permalink: "/posts/from-no-code-comfort-to-coding-confidence-a-designers-journey-beyond-wordpress/"
 ---
 
+![An abstract illustration with on top of it the text "From No-Code Comfort to Coding Confidence: A Designer's Journey Beyond Wordpress](/src/assets/img/pm_portfolio_1.jpg)
+
 Ever since I started my career, I've noticed a recurring challenge in my circle of designer friends and colleagues: we always gravitate toward no-code solutions because they're quick, accessible, and simply get the job done. However, while these drag-and-drop tools are convenient, I began to wonder what I was missing by not diving into the world of code. If you're feeling stuck with an outdated, clunky portfolio or are tempted by the simplicity of no-code platforms, this article is for you. I’m sharing my personal journey of moving away from an old WordPress setup—plagued by high hosting costs, security issues, and legacy content—and embracing the code route that not only saved money but also enriched my technical skills and deepened my understanding of modern web development.
 
 
