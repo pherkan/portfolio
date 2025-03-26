@@ -19,7 +19,7 @@
   --color-danger: #e03e3e;
 
   /* Typography */
-  --font-family-base: "Inclusive Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --font-family-base: "Atkinson Hyperlegible Next", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --font-family-heading: var(--font-family-base);
   --font-family-caprasimo: "Caprasimo", cursive;
 
@@ -32,22 +32,22 @@
   --z-header: 10;
 
   /* Other */
-  --border-radius: 12px;
-  --border-radius-sm: 5px;
+  --border-radius: 24px;
+  --border-radius-sm: 12px;
   --shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 
   // Dark mode colors
   --color-secondary-dark: rgb(22, 78, 99);
 
-  --color-link-dark: rgb(8, 145, 178);
+  --color-link-dark: rgb(4, 196, 244);
 
-  --color-bg-dark: #000;
+  --color-bg-dark: rgb(24 24 27);
   --color-bg-wrapper-bg-dark: rgb(24 24 27);
   --color-bg-secondary-dark: rgb(42 42 43);
   --color-bg-accent-dark: rgb(8, 51, 68);
 
   --color-title-dark: rgb(244 244 245);
-  --color-text-dark: rgb(161 161 170);
+  --color-text-dark: rgb(217, 218, 217);
 
   --color-border-dark: rgb(39, 39, 42);
 

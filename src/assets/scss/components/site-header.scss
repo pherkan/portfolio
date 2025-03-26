@@ -1,7 +1,7 @@
 .site-header {
   position: fixed;
   width: 100%;
-  border-top: 3px solid var(--color-secondary);
+  /* border-top: 3 solid var(--color-secondary); */
   z-index: var(--z-header);
 
   :root[data-theme="dark"] & {

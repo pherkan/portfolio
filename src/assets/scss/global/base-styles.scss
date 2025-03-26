@@ -41,8 +41,8 @@ body {
     .wrapper-bg{
       width:calc(var(--site-width) + 100px);
       background-color: var(--color-bg-wrapper-bg-dark);
-      border-right: 1px solid var(--color-bg-secondary-dark);
-      border-left: 1px solid var(--color-bg-secondary-dark);
+      /* border-right: 1px solid var(--color-bg-secondary-dark);
+      border-left: 1px solid var(--color-bg-secondary-dark);*/
     }
   }
 }
@@ -63,7 +63,7 @@ footer {
 h1 {
   line-height: 1.1;
   font-family: var(--font-family-caprasimo); /* Use our new variable */
-  font-weight: 800;
+  font-weight: 400;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   overflow-wrap: break-word;
@@ -92,7 +92,7 @@ h5,
 h6 {
   line-height: 1.1;
   font-family: var(--font-family-heading);
-  font-weight: 800;
+  font-weight: 700;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   overflow-wrap: break-word;

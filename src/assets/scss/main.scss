@@ -1,4 +1,3 @@
-
 /* Third Party */
 @use 'third-party/normalize.scss';
 @use 'third-party/prisma-theme.scss';
@@ -19,6 +18,18 @@
 @use 'components/site-footer.scss';
 @use 'components/drawer.scss';
 
+/* Apply lowercase to all elements */
 * {
-    text-transform: lowercase !important;
-  }
+  text-transform: lowercase !important;
+}
+
+/* Exempt posts (articles) and projects from lowercase transformation */
+html[data-current="post"] article *,
+html[data-current="project"] article *,
+.article-card__title,
+.article-card__summary,
+.project-card__title,
+.post-content *,
+.project-content * {
+  text-transform: none !important;
+}
