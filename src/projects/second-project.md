@@ -25,4 +25,6 @@ What makes Envision Glasses truly unique is the **combination of cutting-edge AI
 
 Envision Glasses gained **early traction**, with **100+ pre-orders** before launch. Today, more than **3,000+ Envision Glasses** are sold and actively used by **blind and low-vision individuals worldwide**, making it one of the most impactful assistive technologies available.  
 
-For more information, visit **[letsenvision.com/glasses](https://letsenvision.com/glasses)**. 🚀  
+For more information, visit **[letsenvision.com/glasses](https://letsenvision.com/glasses)**. 🚀 
+
+Or this article (in Dutch) published by Human (NPO): **[Ferkan maakte een bril die blinden laat 'zien'](https://www.human.nl/3fm/lees/2022/apr/bril-voor-blinden.html)**
