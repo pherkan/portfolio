@@ -9,7 +9,7 @@
 
 	{% include "partials/head.njk" %}
 
-  <body>
+  <body class="{% if section == 'post' %}is-post{% endif %}{% if section == 'project' %} is-project{% endif %}">
 		<div class="wrapper-bg-wrapper">
       <div class="wrapper-bg"></div>
     </div>
@@ -18,7 +18,7 @@
 		{% include "partials/drawer.njk" %}
 		<main>
 			{{ layoutContent | safe }}
-		</main>
+		</main>	
 
 		{% include "partials/footer.njk" %}
 	</body>

@@ -18,9 +18,14 @@
 @use 'components/site-footer.scss';
 @use 'components/drawer.scss';
 
-/* Default: Everything lowercase */
-body {
+body:not(.is-post):not(.is-project) {
   text-transform: lowercase !important;
+}
+
+/* Use Domine for blog posts and project content */
+body.is-post article,
+body.is-project .page-container {
+  font-family: var(--font-family-domine);
 }
 
 /* Keep UI elements lowercase everywhere */
@@ -31,28 +36,4 @@ nav,
 .tag,
 .btn {
   text-transform: lowercase !important;
-}
-
-/* Remove lowercase transform for individual posts and projects */
-html[data-current="post"] .page-container article > *,
-html[data-current="post"] .page-container article p,
-html[data-current="post"] .page-container article h1,
-html[data-current="post"] .page-container article h2,
-html[data-current="post"] .page-container article h3,
-html[data-current="post"] .page-container article h4,
-html[data-current="post"] .page-container article h5,
-html[data-current="post"] .page-container article h6,
-html[data-current="post"] .page-container article li,
-html[data-current="post"] .page-container article blockquote,
-html[data-current="project"] .page-container > *:not(nav):not(.tag),
-html[data-current="project"] .page-container p,
-html[data-current="project"] .page-container h1,
-html[data-current="project"] .page-container h2,
-html[data-current="project"] .page-container h3,
-html[data-current="project"] .page-container h4,
-html[data-current="project"] .page-container h5,
-html[data-current="project"] .page-container h6,
-html[data-current="project"] .page-container li,
-html[data-current="project"] .page-container blockquote {
-  text-transform: none !important;
 }
