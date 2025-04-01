@@ -5,9 +5,8 @@ metaDescription: "Defying the laws of marketing: chronicles of a not-so typical 
 date: 2019-01-01T00:00:00.000Z
 summary: an unpronounceable clothing brand
 tags:
-  - entrepeneurship
-  - branding
-  - aws
+  - Entrepreneurship
+  - Branding
 ---
 
 ### aeu.. what?

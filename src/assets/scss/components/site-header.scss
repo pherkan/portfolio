@@ -1,7 +1,6 @@
 .site-header {
   position: fixed;
   width: 100%;
-  /* border-top: 3 solid var(--color-secondary); */
   z-index: var(--z-header);
 
   :root[data-theme="dark"] & {
@@ -17,7 +16,6 @@
   margin: 8px 12px 0;
   padding: 4px 8px;
   border: 1px solid var(--color-border);
-  /* border-radius: var(--border-radius); */
   border-radius: 100px !important;
   background-color: var(--color-bg);
   box-shadow: var(--shadow);
@@ -46,7 +44,6 @@
   width: 40px;
   height: 40px;
   padding: 6px 8px;
-  /* border-radius: var(--border-radius-sm); */
   border-radius: 100px !important;
   color: var(--color-text);
 
@@ -76,11 +73,11 @@
 }
 
 .site-header__logo img {
-  transition: filter 0.3s ease-in-out; /* Smooth transition effect */
+  transition: filter 0.3s ease-in-out;
 }
 
 .site-header__logo:hover img {
-  filter: invert(1); /* Inverts colors */
+  filter: invert(1);
 }
 
 .site-header__logo img {

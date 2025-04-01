@@ -1,12 +1,12 @@
 ---
-title: Envision Glasses
+title: AI-Powered Smartglasses for people who are blind or have low vision.
 emoji: 👓
-metaDescription: AI-Powered Smartglasses, for people who are blind or have low vision, to turn the visual world into speech.
+metaDescription: Envision Glasses, smartglasses turning the visual world into speech.
 date: 2025-03-17T00:00:00.000Z
-summary: AI-powered smartglasses
+summary: AI-powered smartglasses for people who are blind or have low vision.
 tags:
-  - Product Manager
-  - UX Research
+  - Product Management
+  - UX
 ---
 
 ### **Envision Glasses: A Breakthrough in Assistive Technology**  
