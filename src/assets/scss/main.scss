@@ -18,14 +18,15 @@
 @use 'components/site-footer.scss';
 @use 'components/drawer.scss';
 
-body:not(.is-post):not(.is-project) {
+/* Default: Everything lowercase */
+* {
   text-transform: lowercase !important;
 }
 
-/* Use Domine for blog posts and project content */
-body.is-post article,
-body.is-project .page-container {
-  font-family: var(--font-family-domine);
+/* Remove lowercase transform for individual posts and projects */
+html[data-current="post"] .page-container article *,
+html[data-current="project"] .page-container * {
+  text-transform: none !important;
 }
 
 /* Keep UI elements lowercase everywhere */
@@ -36,4 +37,57 @@ nav,
 .tag,
 .btn {
   text-transform: lowercase !important;
+}
+
+/* Social Icons Styling */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 2rem 0;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+  transition: transform 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    color: var(--color-secondary);
+    border-bottom: none;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.video-responsive-wrapper {
+  /* --- Existing styles --- */
+  position: relative;
+  padding-bottom: 56.25%; /* Or your calculated aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+
+  /* --- Add these lines for spacing --- */
+  margin-top: 1.5em;    /* Adjust this value as needed */
+  margin-bottom: 1.5em; /* Adjust this value as needed */
+}
+
+/* --- iframe styles remain the same --- */
+.video-responsive-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

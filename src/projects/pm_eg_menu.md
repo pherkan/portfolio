@@ -38,10 +38,27 @@ Ferkan gathering feedback and interacting with a user of the Envision Glasses an
 
 We introduced Favorites in Envision Glasses version 1.3, supported by two explanatory videos from Marinda:
 
-<iframe width="560" height="315" src="https://youtube.com/embed/GQO4z6hLVCg?si=XpFPomAu4omwN0JA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-responsive-wrapper">
+  <iframe 
+    src="https://youtube.com/embed/GQO4z6hLVCg?si=XpFPomAu4omwN0JA" 
+    title="Marinda Version 1.3" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
 
-<iframe width="560" height="315" src="https://youtube.com/embed/XXAARG0e6tg?si=zfZtCPAoDp06igiZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<div class="video-responsive-wrapper">
+  <iframe 
+    src="https://youtube.com/embed/XXAARG0e6tg?si=zfZtCPAoDp06igiZ" 
+    title="Favorites Video" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
 
 Adoption soared, with roughly 30% of users leveraging Favorites within a month—double what we initially estimated. However, implementing a system to manage Favorites on the Glasses themselves was resource-intensive. To prioritize other developments, we limited customization to the Envision App, where users could configure their favorite features and have those changes instantly reflected on the Glasses.
 
@@ -51,8 +68,16 @@ Screenshots showing Favorites screen on the app.
 ## Going hands-free with voice commands
 We next focused on completely hands-free operation and launched Voice Commands in version 1.6. Suddenly, users could say “Open Explore” or “Start Scan Text” and immediately access that function.
 
-
-<iframe width="560" height="315" src="https://youtube.com/embed/-f1NHXoLolA?si=y0RHsRTYdMHeW_xZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-responsive-wrapper">
+  <iframe 
+    src="https://youtube.com/embed/-f1NHXoLolA?si=y0RHsRTYdMHeW_xZ" 
+    title="Voice Commands 1.6" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
 
 
 ## Listening, learning, and the more features menu
@@ -76,7 +101,16 @@ Screenshot showing the new (main) menu where only features are shown that most u
 
 For a deeper look into how we made the Envision Glasses more personal, we created a video (starring me, ha):
 
-<iframe width="560" height="315" src="https://youtube.com/embed/bxO1fyhp-A0?si=UIsVBr8WyNy1EaAT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-responsive-wrapper">
+  <iframe 
+    src="https://youtube.com/embed/bxO1fyhp-A0?si=UIsVBr8WyNy1EaAT" 
+    title="Ferkan explaining Version 1.6" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
 
 This evolution highlights a key takeaway: rather than reinventing the wheel, we often achieve the best results by using solutions familiar to our users—especially those who aren’t too tech-savvy. The folder concept is something most people understand from smartphones, which made it feel natural and approachable.
 This approach allowed us to simplify the Envision Glasses for distributors, making it easier to demonstrate the product without overwhelming potential new users—many of whom are older and not very tech-savvy. At the same time, we improved productivity and speed for our tech-savvy users by streamlining access to key features like “Instant Text,” which uses Optical Character Recognition to instantly read aloud any text in front of the glasses.
