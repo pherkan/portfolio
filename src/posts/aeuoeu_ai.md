@@ -1,5 +1,6 @@
 ---
 title: "From moodboards to minutes: how AI is changing the game…"
+permalink: "/posts/from-moodboards-to-minutes-how-ai-is-changing-the-game/"
 date: 2025-04-02T10:34:03.530Z
 summary: What once took us weeks—moodboards, shoots, edits—now takes 15 seconds with AI. It’s not just faster; it’s a whole new way of creating.
 metaDescription: I used to spend weeks perfecting product visuals for my clothing brand. Now, with AI, I can generate near-identical images in seconds—and it’s changing everything.
