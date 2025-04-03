@@ -7,7 +7,7 @@ metaDescription: I used to spend weeks perfecting product visuals for my clothin
 tags:
   - AI
   - aeuoeu
-ogImage: "/src/assets/img/aeuoeu_ai_0.jpg"
+ogImage: "/assets/img/aeuoeu_ai_0.jpg"
 ---
 
 ![A side-by-side comparison of two beige suede T-shirts. The left side shows a real T-shirt laid flat on a light surface, while the right side displays a digitally rendered T-shirt on a textured brown background. Overlaid text reads: “From moodboards to minutes: how AI is changing the game…” in a retro-style pink and white font.](/src/assets/img/aeuoeu_ai_0.jpg "A side-by-side comparison of two beige suede T-shirts. The left side shows a real T-shirt laid flat on a light surface, while the right side displays a digitally rendered T-shirt on a textured brown background. Overlaid text reads: “From moodboards to minutes: how AI is changing the game…” in a retro-style pink and white font.")
