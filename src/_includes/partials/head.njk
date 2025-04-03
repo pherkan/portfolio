@@ -21,6 +21,24 @@
   
   {# CSS #}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+  
+  {# OG + Twitter meta tags #}
+  {% set ogTitle = renderData.title or title or metadata.title %}
+  {% set ogDescription = metaDescription or renderData.metaDescription or summary or metadata.description %}
+  {% set ogUrl = canonical or (site.url + page.url if site and site.url) %}
+  {% set ogImage = ogImage or "/images/default-og.png" %}
+
+  <meta property="og:title" content="{{ ogTitle }}">
+  <meta property="og:description" content="{{ ogDescription }}">
+  {% if ogUrl %}
+  <meta property="og:url" content="{{ ogUrl }}">
+  {% endif %}
+  <meta property="og:image" content="{{ ogImage }}">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ogTitle }}">
+  <meta name="twitter:description" content="{{ ogDescription }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
 
   {# Javascript #}
   <script>
