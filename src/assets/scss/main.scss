@@ -29,6 +29,26 @@ html[data-current="project"] .page-container * {
   text-transform: none !important;
 }
 
+/* Apply 'Domine' to body text, links, and subheadings */
+html[data-current="post"] .page-container article,
+html[data-current="project"] .page-container,
+html[data-current="post"] .page-container article p,
+html[data-current="post"] .page-container article a,
+html[data-current="post"] .page-container article h2,
+html[data-current="post"] .page-container article h3,
+html[data-current="post"] .page-container article h4,
+html[data-current="post"] .page-container article h5,
+html[data-current="post"] .page-container article h6,
+html[data-current="project"] .page-container p,
+html[data-current="project"] .page-container a,
+html[data-current="project"] .page-container h2,
+html[data-current="project"] .page-container h3,
+html[data-current="project"] .page-container h4,
+html[data-current="project"] .page-container h5,
+html[data-current="project"] .page-container h6 {
+  font-family: 'Domine', serif;
+}
+
 /* Keep UI elements lowercase everywhere */
 .site-header,
 .site-footer,
