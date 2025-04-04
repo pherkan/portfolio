@@ -25,3 +25,8 @@ if (window.netlifyIdentity) {
     }
   });
 }
+
+document.addEventListener("turbolinks:load", () => {
+  // reapply or trigger any dynamic styles or fonts
+  document.documentElement.classList.remove("turbolinks-transition-bug");
+});
