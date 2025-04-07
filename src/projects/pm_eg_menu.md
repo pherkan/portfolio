@@ -8,7 +8,6 @@ tags:
   - UX
   - Product Management
   - Envision
-permalink: "/projects/prototypes-to-personalization"
 ---
 
 ![Photo of a man wearing Envision Glasses and holding a vinyl. Text says: From prototypes to personalization: advancing accessibility in Envision Glasses.](/src/assets/img/eg_personalisation_0.jpg)
