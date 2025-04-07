@@ -160,7 +160,7 @@ hr {
 a {
   text-decoration: none;
   color: var(--color-secondary);
-
+  font-weight: 500;
   :root[data-theme="dark"] & {
     color: var(--color-link-dark);
   }

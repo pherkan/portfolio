@@ -1,20 +1,28 @@
 /* Article card */
 .article-card {
   margin-top: 20px;
-  padding: 4px 6px;
+  padding: 12px 18px;
   border-radius: var(--border-radius);
+  background-color: var(--color-bg-secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     color: var(--color-text);
     background-color: var(--color-bg-hover);
+  }
 
-    :root[data-theme="dark"] & {
-      background-color: var(--color-bg-secondary-dark);
+  // Dark mode override: remove or change the background color
+  :root[data-theme="dark"] & {
+    background-color: var(--color-bg-secondary-dark); 
+    // Or use a dark color, e.g. var(--color-bg-secondary-dark)
+
+    &:hover {
+      background-color: var(--color-bg-dark);
     }
   }
 
   &--tags {
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 10px solid var(--color-border);
     border-radius: 0;
 
     :root[data-theme="dark"] & {

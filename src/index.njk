@@ -43,4 +43,14 @@ section: home
     show_tags = false,
     limit = 3
   ) }}
+
+  {# External Links #}
+  <div class="list-header">
+    <h2 class="list-header__title">External Links</h2>
+    {# Optional: Add a "View All" link if you plan a dedicated page later #}
+    {# <a class="btn btn--outline btn--sm" href="/external-links">View All</a> #}
+  </div>
+  {% from "macros/externallinklist.njk" import externallinklist %}
+  {{ externallinklist(links = collections.externalLink | reverse) }}
+
 </div>

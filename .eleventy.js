@@ -58,6 +58,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/admin');
   eleventyConfig.addPassthroughCopy('./src/assets/img');
 
+  // Collections
+  eleventyConfig.addCollection('externalLink', function(collectionApi) {
+    return collectionApi.getFilteredByGlob('src/external-links/*.md');
+  });
+
   // ✅ Allow Turbolinks to work in development mode
   eleventyConfig.setBrowserSyncConfig(browserSyncConfig);
 

@@ -1,0 +1,28 @@
+{% macro externallinklist(links) %}
+  <section class="external-link-grid">
+  {% for link in links %}
+    <a href="{{ link.data.externalUrl }}" class="external-link-card" target="_blank" rel="noopener noreferrer">
+      <article>
+        {# Temporarily commenting out image block for debugging title #}
+        {# <div class="external-link-card__image-wrapper">
+          {% if link.data.image %}
+            {% image
+              link.data.image,
+              link.data.image_alt | default(""),
+              "300px",
+              "external-link-card__image",
+              "lazy"
+            %}
+          {% else %}
+            <div class="external-link-card__image-placeholder"></div>
+          {% endif %}
+        </div> #}
+        <div class="external-link-card__content">
+          <h5 class="external-link-card__title">{{ link.data.title }}</h5>
+          <span class="btn btn--primary btn--sm external-link-card__button">More info</span>
+        </div>
+      </article>
+    </a>
+  {% endfor %}
+  </section>
+{% endmacro %}

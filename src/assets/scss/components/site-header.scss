@@ -19,6 +19,7 @@
   border-radius: 100px !important;
   background-color: var(--color-bg);
   box-shadow: var(--shadow);
+  background-color: var(--color-bg-secondary) !important;
 
   @media (min-width: 1024px) {
     max-width: var(--site-width);
@@ -26,7 +27,7 @@
   }
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-bg-secondary-dark);
+    background-color: var(--color-bg-secondary-dark) !important;
   }
 }
 

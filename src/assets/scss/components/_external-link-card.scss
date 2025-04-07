@@ -1,0 +1,63 @@
+.external-link-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6, 1.5rem);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.external-link-card {
+  // Because the entire card is an <a>,
+  // override the default browser link color:
+  color: var(--color-text);
+  text-decoration: none; // remove underline if desired
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-base, 12px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // Keep the nice hover “lift” effect, 
+  // but also avoid changing text color:
+  &:hover {
+    color: var(--color-text); 
+    text-decoration: none;
+    background-color: var(--color-bg-hover);
+    border-bottom: 0 !important;
+  } 
+
+  :root[data-theme="dark"] & {
+    background-color: var(--color-bg-secondary-dark); 
+    // Or use a dark color, e.g. var(--color-bg-secondary-dark)
+
+    &:hover {
+      background-color: var(--color-bg-dark);
+    }
+  }
+
+  &__content {
+    padding: var(--spacing-6, 1rem);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0 0 var(--spacing-3, 0.75rem);
+    // If you want h5 to use the standard heading style from your main CSS,
+    // you can leave it as is and rely on the overall 'h5' styling from Sakura.
+    // Just ensure the color doesn't get overridden by link defaults.
+  }
+
+  &__button {
+    margin-top: auto;
+    align-self: flex-start;
+    .btn {
+      border-radius: 30px; // example of more rounded corners
+    }
+  }
+}

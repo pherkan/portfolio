@@ -1,13 +1,13 @@
 :root {
   /* Brand Colors */
   --color-primary: #222;
-  --color-secondary: #2f5bc2;
+  --color-secondary: #D39983;
 
   /* Background Colors */
-  --color-bg: #fff;
+  --color-bg: #F7EEEA;
   --color-bg-secondary: #f7f7f7;
   --color-bg-accent: rgb(174, 182, 225);
-  --color-bg-hover: #f3f4f6cc;
+  --color-bg-hover: #EED8D0;
 
   /* Text and Border Colors */
   --color-text: #222;
@@ -38,13 +38,13 @@
   --shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
 
   // Dark mode colors
-  --color-secondary-dark: rgb(22, 78, 99);
+  --color-secondary-dark: rgb(158, 112, 95);
 
-  --color-link-dark: rgb(4, 196, 244);
+  --color-link-dark: rgb(223, 180, 164);
 
-  --color-bg-dark: rgb(24 24 27);
-  --color-bg-wrapper-bg-dark: rgb(24 24 27);
-  --color-bg-secondary-dark: rgb(42 42 43);
+  --color-bg-dark: rgb(49 31 23);
+  --color-bg-wrapper-bg-dark: rgb(49 31 23);
+  --color-bg-secondary-dark: rgb(76, 39, 29);
   --color-bg-accent-dark: rgb(8, 51, 68);
 
   --color-title-dark: rgb(244 244 245);
