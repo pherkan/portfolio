@@ -5,7 +5,7 @@
   border-radius: var(--border-radius);
   background-color: var(--color-bg-secondary);
   transition: background-color 0.3s ease, color 0.3s ease;
-
+  
   &:hover {
     color: var(--color-text);
     background-color: var(--color-bg-hover);
@@ -22,8 +22,8 @@
   }
 
   &--tags {
-    border-bottom: 10px solid var(--color-border);
-    border-radius: 0;
+    /* border-bottom: 2px solid var(--color-border); */
+    border-radius: var(--border-radius);
 
     :root[data-theme="dark"] & {
       border-bottom: 2px solid var(--color-border-dark);
@@ -53,6 +53,7 @@
   .article-card--tags & {
     &:hover {
       color: var(--color-secondary);
+      background-color: var(--color-bg) !important;
     }
   }
 }
@@ -123,6 +124,10 @@
     background-color: var(--color-bg-secondary-dark);
     color: var(--color-link-dark);
   }
+}
+
+p.tag-list {
+  margin-bottom: 0px !important;
 }
 
 /* Pagination */

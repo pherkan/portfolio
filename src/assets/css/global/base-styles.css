@@ -106,7 +106,7 @@ sup {
 
 hr {
   border: none;
-  border-bottom: 2px solid var(--color-border); }
+  /* border-bottom: 2px solid var(--color-border); */ }
   :root[data-theme="dark"] hr {
     border-color: var(--color-border-dark); }
 
