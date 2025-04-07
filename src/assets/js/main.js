@@ -1,4 +1,3 @@
-const Turbolinks = require('turbolinks');
 const drawer = require('./drawer');
 const darkMode = require('./dark-mode');
 
