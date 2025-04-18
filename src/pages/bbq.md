@@ -30,7 +30,7 @@ Oh — and I’m also turning 31 😅🥳.
 
 ## 🍗 RSVP below to save your spot
 
-<form name="rsvp" method="POST" data-netlify="true" action="/bbq/thanks/">
+<form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" action="/bbq/thanks/">
   <input type="hidden" name="form-name" value="rsvp" />
 
   <label>Your Name:<br>
@@ -79,7 +79,7 @@ Oh — and I’m also turning 31 😅🥳.
       .then(data => {
         console.log("Submitted:", data);
         // Redirect to thank-you page
-        window.location.href = "/bbq/thanks/";
+        window.location.href = "https://pherkan.com/bbq/thanks/";
       })
       .catch(error => {
         console.error("Error submitting RSVP:", error);
