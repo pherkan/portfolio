@@ -44,7 +44,6 @@ Thanks for signing up — we're excited to see you at **Suzan & Ferkan’s Summe
         return `<li><strong>#${index + 1}:</strong> ${name}${isPlusOne ? ' +1' : ''}</li>`;
       }).join('');
 
-      // ✅ Show user's number at the bottom
       document.getElementById("your-number").innerText =
         `You're guest number #${guests.length}! 🎉`;
     })

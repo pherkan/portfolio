@@ -8,7 +8,7 @@ metaDescription: Start of summer BBQ party hosted by Ferkan & Suzan — with gre
 Saturday, May 17th – 16:00 to 23:00
 
 **📍 Location:**
-Herengracht 50B
+Herengracht 50B  
 2511 EJ DEN HAAG
 
 ---
@@ -30,15 +30,13 @@ Oh — and I’m also turning 31 😅🥳.
 
 ## 🍗 RSVP below to save your spot
 
-<form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" action="/bbq/thanks/">
-  <input type="hidden" name="form-name" value="rsvp" />
-
+<form id="rsvpForm">
   <label>Your Name:<br>
-    <input type="text" name="name" required>
+    <input type="text" name="name" id="name" required>
   </label><br><br>
 
   <label>Are you bringing a +1?<br>
-    <select name="plusOne" required>
+    <select name="plusOne" id="plusOne" required>
       <option value="no">No, it's just me ugh.</option>
       <option value="yes">Si, oui, yes. I'm bringing one extra human.</option>
     </select>
@@ -78,8 +76,7 @@ Oh — and I’m also turning 31 😅🥳.
       .then(response => response.json())
       .then(data => {
         console.log("Submitted:", data);
-        // Redirect to thank-you page
-        window.location.href = "https://pherkan.com/bbq/thanks/";
+        window.location.href = "/bbq/thanks/";
       })
       .catch(error => {
         console.error("Error submitting RSVP:", error);
@@ -87,6 +84,8 @@ Oh — and I’m also turning 31 😅🥳.
       });
   });
 </script>
+
+<a href="/bbq/thanks/" style="display:none;">link</a>
 
 ---
 
