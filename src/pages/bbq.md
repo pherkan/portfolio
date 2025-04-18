@@ -3,6 +3,7 @@ title: Suzkan's Summer BBQ 2025
 layout: page.njk
 permalink: /bbq/index.html
 metaDescription: Start of summer BBQ party hosted by Ferkan & Suzan — with great food, friends, and a side of birthday.
+ogImage: "/assets/img/bbq.png"
 ---
 **📆 Date:**
 Saturday, May 17th – 16:00 to 23:00
