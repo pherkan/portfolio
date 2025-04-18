@@ -9,7 +9,7 @@ metaDescription: Thank you for RSVPing to Suzan & Ferkan's summer BBQ in The Hag
 
 Thanks for signing up — we're excited to see you at **Suzan & Ferkan’s Summer BBQ**!
 
-📍 **Location:** Herengracht 50B, 2511 EJ, The Hague
+📍 **Location:** Herengracht 50B, 2511 EJ, The Hague  
 🗓️ **Date:** Saturday, May 17th  
 🕓 **Time:** 16:00 – 23:00  
 🍽️ BBQ, drinks, music, summer vibes... and a cheeky 31st birthday in the background.
@@ -21,6 +21,10 @@ Thanks for signing up — we're excited to see you at **Suzan & Ferkan’s Summe
 <ul id="rsvp-list">Loading guest list…</ul>
 
 <p id="your-number" style="margin-top: 2rem; font-weight: bold;"></p>
+
+<button onclick="window.location.reload()" style="margin-top: 1rem; font-size: 1rem;">
+  🔄 Refresh guest list
+</button>
 
 <script>
   fetch('https://api.sheety.co/2381c287b05641ab8df16dfd5eaf25ec/bbqAttendanceList/sheet1')

@@ -47,6 +47,47 @@ Oh — and I’m also turning 31 😅🥳.
   <button type="submit">Count me in 🎉</button>
 </form>
 
+<p id="submitMessage" style="margin-top: 1rem;"></p>
+
+<script>
+  document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const plusOne = document.getElementById("plusOne").value;
+
+    if (!name) {
+      alert("Please enter your name.");
+      return;
+    }
+
+    const payload = {
+      sheet1: {
+        name,
+        plusOne
+      }
+    };
+
+    fetch("https://api.sheety.co/2381c287b05641ab8df16dfd5eaf25ec/bbqAttendanceList/sheet1", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Submitted:", data);
+        // Redirect to thank-you page
+        window.location.href = "/bbq/thanks/";
+      })
+      .catch(error => {
+        console.error("Error submitting RSVP:", error);
+        document.getElementById("submitMessage").innerText = "Something went wrong. Please try again!";
+      });
+  });
+</script>
+
 ---
 
 Looking forward to seeing you there!  
