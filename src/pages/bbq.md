@@ -1,0 +1,53 @@
+---
+title: Suzkan's Summer BBQ 2025
+layout: page.njk
+permalink: /bbq/index.html
+metaDescription: Start of summer BBQ party hosted by Ferkan & Suzan — with great food, friends, and a side of birthday.
+---
+**📆 Date:**
+Saturday, May 17th – 16:00 to 23:00
+
+**📍 Location:**
+Herengracht 50B
+2511 EJ DEN HAAG
+
+---
+
+It’s time to light the grill, crack open something cold, and officially welcome summer with a backyard-style BBQ.
+
+<img src="/assets/img/bbq.png" alt="BBQ party banner" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 12px;" />
+
+---
+
+## 🥳 Join us!  
+Suzan and I are hosting a cozy get-together with good food, chill vibes, and great company.
+
+There’ll be plenty of meat, veggie options, snacks, music, and that *slightly chaotic* energy that every good BBQ needs.
+
+Oh — and I’m also turning 31 😅🥳.
+
+---
+
+## 🍗 RSVP below to save your spot
+
+<form name="rsvp" method="POST" data-netlify="true" action="/bbq/thanks/">
+  <input type="hidden" name="form-name" value="rsvp" />
+
+  <label>Your Name:<br>
+    <input type="text" name="name" required>
+  </label><br><br>
+
+  <label>Are you bringing a +1?<br>
+    <select name="plusOne" required>
+      <option value="no">No, it's just me ugh.</option>
+      <option value="yes">Si, oui, yes. I'm bringing one extra human.</option>
+    </select>
+  </label><br><br>
+
+  <button type="submit">Count me in 🎉</button>
+</form>
+
+---
+
+Looking forward to seeing you there!  
+**– Ferkan & Suzan**
