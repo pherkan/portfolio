@@ -54,5 +54,8 @@
     "postcss-scss": "^4.0.4",
     "rimraf": "^3.0.2",
     "sass": "^1.54.3"
+  },
+  "dependencies": {
+    "turbolinks": "^5.2.0"
   }
 }
