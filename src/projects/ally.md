@@ -2,7 +2,7 @@
 title: Building ally, conversational AI assistant
 emoji: 🦿
 metaDescription: How we built ally, the accessibility-first conversational assistant at Envision, from public development to cross-platform launch.
-date: 2025-06-13T00:00:00.000Z
+date: 2025-06-14T00:00:00.000Z
 summary: A behind-the-scenes look at how we launched ally, the world's first accessibility-first conversational assistant on smartglasses, and how we used public development, inclusive testing, and function calling to shape it.
 tags:
 - Product anagement
