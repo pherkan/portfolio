@@ -25,8 +25,8 @@
 }
 
 /* Remove lowercase transform for individual posts and projects */
-html[data-current="post"] .page-container article *,
-html[data-current="project"] .page-container * {
+html[data-current="post"] .page-container article *:not(.tag):not(.btn),
+html[data-current="project"] .page-container *:not(nav):not(.tag):not(.btn) {
   text-transform: none !important;
 }
 
