@@ -1,0 +1,22 @@
+/* Focus Management for Accessibility */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure focus is visible for keyboard users */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip links focus styles */
+.skip-link:focus {
+  outline: 2px solid var(--color-bg);
+  outline-offset: 2px;
+}

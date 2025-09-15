@@ -23,20 +23,24 @@ Fast forward to today, and things have changed dramatically. Thanks to tools lik
 ---
 
 ## So, what is vibecoding?  
-The term *vibecoding* was popularized by Andrej Karpathy in early 2025. It describes a way of building with AI where you don’t fully code every detail yourself. Instead, you describe the outcome you want, the “vibe,” and the AI generates the code or prototype for you. It’s not about replacing developers, but about unlocking quick experimentation and bridging the gap between idea and implementation.  
+The term *vibecoding* was popularized by Andrej Karpathy in early 2025. It describes a way of building with AI where you don’t fully code every detail yourself. Instead, you describe the outcome you want, the “vibe,” and the AI generates the code or prototype for you.  
 
-For product designers and managers like me, it’s a game-changer. Suddenly, we’re not limited to sketches or Figma files. We can create working demos or tools ourselves, without waiting weeks for engineering time.  
+For many aficionados, vibecoding usually means working inside editors like **Cursor** or **VS Code** with AI plugins such as **Roocode** or Cline. That’s where you get the full experience of coding alongside an AI assistant.  
+
+In this blogpost though, I’ll focus on lighter tools like **Gemini Canvas** and **Claude Artifact**. Some might say that isn’t “true” vibecoding, but for quickly making prototypes that actually get the job done, it’s more than enough.  
+
+For product designers and managers like me, this is a game-changer. Suddenly, we’re not limited to sketches or Figma files. We can create working demos or tools ourselves, without waiting weeks for engineering time.  
 
 ---
 
 ## A real example from my work  
 At Envision, we hired a truly great design agency that came up with a beautiful branding style that included this dotted visual style. Besides the full branding package, they provided us with 16 of these dotted styles (see image). They also suggested building a custom tool that could turn any photo into this dotted style, but that would have come with a hefty price tag.  
 
-A while ago, using Gemini, we built our own image-to-dot generator internally. No extra costs, no waiting. Just a prompt, some iterations, and suddenly we had exactly what we needed.  
-
 *Dot examples: ![Dot examples shown in a grid of 4 by 4](/src/assets/img/pm_vibecoding_1_1.jpg)*  
 
+A while ago, using Gemini, we built our own image-to-dot generator internally. No extra costs, no waiting. Just a prompt, some iterations, and suddenly we had exactly what we needed. The prompt was literally: *"Create a tool where I can upload a photo and get a dotted version of it. Make sure I can change the dot sizes and colors and I can download it as an SVG file."* And about 30 minutes later,we had a tool that did exactly that.
 ---
+
 
 ## Prototyping, reimagined  
 Outside of work, I’m fascinated by what vibecoding can do for prototyping. In the past, I’d spend hours connecting screens in Figma, choosing interaction styles, and polishing animations. Now, I can create a prototype in under 30 minutes by prompting the right way and combining the right tools.  
@@ -61,7 +65,18 @@ Of course, vibecoding doesn’t mean we can instantly deploy everything to produ
 
 In a way, vibecoding adds an entirely new skillset to the PM/PO toolkit. I can ideate, validate, and now also *prototype with code* without being a developer myself.  
 
+The main shift for me is that vibecoding changes how fast and how clearly I can work. As a PM, so much of the job is about ideas, priorities, and tradeoffs. But ideas are often hard to communicate until they are tangible. Vibecoding bridges that gap. I can move from a conversation to a working prototype in the same afternoon. That speed doesn’t replace developers, but it means we can have much sharper discussions before we even write a single production line of code.  
+
+For me, that’s the real power of vibecoding. It’s not just about making things look impressive, but about creating clarity, reducing guesswork, and getting to better outcomes faster.  
+
+---
+
+## Tools worth exploring  
+Some of the tools that stand out for PMs and POs are Gemini Canvas, Claude Artifact, and ChatGPT Canvas. They make it easy to sketch, explore, and refine ideas in a conversational way. And when it comes to turning concepts into videos, Gemini’s Veo 3 is great for prompting video prototypes directly from text. Together, these tools lower the barrier to experimentation and make it much easier to communicate ideas visually.  
+
 ---
 
 ## What’s next?  
-Though vibecoding is great for concepts and prototyping, in my next blogpost I’ll write about my current love and hate journey of actually using vibecoding to make a public platform. More about that later...  
+Though vibecoding is great for concepts and prototyping, in my next blogpost I’ll write about my current love and hate journey of actually using vibecoding to make a working platform in production. I’ll share my experience with tools like Visual Studio Code with Roocode and Cline, Claude Code, Qoder, and many more that push vibecoding beyond prototypes and into something real.  
+
+More about that later...  
