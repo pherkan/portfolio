@@ -39,6 +39,7 @@ At Envision, we hired a truly great design agency that came up with a beautiful 
 *Dot examples: ![Dot examples shown in a grid of 4 by 4](/src/assets/img/pm_vibecoding_1_1.jpg)*  
 
 A while ago, using Gemini, we built our own image-to-dot generator internally. No extra costs, no waiting. Just a prompt, some iterations, and suddenly we had exactly what we needed. The prompt was literally: *"Create a tool where I can upload a photo and get a dotted version of it. Make sure I can change the dot sizes and colors and I can download it as an SVG file."* And about 30 minutes later,we had a tool that did exactly that.
+
 ---
 
 
