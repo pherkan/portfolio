@@ -7,8 +7,8 @@ metaDescription: I used to spend weeks perfecting product visuals for my clothin
 previewImage: "/assets/img/moodboards_to_minutes_preview.jpg"
 previewImageAlt: "Preview banner for moodboards to minutes article featuring product visuals"
 tags:
-  - AI
-  - aeuoeu
+  - Entrepeneurship
+  - Product Management
 ogImage: "/assets/img/aeuoeu_ai_0.jpg"
 ---
 

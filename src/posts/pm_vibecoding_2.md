@@ -7,10 +7,8 @@ metaDescription: I recently revisited my portfolio site and realized it didn’t
 previewImage: "/assets/img/pm_vibecoding_2_preview.jpg"
 previewImageAlt: "Preview collage showing the old portfolio design on the left and the new design with improved visuals on the right"
 tags:
-  - coding
-  - portfolio
-  - gpt5-codex
-  - qoder
+  - Coding
+  - Product Design
 ogImage: "/assets/img/pm_vibecoding_2_preview.jpg"
 ---
 

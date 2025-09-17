@@ -8,7 +8,7 @@ metaDescription: Midjourney can be a great tool. But does it also understand
   when trying to create photos of a person that is blind or has low vision?
 tags:
   - AI
-  - Midjourney
+  - Image Generation
 ---
 ![A collage of AI-generated photos of people that are blind or have low vision.](/src/assets/img/midjourney1.webp "A collage of AI-generated photos of people that are blind or have low vision.")
 

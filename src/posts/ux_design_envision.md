@@ -10,8 +10,7 @@ metaDescription: User-centered design at Envision means that we involve our
   assumptions and are always done in collaboration with our users, ambassadors,
   and (beta) testers.
 tags:
-  - UX
-  - Envision
+  - Product Design
   - Accessibility
 ---
 ![Illustration of a person in a wheelchair using the Envision Glasses and a person with a guide dog on the right also using the Envision Glasses. Text in between the two people says ‘User-centered design at Envision’ with the Envision logo on the right-bottom.](/src/assets/img/usercentreddesign.webp)

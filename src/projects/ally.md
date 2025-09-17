@@ -9,7 +9,6 @@ summary: A behind-the-scenes look at how we launched ally, the world's first acc
 tags:
 - Product Management
 - Accessibility
-- Envision
 ---
 
 ![Illustration showing 'ally', accessibility first AI assistant.](/src/assets/img/ally.jpg)

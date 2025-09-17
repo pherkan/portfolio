@@ -8,7 +8,7 @@ date: 2025-03-17T00:00:00.000Z
 summary: AI-powered smartglasses for people who are blind or have low vision.
 tags:
   - Product Management
-  - UX
+  - Product Design
 ---
 
 ![Close-up photo of a man wearing Google Glass smartglasses, touching the side of the device with one finger.](/src/assets/img/eg_personalisation_3.jpg)

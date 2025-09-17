@@ -7,9 +7,8 @@ date: 2025-04-01T10:56:03.530Z
 summary: From categories to favorites to customizable menus, each step prioritized simplicity, familiarity, and user feedback.
 metaDescription: An inside look at how we evolved the smartglasses interface to better serve blind and low vision users. From categories to favorites to customizable menus, each step prioritized simplicity, familiarity, and user feedback.
 tags:
-  - UX
   - Product Management
-  - Envision
+  - Product Design
 ---
 
 ![Photo of a man wearing Envision Glasses and holding a vinyl. Text says: From prototypes to personalization: advancing accessibility in Envision Glasses.](/src/assets/img/eg_personalisation_0.jpg)

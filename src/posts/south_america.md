@@ -4,7 +4,7 @@ date: 2018-09-18T14:35:49.738Z
 summary: Exploring Central America and Mexico on my own.
 metaDescription: My view on traveling two months through Costa Rica, Guatemala, El Salvador, Honduras, Belize and Mexico.
 tags:
-  - travel
+  - Travel
 ---
 
 **My view on traveling two months through Costa Rica, Guatemala, El Salvador, Honduras, Belize and Mexico.**

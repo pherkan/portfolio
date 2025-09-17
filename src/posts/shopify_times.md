@@ -3,7 +3,6 @@ title: Showing opening times based on the day of the week in Shopify
 date: 2019-03-19T12:23:39.598Z
 summary: Opening times in Shopify
 tags:
-  - Shopify
   - Webdevelopment
 ---
 

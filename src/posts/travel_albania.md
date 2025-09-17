@@ -9,7 +9,7 @@ metaDescription: The northern reaches of Albania offer an untouched beauty is an
   experience like no other. Our journey on the Komani Lake Ferry, followed by
   the Valbona Theth hike, was nothing short of spellbinding.
 tags:
-  - travel
+  - Travel
 ---
 *The northern reaches of Albania offer an untouched beauty is an experience like no other. Our journey on the Komani Lake Ferry, followed by the Valbona Theth hike, was nothing short of spellbinding. Here’s a glimpse into the adventure, while providing some essential tips.*
 

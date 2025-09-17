@@ -19,6 +19,9 @@
 
       <div class="external-link-card__content">
         <h3 class="external-link-card__title">{{ link.data.title }}</h3>
+        {% if link.templateContent %}
+          <div class="external-link-card__description">{{ link.templateContent | safe }}</div>
+        {% endif %}
         <a class="btn btn--sm btn--outline external-link-card__button" href="{{ link.data.externalUrl }}" target="_blank" rel="noopener noreferrer" aria-label="More info: {{ link.data.title }}">More info</a>
 
         {% if link.data.tags %}

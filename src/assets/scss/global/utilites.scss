@@ -65,9 +65,9 @@
   transform: none;
 
   :root[data-theme="dark"] & {
-    border-color: var(--color-text);
+    border-color: var(--color-text-alt); /* white in dark mode */
     background-color: transparent;
-    color: var(--color-text);
+    color: var(--color-text-alt);
   }
 
   &:hover, &:focus {

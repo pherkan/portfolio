@@ -4,7 +4,6 @@ title: How to redirect to a different URL when selecting a variant on your
 date: 2020-10-15T12:23:39.598Z
 summary: Redirecting to a different page when choosing a variant in Shopify
 tags:
-  - Shopify
   - Webdevelopment
 ---
 ![Screenshot of a product page with 2 variants.](/src/assets/img/screenshot-of-a-product-page-with-2-variants.jpeg)
