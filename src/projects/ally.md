@@ -1,11 +1,11 @@
 ---
-title: Building ally, conversational AI assistant
+title: Ally - conversational AI assistant
 emoji: 🦿
 previewImage: /assets/img/ally_conversational_assistant_preview.jpg
 previewImageAlt: Screenshot of the Ally conversational assistant interface showing a chat window and task shortcuts.
-metaDescription: How we built ally, the accessibility-first conversational assistant at Envision, from public development to cross-platform launch.
+metaDescription: How we built Ally, the accessibility-first conversational assistant at Envision, from public development to cross-platform launch.
 date: 2025-06-14T00:00:00.000Z
-summary: A behind-the-scenes look at how we launched ally, the world's first accessibility-first conversational assistant on smartglasses.
+summary: A behind-the-scenes look at how we launched Ally, the world's first accessibility-first conversational assistant on smartglasses.
 tags:
 - Product Management
 - Accessibility
@@ -15,9 +15,9 @@ tags:
 
 ## Bringing ally to Life: Launching an accessibility-first conversational assistant at Envision
 
-In March 2024, we at Envision began developing **ally**, a conversational AI assistant designed to be personal, accessible, and platform-agnostic. One year later, in March 2025, ally launched publicly across **iOS, Android, web, and Envision Glasses**, making it one of the first accessibility-first conversational assistants available on smartglasses.
+In March 2024, we at Envision began developing **Ally**, a conversational AI assistant designed to be personal, accessible, and platform-agnostic. One year later, in March 2025, Ally launched publicly across **iOS, Android, web, and Envision Glasses**, making it one of the first accessibility-first conversational assistants available on smartglasses.
 
-### Building ally in Public
+### Building Ally in Public
 
 From the beginning, ally was developed in public. We created a dedicated Slack space where early users, beta testers, and distributors could share feedback directly with the product team. This community has since grown to **585+ members**, becoming an essential part of our product development loop. We conducted surveys, ran bi-monthly product calls, and prioritized based on what users needed ally to actually do in their daily lives.
 

@@ -7,9 +7,9 @@ metaDescription: As a product manager at a startup, I apply the same mindset to 
 previewImage: "/assets/img/product_thinking_preview.jpg"
 previewImageAlt: "Preview image for product thinking at home article showing household task setup"
 tags:
-  - productivity
-  - diy
-  - product management
+  - Productivity
+  - DIY
+  - Product Management
 ogImage: "/assets/img/product_thinking_home_0.jpg"
 ---
 

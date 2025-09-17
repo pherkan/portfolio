@@ -7,10 +7,10 @@ metaDescription: As a product manager and designer, vibecoding lets me go beyond
 previewImage: "/assets/img/pm_vibecoding_preview.jpg"
 previewImageAlt: "Preview collage for vibecoding article showing code and prototyping visuals"
 tags:
-  - product management
-  - product design
-  - prototyping
-  - vibecoding
+  - Product Management
+  - Product Design
+  - Prototyping
+  - Coding
 ogImage: "/assets/img/pm_vibecoding_1_0.jpg"
 ---
 

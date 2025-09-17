@@ -48,10 +48,18 @@ body {
 }
 
 main {
-  padding: var(--header-height) 13px 13px;
+  padding: var(--header-height) 12px 13px;
+}
 
-  @media (min-width: 1024px) {
-    padding-top: var(--header-height-lg);
+@media (min-width: 768px) {
+  main {
+    padding: var(--header-height) 13px 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: var(--header-height-lg) 13px 13px;
   }
 }
 

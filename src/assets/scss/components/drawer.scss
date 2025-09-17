@@ -120,3 +120,27 @@
     border-bottom: 1px solid var(--color-border-dark);
   }
 }
+
+/* Theme switch button inside drawer */
+.drawer__theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: var(--color-text);
+  text-align: left;
+  font: inherit;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+:root[data-theme="dark"] .drawer__theme-switch {
+  color: var(--color-title-dark);
+}

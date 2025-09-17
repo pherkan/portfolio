@@ -28,6 +28,14 @@
           </a>
         </li>
       {%- endfor %}
+      {% if global.enable_theme_switch %}
+        <li class="drawer__nav-item">
+          <button class="drawer__theme-switch" data-theme-switch aria-label="Toggle theme">
+            {{ global.switch_theme_icon | svg | safe }}
+            <span>toggle theme</span>
+          </button>
+        </li>
+      {% endif %}
       </ul>
     </div>
   </div>
