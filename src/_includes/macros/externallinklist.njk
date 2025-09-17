@@ -1,28 +1,39 @@
 {% macro externallinklist(links) %}
   <section class="external-link-grid">
   {% for link in links %}
-    <a href="{{ link.data.externalUrl }}" class="external-link-card" target="_blank" rel="noopener noreferrer">
-      <article>
-        {# Temporarily commenting out image block for debugging title #}
-        {# <div class="external-link-card__image-wrapper">
-          {% if link.data.image %}
-            {% image
-              link.data.image,
-              link.data.image_alt | default(""),
-              "300px",
-              "external-link-card__image",
-              "lazy"
-            %}
-          {% else %}
-            <div class="external-link-card__image-placeholder"></div>
-          {% endif %}
-        </div> #}
-        <div class="external-link-card__content">
-          <h5 class="external-link-card__title">{{ link.data.title }}</h5>
-          <span class="btn btn--primary btn--sm external-link-card__button">More info</span>
-        </div>
-      </article>
-    </a>
+    <article class="external-link-card">
+      {# Image block (optional) #}
+      {# <div class="external-link-card__image-wrapper">
+        {% if link.data.image %}
+          {% image
+            link.data.image,
+            link.data.image_alt | default("") | safe,
+            "300px",
+            "external-link-card__image",
+            "lazy"
+          %}
+        {% else %}
+          <div class="external-link-card__image-placeholder"></div>
+        {% endif %}
+      </div> #}
+
+      <div class="external-link-card__content">
+        <h3 class="external-link-card__title">{{ link.data.title }}</h3>
+        <a class="btn btn--sm btn--outline external-link-card__button" href="{{ link.data.externalUrl }}" target="_blank" rel="noopener noreferrer" aria-label="More info: {{ link.data.title }}">More info</a>
+
+        {% if link.data.tags %}
+          <p class="tag-list">
+            {% for tag in link.data.tags %}
+              {% set tagStr = tag | string %}
+              {% if tagStr != 'externalLink' %}
+                {% set tagUrl %}/tags/{{ tagStr }}/{% endset %}
+                <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tagStr }}</a>
+              {% endif %}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </div>
+    </article>
   {% endfor %}
   </section>
 {% endmacro %}

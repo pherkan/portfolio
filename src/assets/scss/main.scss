@@ -30,6 +30,12 @@ html[data-current="project"] .page-container *:not(nav):not(.tag):not(.btn) {
   text-transform: none !important;
 }
 
+/* Remove lowercase transform on homepage hero body */
+html[data-current="home"] .hero__body,
+html[data-current="home"] .hero__body * {
+  text-transform: none !important;
+}
+
 /* Apply 'Domine' to body text, links, and subheadings */
 html[data-current="post"] .page-container article,
 html[data-current="project"] .page-container,

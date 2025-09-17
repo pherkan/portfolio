@@ -13,7 +13,6 @@ section: projects
 
   {{ layoutContent | safe }}
 
-  {# Projects #}
-  {% from "macros/projectlist.njk" import projectlist %}
-  {{ projectlist(projects = collections.project | reverse) }}
+  {% from "macros/projectcards.njk" import projectcards %}
+  {{ projectcards(collections.project | reverse, 0, 'All projects') }}
 </div>

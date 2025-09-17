@@ -10,6 +10,9 @@ const svgFilter = require('./src/_11ty/filters/svg-filter');
 const browserSyncConfig = require('./src/_11ty/utils/browser-sync-config');
 const { readableDateFilter, machineDateFilter } = require('./src/_11ty/filters/date-filters');
 
+const SASS_COOLDOWN_MS = 10_000;
+let lastSassCompile = 0;
+
 module.exports = function (eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -20,6 +23,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('readableDate', readableDateFilter);
   eleventyConfig.addFilter('machineDate', machineDateFilter);
   eleventyConfig.addFilter('svg', svgFilter);
+  // Utility: get first <img> src from HTML content
+  eleventyConfig.addFilter('firstImageSrc', (content) => {
+    if (!content || typeof content !== 'string') return null;
+    const match = content.match(/<img[^>]*src=["']([^"']+)["']/i);
+    return match ? match[1] : null;
+  });
+  eleventyConfig.addFilter('take', (collection, count = 3) => {
+    if (!Array.isArray(collection)) {
+      return [];
+    }
+
+    return collection.slice(0, count);
+  });
 
   // Shortcodes
   eleventyConfig.addNunjucksAsyncShortcode('image', imageShortcode);
@@ -32,14 +48,20 @@ module.exports = function (eleventyConfig) {
 
   // ✅ Automatically Compile SCSS to CSS
   eleventyConfig.on("beforeBuild", () => {
+    const now = Date.now();
+
+    if (now - lastSassCompile < SASS_COOLDOWN_MS) {
+      return;
+    }
+
     try {
       const result = sass.renderSync({
         file: "src/assets/scss/main.scss",
         outputStyle: "compressed"
       });
 
-      // Write the compiled CSS file
       fs.writeFileSync("src/assets/css/main.css", result.css);
+      lastSassCompile = now;
       console.log("✅ SCSS compiled successfully!");
     } catch (error) {
       console.error("❌ SCSS compilation failed:", error);

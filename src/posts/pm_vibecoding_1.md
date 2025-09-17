@@ -4,6 +4,8 @@ permalink: "/posts/from-sketches-to-code-vibecoding-superpower/"
 date: 2025-09-14T10:34:03.530Z
 summary: Vibecoding is reshaping how I work as a PM with a design background—turning ideas into working prototypes in minutes without needing to code everything myself.
 metaDescription: As a product manager and designer, vibecoding lets me go beyond sketches and Figma files. With AI tools like Gemini and Claude Code, I can create working prototypes, test ideas faster, and add an entirely new skillset to my PM toolkit.
+previewImage: "/assets/img/pm_vibecoding_preview.jpg"
+previewImageAlt: "Preview collage for vibecoding article showing code and prototyping visuals"
 tags:
   - product management
   - product design

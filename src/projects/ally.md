@@ -1,11 +1,13 @@
 ---
 title: Building ally, conversational AI assistant
 emoji: 🦿
+previewImage: /assets/img/ally_conversational_assistant_preview.jpg
+previewImageAlt: Screenshot of the Ally conversational assistant interface showing a chat window and task shortcuts.
 metaDescription: How we built ally, the accessibility-first conversational assistant at Envision, from public development to cross-platform launch.
 date: 2025-06-14T00:00:00.000Z
-summary: A behind-the-scenes look at how we launched ally, the world's first accessibility-first conversational assistant on smartglasses, and how we used public development, inclusive testing, and function calling to shape it.
+summary: A behind-the-scenes look at how we launched ally, the world's first accessibility-first conversational assistant on smartglasses.
 tags:
-- Product anagement
+- Product Management
 - Accessibility
 - Envision
 ---
@@ -34,6 +36,8 @@ Unlike typical AI chatbots, ally supports **function calling** to complete real-
 This last feature — OCR integration — was especially important. In working with blind users, we learned that hallucinated or inaccurate readings of text can have serious consequences. So we built ally to call a dedicated OCR model instead of relying solely on general-purpose vision models.
 
 ally is also **deeply personalizable**. Users can create different allies, add personal context, and fine-tune how their assistant interacts with them. It’s designed to be both personal and ubiquitous — available wherever it’s needed.
+
+![Illustration showing 'Ally's features'](/src/assets/img/ally_features.png)
 
 ### Defining success
 

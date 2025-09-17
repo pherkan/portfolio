@@ -4,6 +4,8 @@ permalink: "/posts/product-thinking-at-home-small-fixes-big-impact/"
 date: 2025-04-12T10:34:03.530Z
 summary: How being a product manager in accessibility shaped the way I tackle home tasks—using reminders, impact-effort thinking, and regular check-ins to get things done.
 metaDescription: As a product manager at a startup, I apply the same mindset to my personal life—using frameworks like RICE, prioritization, and recurring checklists to keep home tasks clear and manageable.
+previewImage: "/assets/img/product_thinking_preview.jpg"
+previewImageAlt: "Preview image for product thinking at home article showing household task setup"
 tags:
   - productivity
   - diy

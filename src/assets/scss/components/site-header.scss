@@ -2,6 +2,7 @@
   position: fixed;
   width: 100%;
   z-index: var(--z-header);
+  font-family: var(--font-family-base);
 
   :root[data-theme="dark"] & {
     border-color: var(--color-bg-accent-dark);
@@ -47,6 +48,7 @@
   padding: 6px 8px;
   border-radius: 100px !important;
   color: var(--color-text);
+  transition: color 0.3s ease, background-color 0.3s ease;
 
   @media (min-width: 1024px) {
     width: 50px;
@@ -158,6 +160,7 @@
   padding: 6px 8px;
   border-radius: var(--border-radius-sm);
   color: var(--color-text);
+  transition: color 0.3s ease, background-color 0.3s ease;
 
   &:hover {
     border-bottom: none;

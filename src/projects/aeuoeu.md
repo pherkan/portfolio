@@ -1,6 +1,8 @@
 ---
 title: aeuoeu
 emoji: 😺
+previewImage: /assets/img/aeuoeu_preview.jpg
+previewImageAlt: Collage of aeuoeu streetwear pieces with bold typography overlays.
 metaDescription: "Defying the laws of marketing: chronicles of a not-so typical clothing brand."
 date: 2019-01-01T00:00:00.000Z
 summary: an unpronounceable clothing brand
@@ -18,4 +20,3 @@ Looking back, those years were a whirlwind of challenges and victories. We were 
 On a personal note, those early days ignited my entrepreneurial mindset—a spirit that continues to inspire me today. Although it’s been quite some time, the lessons I learned from this venture still guide my decisions and drive my passion for creating meaningful, quality-driven experiences. The journey taught me that success doesn’t always follow the traditional rules; sometimes, it’s about daring to do things differently.
 
 Curious to learn more about our adventure and the ups and downs of defying marketing norms? Head over to **[aeuo.eu](https://aeuo.eu)** and dive into the full story.
-

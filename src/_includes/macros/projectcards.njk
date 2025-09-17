@@ -1,0 +1,47 @@
+{% macro projectcards(projects, limit = 0, section_label = 'Projects') %}
+  {% if limit and limit > 0 %}
+    {% set items = projects | take(limit) %}
+  {% else %}
+    {% set items = projects %}
+  {% endif %}
+
+  {% if items | length %}
+    <section class="home-projects" aria-label="{{ section_label }}">
+      {% for project in items %}
+        {% set projectUrl = project.url | url %}
+        {% set projectTitle = project.data.title or 'Untitled project' %}
+        {% set projectSummary = project.data.summary %}
+        {% set previewImage = project.data.previewImage %}
+        {% set previewAlt = project.data.previewImageAlt %}
+        {% set projectTags = project.data.tags or [] %}
+        {% set headingId = 'project-card-title-' ~ loop.index0 ~ '-' ~ project.fileSlug %}
+        <article class="home-project-card">
+          <div class="home-project-card__content">
+            <h3 class="home-project-card__title" id="{{ headingId }}">
+              <a class="home-project-card__title-link" href="{{ projectUrl }}">{{ projectTitle }}</a>
+            </h3>
+            {% if projectSummary %}
+              <p class="home-project-card__summary">{{ projectSummary }}</p>
+            {% endif %}
+            {% if projectTags | length > 1 or (projectTags | length == 1 and projectTags[0] != 'project') %}
+              <ul class="home-project-card__tags">
+                {% for tag in projectTags %}
+                  {% if tag != 'project' %}
+                    {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                    <li><a class="home-project-card__tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <a class="home-project-card__cta" href="{{ projectUrl }}" aria-label="Read more: {{ projectTitle }}">Read more</a>
+          </div>
+          {% if previewImage %}
+            <div class="home-project-card__media">
+              <img src="{{ previewImage | url }}" alt="{{ previewAlt or ('Preview image for ' ~ projectTitle) }}" loading="lazy" decoding="async" />
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </section>
+  {% endif %}
+{% endmacro %}

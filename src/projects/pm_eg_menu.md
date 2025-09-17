@@ -1,6 +1,8 @@
 ---
 title: "From prototypes to personalization"
 emoji: 🧐
+previewImage: /assets/img/prototypes_to_personalisation_preview.jpg
+previewImageAlt: Collage of Envision Glasses interface sketches layered over a teal background.
 date: 2025-04-01T10:56:03.530Z
 summary: From categories to favorites to customizable menus, each step prioritized simplicity, familiarity, and user feedback.
 metaDescription: An inside look at how we evolved the smartglasses interface to better serve blind and low vision users. From categories to favorites to customizable menus, each step prioritized simplicity, familiarity, and user feedback.

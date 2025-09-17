@@ -2,5 +2,5 @@
   "title": "hey there 👋",
   "image": "src/assets/img/pherkan_cat.jpeg",
   "image_alt": "pherkan with cat",
-  "body": "My name is pherkan and i'm a product manager at [Envision](https://letsenvision.com), where I blend AI, accessibility, and inclusive design to create innovative, human-centered solutions.\n\nWhile my core strength lies in steering product strategy and bringing ideas to life, I’m also a passionate designer and maker with an entrepreneurial mindset."
+  "body": "hi there, my name is pherkan. <span class=\"hero__avatar\" tabindex=\"0\" aria-describedby=\"hero-avatar-tooltip\"><img src=\"/assets/img/pherkan_circle_katmer.png\" alt=\"image of ferkan with katmer, british long hair cat, on his lap working on a laptop\" width=\"60\" height=\"60\" /><span class=\"hero__avatar-tooltip\" id=\"hero-avatar-tooltip\" role=\"tooltip\">that's me and katmer.</span></span><br />i’m a product manager who blends AI, accessibility, and design to build inclusive products, from LLM-powered assistants to smartglasses, with a maker’s mindset and an eye for human-centered detail."
 }
