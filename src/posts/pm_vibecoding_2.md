@@ -2,7 +2,7 @@
 title: "Using GPT-5 codex to improve my website in an hour, not days"
 permalink: "/posts/using-gpt5-codex-to-improve-website-in-an-hour/"
 date: 2025-09-17T15:30:03.530Z
-summary: What used to take me days of fiddling and research now takes just an hour. With Qoder and GPT-5 Codex, updating my portfolio site became faster, clearer, and a lot more enjoyable.
+summary: What used to take me days of fiddling and research now takes just an hour. With GPT-5 Codex, updating my portfolio site became faster, clearer, and a lot more enjoyable.
 metaDescription: I recently revisited my portfolio site and realized it didn’t represent me anymore. Instead of spending days figuring out how to fix it, I used Qoder with GPT-5 Codex and reshaped it in just an hour. Here’s how.
 previewImage: "/assets/img/pm_vibecoding_2_preview.jpg"
 previewImageAlt: "Preview collage showing the old portfolio design on the left and the new design with improved visuals on the right"
@@ -28,15 +28,15 @@ So when it comes to something like a portfolio site, I want the fastest possible
 
 ---
 
-## Qoder and GPT-5 Codex  
+## Working with GPT-5 Codex 
 
-Over the past few months I’ve tried different tools like Claude Code, Cursor, and VS Code with Roocode. They each showed me how much AI-assisted coding has improved, but Qoder paired with GPT-5 Codex has been on another level.  
+Over the past few months I’ve tried different tools like Claude Code, Cursor, and VS Code with Roocode. They each showed me how much AI-assisted coding has improved. But with GPT-5 Codex, the experience really stood out.
 
-What makes Qoder stand out is how transparent it is. It doesn’t just hand you a block of updated code. It shows you exactly what’s changed, line by line. What’s removed, what’s added, what’s updated. That makes it easy to follow along and actually understand the changes. With Claude Code inside VS Code, for example, the edits often felt hidden and harder to follow. With Qoder I could see exactly what was happening and keep control over my site.  
+What makes the difference isn’t just the model but how it’s wrapped inside an IDE. Some environments show clear diffs line by line, others require a bit more manual work. In my case, having that visibility helped me understand what was going on, not just paste in changes blindly. 
 
 ---
 
-## From Days to an Hour  
+## From days to an hour
 
 Instead of wasting time on endless research, I just prompted:  
 - “Let’s change the project cards to include a photo, using flexbox.”  
@@ -44,13 +44,11 @@ Instead of wasting time on endless research, I just prompted:
 
 GPT-5 Codex took those prompts and turned them into exactly what I had in mind. I could iterate quickly, like a conversation, until it felt right. The whole process was clear, fast, and surprisingly enjoyable.  
 
-![Screenshot comparison of the old project card design on the left versus the new project card with added visuals on the right](/src/assets/img/pm_vibecoding_2_2.jpg)
-
 What once took me days now happened in about an hour. And I still had time left in the day to exercise, watch a movie, and move on with life.  
 
 ---
 
-## Why This Is a Big Deal  
+## Why this is a big deal  
 
 For me, the value is simple: I can shape my portfolio without losing days to trial and error. I still care about the look and feel, but I don’t have to burn time on the technical grind of figuring out *how* to make it happen.  
 
@@ -58,10 +56,16 @@ If you’re not experimenting with tools like Qoder and GPT-5 Codex yet, especia
 
 ---
 
-## Old vs. New  
+## Old vs. new  
 
-Here’s another look at how the update changed the overall hero section of the site.  
+Here’s a look at how the update changed the overall hero section of the site.  
 
 ![Screenshot comparison showing the old hero section with photo on the left and the new hero section with bold centered H1 text on the right](/src/assets/img/pm_vibecoding_2_1.jpg)  
 
-This is just the beginning. If GPT-5 Codex can shrink something that used to take me days into a one-hour task, the way we approach creative projects online is about to change completely.  
+And how it changed the project cards into something much more visual.
+
+![Screenshot comparison of the old project card design on the left versus the new project card with added visuals on the right](/src/assets/img/pm_vibecoding_2_2.jpg)
+
+This is just the beginning. If GPT-5 Codex can shrink something that used to take me days into a one-hour task, the way we approach creative projects online is about to change completely.
+
+In a future post I want to show how GPT-5 Codex holds up when the project gets more complex. Think beyond simple UI tweaks, into more sophisticated features and workflows.
