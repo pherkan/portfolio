@@ -4,15 +4,15 @@ permalink: "/posts/using-gpt5-codex-to-improve-website-in-an-hour/"
 date: 2025-09-17T15:30:03.530Z
 summary: What used to take me days of fiddling and research now takes just an hour. With GPT-5 Codex, updating my portfolio site became faster, clearer, and a lot more enjoyable.
 metaDescription: I recently revisited my portfolio site and realized it didn’t represent me anymore. Instead of spending days figuring out how to fix it, I used Qoder with GPT-5 Codex and reshaped it in just an hour. Here’s how.
-previewImage: "/assets/img/pm_vibecoding_2_preview.jpg"
+previewImage: "/assets/img/pm_vibecoding_2/pm_vibecoding_2_preview.jpg"
 previewImageAlt: "Preview collage showing the old portfolio design on the left and the new design with improved visuals on the right"
 tags:
   - Coding
   - Product Design
-ogImage: "/assets/img/pm_vibecoding_2_preview.jpg"
+ogImage: "/assets/img/pm_vibecoding_2/pm_vibecoding_2_og.jpg"
 ---
 
-![Preview collage showing the old portfolio design on the left and the new design with improved visuals on the right](/src/assets/img/pm_vibecoding_2_preview.jpg)
+![Preview collage showing the old portfolio design on the left and the new design with improved visuals on the right](/src/assets/img/pm_vibecoding_2/pm_vibecoding_2_preview.jpg)
 
 Back in March I gave my portfolio a proper update. At the time I was happy with it, but about half a year later I looked at it again and realized I still didn’t like what I saw. It didn’t feel like me. It wasn’t visual enough and it just didn’t represent the work I’ve been doing.  
 
@@ -60,11 +60,11 @@ If you’re not experimenting with tools like Qoder and GPT-5 Codex yet, especia
 
 Here’s a look at how the update changed the overall hero section of the site.  
 
-![Screenshot comparison showing the old hero section with photo on the left and the new hero section with bold centered H1 text on the right](/src/assets/img/pm_vibecoding_2_1.jpg)  
+![Screenshot comparison showing the old hero section with photo on the left and the new hero section with bold centered H1 text on the right](/src/assets/img/pm_vibecoding_2/pm_vibecoding_2_1.jpg)  
 
 And how it changed the project cards into something much more visual.
 
-![Screenshot comparison of the old project card design on the left versus the new project card with added visuals on the right](/src/assets/img/pm_vibecoding_2_2.jpg)
+![Screenshot comparison of the old project card design on the left versus the new project card with added visuals on the right](/src/assets/img/pm_vibecoding_2/pm_vibecoding_2_2.jpg)
 
 This is just the beginning. If GPT-5 Codex can shrink something that used to take me days into a one-hour task, the way we approach creative projects online is about to change completely.
 

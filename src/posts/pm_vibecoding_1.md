@@ -4,17 +4,17 @@ permalink: "/posts/from-sketches-to-code-vibecoding-superpower/"
 date: 2025-09-14T10:34:03.530Z
 summary: Vibecoding is reshaping how I work as a PM with a design background—turning ideas into working prototypes in minutes without needing to code everything myself.
 metaDescription: As a product manager and designer, vibecoding lets me go beyond sketches and Figma files. With AI tools like Gemini and Claude Code, I can create working prototypes, test ideas faster, and add an entirely new skillset to my PM toolkit.
-previewImage: "/assets/img/pm_vibecoding_preview.jpg"
+previewImage: "/assets/img/pm_vibecoding_1/pm_vibecoding_1_preview.jpg"
 previewImageAlt: "Preview collage for vibecoding article showing code and prototyping visuals"
 tags:
   - Product Management
   - Product Design
   - Prototyping
   - Coding
-ogImage: "/assets/img/pm_vibecoding_1_0.jpg"
+ogImage: "/assets/img/pm_vibecoding_1/pm_vibecoding_1_og.jpg"
 ---
 
-![Person on a laptop with all kinds of code around him as if he's 'vibecoding'](/src/assets/img/pm_vibecoding_1_0.jpg)
+![Person on a laptop with all kinds of code around him as if he's 'vibecoding'](/src/assets/img/pm_vibecoding_1/pm_vibecoding_1_0.jpg)
 
 As a product manager with a design background, I’ve often felt like I had the tools to cover about 80% of launching a product. I was good at spotting opportunities and noticing where things could be improved. I loved talking to users, digging into their frustrations, and uncovering what they really wanted to achieve. I could sketch low-fidelity prototypes, test them, refine them, and think through the potential impact of what we were building.  
 
@@ -38,7 +38,7 @@ For product designers and managers like me, this is a game-changer. Suddenly, we
 ## A real example from my work  
 At Envision, we hired a truly great design agency that came up with a beautiful branding style that included this dotted visual style. Besides the full branding package, they provided us with 16 of these dotted styles (see image). They also suggested building a custom tool that could turn any photo into this dotted style, but that would have come with a hefty price tag.  
 
-*Dot examples: ![Dot examples shown in a grid of 4 by 4](/src/assets/img/pm_vibecoding_1_1.jpg)*  
+*Dot examples: ![Dot examples shown in a grid of 4 by 4](/src/assets/img/pm_vibecoding_1/pm_vibecoding_1_1.jpg)*  
 
 A while ago, using Gemini, we built our own image-to-dot generator internally. No extra costs, no waiting. Just a prompt, some iterations, and suddenly we had exactly what we needed. The prompt was literally: *"Create a tool where I can upload a photo and get a dotted version of it. Make sure I can change the dot sizes and colors and I can download it as an SVG file."* And about 30 minutes later,we had a tool that did exactly that.
 
