@@ -273,9 +273,10 @@
     background-color: var(--color-secondary);
     color: var(--color-text-alt);
     text-decoration: none;
-    border: none;
-    border-bottom: none;
+    border: none !important;
+    border-bottom: none !important;
     box-shadow: none;
+    transform: none;
   }
 }
 
