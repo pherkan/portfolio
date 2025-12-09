@@ -2,8 +2,8 @@
 title: "No, I am your (Bot)Father; a Product Manager who wants a ping"
 permalink: "/posts/no-i-am-your-botfather/"
 date: 2025-12-09T15:30:03.530Z
-summary: Sometimes the best tool isn’t the most powerful one — it’s the one that removes friction. As a Product Manager, I realized I didn’t need dashboards or funnels. I just needed a ping. Telegram’s BotFather gave me exactly that.
-metaDescription: As a Product Manager, I often default to complex tools, but when building Koffiework I realized I didn’t need dashboards — I just needed notifications. With Telegram’s BotFather, I created the perfect simple workflow: a ping when something important happens.
+summary: "Sometimes the best tool isn't the most powerful one — it's the one that removes friction. As a Product Manager, I realized I didn't need dashboards or funnels. I just needed a ping. Telegram's BotFather gave me exactly that."
+metaDescription: "As a Product Manager, I often default to complex tools, but when building Koffiework I realized I didn't need dashboards — I just needed notifications. With Telegram's BotFather, I created the perfect simple workflow: a ping when something important happens."
 previewImage: "/assets/img/pm_botfather/pm_botfather_3_preview.jpg"
 previewImageAlt: "A horizontal photo of a character resembling Darth Vader standing in a futuristic space station hallway, holding a mobile phone. A glowing blue digital notification bubble above the phone says 'Ping!'. The background shows a dark, stormy cityscape at sunset."
 tags:
