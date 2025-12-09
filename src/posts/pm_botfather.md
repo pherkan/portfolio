@@ -13,8 +13,6 @@ tags:
 ogImage: "/assets/img/pm_botfather/pm_botfather_3_og.jpg"
 ---
 
-![A horizontal photo of a character resembling Darth Vader standing in a futuristic space station hallway, holding a mobile phone. A glowing blue digital notification bubble above the phone says 'Ping!'. The background shows a dark, stormy cityscape at sunset.](/src/assets/img/pm_botfather/pm_botfather_3_preview.jpg)
-
 No, I am your (Bot)Father. I don’t need a galaxy of dashboards, conversion funnels, or heat maps. All I want is a simple ping when something important happens. Sometimes, as Product Managers, we tend to overcomplicate things; whether we want to or not. Yet the simplest solution is often the one that makes the most sense.
 
 ---
