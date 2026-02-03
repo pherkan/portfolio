@@ -4,5 +4,6 @@ eleventyExcludeFromCollections: true
 ---
 User-agent: *
 Allow: /
+Disallow: /iftar2026/
 
 Sitemap: https://pherkan.com/sitemap.xml

@@ -1,0 +1,180 @@
+---
+layout: arcade.njk
+title: Iftar Arcade 2026
+metaDescription: Earn a seat at Ferkan & Suzan's iftar with a retro arcade-style invite.
+permalink: /iftar2026/
+secretCode: "19991"
+privacyCopy: ""
+eventYear: 2026
+---
+
+<div class="arcade"
+  data-secret-code="{{ secretCode }}"
+  data-privacy-copy="{{ privacyCopy }}"
+  data-event-year="{{ eventYear }}"
+  data-sheety-url="https://api.sheety.co/35f40bfed1aeb0621895779c41f2df3b/webFerkan/sheet1"
+  data-cloudinary-name="dfjqscbam"
+  data-cloudinary-preset="iftar_unsigned"
+  data-cloudinary-folder="iftar2026"
+>
+  <div class="arcade__hud">
+    <div class="arcade__logo">
+      <span class="arcade__logo-title">iftar edition 2k26</span>
+    </div>
+    <div class="arcade__hud-actions">
+      <button class="nes-btn is-primary arcade__sound" type="button" data-sound-toggle aria-pressed="true">
+        sound: on
+      </button>
+    </div>
+  </div>
+
+  <div class="arcade__stage">
+    <section class="screen" data-screen="start">
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">start</p>
+        <h1 class="arcade-title">iftar at ferkan &amp; suzan's</h1>
+        <p class="arcade-subtitle">play the game: earn a seat at the table.</p>
+        <button class="nes-btn is-primary arcade-start" type="button" data-action="press-start" data-primary>
+          PRESS START
+        </button>
+        <p class="audio-hint" data-audio-hint hidden>tap start to enable sound</p>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="code" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">enter the secret code</p>
+        <label class="nes-field arcade-field">
+          <span>enter the secret code</span>
+          <input class="nes-input is-dark" type="text" inputmode="numeric" pattern="\d*" maxlength="5" placeholder="00000" data-code-input>
+        </label>
+        <button class="nes-btn is-success" type="button" data-action="submit-code" data-primary>enter</button>
+        <p class="screen-message" data-code-feedback aria-live="polite"></p>
+        <button class="nes-btn is-warning" type="button" data-action="demo-mode">i'm not invited</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="intro" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">welcome</p>
+        <div class="arcade-copy">
+          <p>welcome to the iftar game.</p>
+          <p>here you can earn a seat at the table.</p>
+          <p>but before that...</p>
+          <p>a few questions and games you'll need to get through.</p>
+        </div>
+        <button class="nes-btn is-primary" type="button" data-action="to-quiz" data-primary>continue</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="quiz" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">question <span data-quiz-index>1</span>/3</p>
+        <p class="quiz-question" data-quiz-question></p>
+        <div class="quiz-options" data-quiz-options></div>
+        <p class="quiz-feedback" data-quiz-feedback aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="result" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">quiz result</p>
+        <div class="result-copy" data-result-copy></div>
+        <button class="nes-btn is-primary" type="button" data-action="to-selfie" data-primary>continue</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="selfie" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">name + selfie</p>
+        <div class="selfie-grid">
+          <label class="nes-field arcade-field">
+            <span>what is your name? (or how would you like to be called?)</span>
+            <input class="nes-input is-dark" type="text" data-name-input placeholder="your name">
+          </label>
+          <div class="camera-block">
+            <p class="camera-title">take a selfie for the table</p>
+            <div class="camera-frame">
+              <video data-selfie-video playsinline autoplay muted></video>
+              <img data-selfie-preview alt="your selfie" hidden>
+              <canvas data-selfie-canvas hidden></canvas>
+              <div class="camera-face-overlay" aria-hidden="true"></div>
+              <div class="camera-flash" aria-hidden="true"></div>
+            </div>
+            <p class="camera-error" data-camera-error hidden>
+              camera access is required to play. we don't store this publicly.
+            </p>
+            <div class="camera-controls">
+              <button class="nes-btn is-success" type="button" data-action="take-photo">take photo</button>
+              <button class="nes-btn is-warning" type="button" data-action="retake-photo" disabled>retake</button>
+            </div>
+          </div>
+        </div>
+        <div class="selfie-actions">
+          <p class="privacy-inline" data-privacy-inline></p>
+          <button class="nes-btn is-primary" type="button" data-action="to-tables" data-primary disabled>continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="tables" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">choose your table</p>
+        <div class="table-grid" data-table-grid></div>
+        <p class="screen-message" data-table-message aria-live="polite"></p>
+        <div class="confirm-actions">
+          <button class="nes-btn" type="button" data-action="back-to-selfie">back to name + selfie</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="seats" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">pick a seat</p>
+        <div class="seat-area" data-seat-map></div>
+        <p class="screen-message" data-seat-message aria-live="polite"></p>
+        <div class="confirm-actions">
+          <button class="nes-btn is-primary" type="button" data-action="claim-seat" data-primary disabled>claim seat</button>
+          <button class="nes-btn" type="button" data-action="back-to-tables">go back to table selection</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="note" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">final check</p>
+        <label class="nes-field arcade-field">
+          <span>anything you want to say? any allergies?</span>
+          <textarea class="nes-textarea is-dark" rows="4" data-note-input placeholder="leave any notes or allergies here..."></textarea>
+        </label>
+        <p class="screen-message" data-note-message aria-live="polite"></p>
+        <div class="confirm-actions">
+          <button class="nes-btn is-primary" type="button" data-action="submit-note" data-primary>continue</button>
+          <button class="nes-btn" type="button" data-action="back-to-seats">back to seat selection</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="confirm" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">confirmation</p>
+        <div class="receipt" data-receipt></div>
+        <p class="demo-message" data-demo-message hidden>
+          this was a demo run. seats only save with the secret code.
+        </p>
+        <div class="confirm-actions confirm-actions--final">
+          <button class="nes-btn is-danger" type="button" data-action="back-to-tables">change table selection</button>
+          <button class="nes-btn is-success" type="button" data-action="add-calendar" data-primary>add to calendar</button>
+          <button class="nes-btn" type="button" data-action="play-again">go back to start</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="pixel-cat" aria-hidden="true">
+    <span class="pixel-cat__tail"></span>
+  </div>
+
+  <footer class="arcade__footer">
+    <small class="privacy-footer" data-privacy-footer></small>
+  </footer>
+</div>

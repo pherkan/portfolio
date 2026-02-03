@@ -1,0 +1,11 @@
+Place Kenney UI Audio (CC0) files here with these exact names:
+- arcade-ambient-loop.mp3
+- arcade-bgm-loop.mp3
+- press-start.wav
+- press-alt-1.wav
+- press-alt-2.wav
+- press-alt-3.wav
+- coin.wav
+- buzzer.wav
+- shutter.wav
+- fanfare.wav
