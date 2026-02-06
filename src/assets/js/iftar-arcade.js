@@ -1266,7 +1266,8 @@
       await playClaimCelebration();
       showScreen('confirm');
     } catch (err) {
-      setClaimMessage('looks like the arcade machine hiccupped. try again in a moment.');
+      const detail = err && err.message ? ` (${err.message})` : '';
+      setClaimMessage(`looks like the arcade machine hiccupped. try again in a moment.${detail}`);
       if (els.claimSeat) els.claimSeat.disabled = false;
     }
   }
@@ -1304,7 +1305,10 @@
       method: 'POST',
       body: formData
     });
-    if (!response.ok) throw new Error('cloudinary');
+    if (!response.ok) {
+      const detail = (await response.text()).trim();
+      throw new Error(`cloudinary ${response.status}${detail ? `: ${detail}` : ''}`);
+    }
     const data = await response.json();
     if (!data.secure_url) throw new Error('cloudinary');
     return data.secure_url;
@@ -1320,7 +1324,10 @@
       headers: { 'Content-Type': 'application/json' },
       body
     });
-    if (!response.ok) throw new Error('sheety');
+    if (!response.ok) {
+      const detail = (await response.text()).trim();
+      throw new Error(`sheetdb ${response.status}${detail ? `: ${detail}` : ''}`);
+    }
     return response.json();
   }
 
