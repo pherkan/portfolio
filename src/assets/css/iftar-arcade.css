@@ -131,7 +131,7 @@ body.iftar-arcade.is-celebrating::after {
   margin: 0 auto;
   padding: 28px;
   border-radius: 0;
-  border: 4px solid var(--arcade-accent-4);
+  border: 0;
   background: rgba(12, 16, 30, 0.2);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
   position: relative;
@@ -405,6 +405,18 @@ body.iftar-arcade.is-celebrating .arcade {
   width: 100%;
 }
 
+.code-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.code-actions .nes-btn {
+  flex: 1 1 240px;
+  max-width: 340px;
+}
+
 .quiz-question {
   font-size: 1.8rem;
   margin: 12px 0 20px;
@@ -420,6 +432,18 @@ body.iftar-arcade.is-celebrating .arcade {
   width: min(420px, 100%);
   text-align: center;
   font-size: 1.35rem;
+}
+
+.quiz-options .nes-btn.is-selected-answer-correct {
+  background-color: #2fbf63;
+  color: #0b0b0b;
+  transform: translateY(3px);
+}
+
+.quiz-options .nes-btn.is-selected-answer-wrong {
+  background-color: #d94a4a;
+  color: #ffffff;
+  transform: translateY(3px);
 }
 
 @media (min-width: 900px) {
@@ -509,6 +533,11 @@ body.iftar-arcade.is-celebrating .arcade {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 12px;
+}
+
+.camera-controls .nes-btn {
+  flex: 1 1 44%;
+  min-width: 150px;
 }
 
 .camera-error {
@@ -858,7 +887,7 @@ body.iftar-arcade .nes-btn.is-danger {
 }
 
 body.iftar-arcade .nes-btn {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
@@ -1061,6 +1090,11 @@ body.iftar-arcade .seat-table {
 }
 
 @media (max-width: 720px) {
+  html,
+  body.iftar-arcade {
+    overflow-x: hidden;
+  }
+
   body.iftar-arcade {
     font-size: clamp(21px, 4.8vw, 25px);
   }
@@ -1069,13 +1103,13 @@ body.iftar-arcade .seat-table {
     min-height: 100dvh;
     align-items: center;
     justify-content: center;
-    padding: 64px 10px 16px;
+    padding: 64px 4px 16px;
   }
 
   .arcade {
     min-height: 0;
     gap: 14px;
-    padding: 14px 12px 16px;
+    padding: 14px 8px 16px;
     max-height: calc(100dvh - 80px);
     overflow-y: auto;
   }
@@ -1096,10 +1130,19 @@ body.iftar-arcade .seat-table {
   .arcade__stage,
   .screen {
     min-height: 0;
+    width: 100%;
   }
 
   .screen {
     align-items: center;
+  }
+
+  .arcade-panel,
+  .screen[data-screen="tables"] .arcade-panel,
+  .screen[data-screen="seats"] .arcade-panel {
+    width: 100%;
+    max-width: none;
+    padding: 16px 12px;
   }
 
   .arcade__hud {
@@ -1132,6 +1175,11 @@ body.iftar-arcade .seat-table {
     font-size: clamp(1.3rem, 5vw, 1.7rem);
   }
 
+  .screen[data-screen="code"] .title,
+  .screen[data-screen="code"] .arcade-field span {
+    font-size: clamp(1.45rem, 5.6vw, 1.95rem);
+  }
+
   body.iftar-arcade .nes-btn {
     font-size: clamp(1.2rem, 4.6vw, 1.45rem);
   }
@@ -1151,7 +1199,27 @@ body.iftar-arcade .seat-table {
 
   .screen[data-screen="selfie"] .arcade-panel,
   .screen[data-screen="plus-one-selfie"] .arcade-panel {
-    padding: 14px 10px;
+    padding: 16px 12px;
+  }
+
+  .screen[data-screen="seats"] .arcade-panel {
+    overflow-x: hidden;
+    padding-top: 18px;
+  }
+
+  .screen[data-screen="seats"] .nes-container.is-dark.with-title > .title {
+    position: static;
+    display: inline-block;
+    margin: 0 0 10px;
+    transform: none;
+  }
+
+  .screen[data-screen="seats"] .seat-area {
+    width: min(100%, 340px);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
   }
 
   .screen[data-screen="plus-one-decision"] .arcade-panel {
@@ -1217,11 +1285,37 @@ body.iftar-arcade .seat-table {
     margin-bottom: 8px;
   }
 
+  .camera-controls .nes-btn {
+    flex: 1 1 48%;
+    min-width: 0;
+    min-height: 48px;
+  }
+
+  .screen[data-screen="intro"] [data-action="to-quiz"],
+  .screen[data-screen="result"] [data-action="to-selfie"],
+  .screen[data-screen="selfie"] [data-action="to-plus-one-decision"],
+  .screen[data-screen="plus-one-selfie"] [data-action="to-tables"],
+  .screen[data-screen="seats"] [data-action="claim-seat"],
+  .screen[data-screen="note"] [data-action="submit-note"] {
+    position: sticky;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    z-index: 8;
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .screen[data-screen="code"] .code-actions .nes-btn {
+    width: 100%;
+    min-height: 52px;
+    max-width: none;
+    flex: initial;
+  }
+
   .arcade__sound {
     top: 12px;
     right: 12px;
-    font-size: 0.52rem;
-    padding: 6px 9px;
+    font-size: 0.46rem;
+    padding: 5px 7px;
     z-index: 30;
   }
 

@@ -12,7 +12,7 @@ eventYear: 2026
   data-notify-signup-url="/.netlify/functions/notify-iftar-signup"
   data-privacy-copy="{{ privacyCopy }}"
   data-event-year="{{ eventYear }}"
-  data-sheety-url="https://sheetdb.io/api/v1/2nc4019xo5moc"
+  data-sheety-url="https://sheetdb.io/api/v1/vwh76v5kwuw1f"
   data-cloudinary-name="dfjqscbam"
   data-cloudinary-preset="iftar_unsigned"
   data-cloudinary-folder="iftar2026"
@@ -51,9 +51,11 @@ eventYear: 2026
           <span>enter the secret code</span>
           <input class="nes-input is-dark" type="text" inputmode="numeric" pattern="\d*" maxlength="6" placeholder="000000" data-code-input>
         </label>
-        <button class="nes-btn is-success" type="button" data-action="submit-code" data-primary>enter</button>
+        <div class="code-actions">
+          <button class="nes-btn is-success" type="button" data-action="submit-code" data-primary>enter</button>
+          <button class="nes-btn is-warning" type="button" data-action="demo-mode">i'm not invited :(</button>
+        </div>
         <p class="screen-message" data-code-feedback aria-live="polite"></p>
-        <button class="nes-btn is-warning" type="button" data-action="demo-mode">i'm not invited :(</button>
       </div>
     </section>
 

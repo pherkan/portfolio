@@ -479,6 +479,10 @@
 
     if (els.quizOptions) {
       Array.from(els.quizOptions.querySelectorAll('button')).forEach((button) => {
+        const buttonIndex = Number.parseInt(button.dataset.optionIndex, 10);
+        if (buttonIndex === index) {
+          button.classList.add(correct ? 'is-selected-answer-correct' : 'is-selected-answer-wrong');
+        }
         button.disabled = true;
       });
     }
@@ -490,7 +494,7 @@
       } else {
         showScreen('result');
       }
-    }, 3000);
+    }, 1000);
   }
 
   function renderResult() {
