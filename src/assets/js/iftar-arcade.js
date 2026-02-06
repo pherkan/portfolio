@@ -4,6 +4,7 @@
 
   const config = {
     codeVerifyUrl: root.dataset.codeVerifyUrl || '/.netlify/functions/verify-iftar-code',
+    notifySignupUrl: root.dataset.notifySignupUrl || '/.netlify/functions/notify-iftar-signup',
     privacyCopy: root.dataset.privacyCopy || '',
     eventYear: Number.parseInt(root.dataset.eventYear, 10) || new Date().getFullYear(),
     sheetyUrl: root.dataset.sheetyUrl || '',
@@ -1148,6 +1149,14 @@
         }
         tables = generateTables(state.claims);
         syncSelectedTable();
+        notifySignup({
+          tableName: state.selectedTable.name,
+          date: state.selectedTable.displayDate,
+          primaryName: state.playerName,
+          primarySeat: state.selectedSeat,
+          plusOneName: state.bringingPlusOne ? state.plusOneName : '',
+          plusOneSeat: state.bringingPlusOne ? state.selectedPlusOneSeat : null
+        });
       }
 
       playSound(audio.fanfare);
@@ -1211,6 +1220,19 @@
     return response.json();
   }
 
+  async function notifySignup(details) {
+    if (!config.notifySignupUrl) return;
+    try {
+      await fetch(config.notifySignupUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(details)
+      });
+    } catch (err) {
+      // Keep signup flow non-blocking when email notifications fail.
+    }
+  }
+
   async function deleteClaim(id) {
     if (!config.sheetyUrl || !id) return;
     const endpoint = isSheetDbApi
@@ -1264,6 +1286,16 @@
     if (!els.receipt || !state.selectedTable) return;
     els.receipt.innerHTML = '';
 
+    if (state.demoMode) {
+      const demoLine = document.createElement('div');
+      demoLine.textContent = 'still want to reall really participate in an iftar? send pherkan a dm.';
+      els.receipt.appendChild(demoLine);
+      if (els.demoMessage) {
+        els.demoMessage.hidden = true;
+      }
+      return;
+    }
+
     const primaryName = state.playerName || 'guest';
     const plusOneName = state.plusOneName || 'guest';
     const primarySeat = Number.isFinite(state.selectedSeat) ? String(state.selectedSeat) : '-';
@@ -1285,7 +1317,7 @@
     });
 
     if (els.demoMessage) {
-      els.demoMessage.hidden = !state.demoMode;
+      els.demoMessage.hidden = true;
     }
   }
 

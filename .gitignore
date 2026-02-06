@@ -11,3 +11,4 @@ package-lock.json
 .augment/rules/byterover-rules.md
 # Local Netlify folder
 .netlify
+.env.local
