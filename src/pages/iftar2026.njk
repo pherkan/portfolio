@@ -3,16 +3,15 @@ layout: arcade.njk
 title: Iftar Arcade 2026
 metaDescription: Earn a seat at Ferkan & Suzan's iftar with a retro arcade-style invite.
 permalink: /iftar2026/
-secretCode: "19991"
 privacyCopy: ""
 eventYear: 2026
 ---
 
 <div class="arcade"
-  data-secret-code="{{ secretCode }}"
+  data-code-verify-url="/.netlify/functions/verify-iftar-code"
   data-privacy-copy="{{ privacyCopy }}"
   data-event-year="{{ eventYear }}"
-  data-sheety-url="https://api.sheety.co/35f40bfed1aeb0621895779c41f2df3b/webFerkan/sheet1"
+  data-sheety-url="https://sheetdb.io/api/v1/2nc4019xo5moc"
   data-cloudinary-name="dfjqscbam"
   data-cloudinary-preset="iftar_unsigned"
   data-cloudinary-folder="iftar2026"
@@ -43,14 +42,17 @@ eventYear: 2026
 
     <section class="screen" data-screen="code" hidden>
       <div class="nes-container is-dark with-title arcade-panel">
+        <button class="nes-btn arcade-back" type="button" data-action="back-to-start" aria-label="go back">
+          &lt;
+        </button>
         <p class="title">enter the secret code</p>
         <label class="nes-field arcade-field">
           <span>enter the secret code</span>
-          <input class="nes-input is-dark" type="text" inputmode="numeric" pattern="\d*" maxlength="5" placeholder="00000" data-code-input>
+          <input class="nes-input is-dark" type="text" inputmode="numeric" pattern="\d*" maxlength="6" placeholder="000000" data-code-input>
         </label>
         <button class="nes-btn is-success" type="button" data-action="submit-code" data-primary>enter</button>
         <p class="screen-message" data-code-feedback aria-live="polite"></p>
-        <button class="nes-btn is-warning" type="button" data-action="demo-mode">i'm not invited</button>
+        <button class="nes-btn is-warning" type="button" data-action="demo-mode">i'm not invited :(</button>
       </div>
     </section>
 
@@ -112,7 +114,60 @@ eventYear: 2026
         </div>
         <div class="selfie-actions">
           <p class="privacy-inline" data-privacy-inline></p>
+          <p class="screen-message" data-selfie-message aria-live="polite"></p>
+          <button class="nes-btn is-primary" type="button" data-action="to-plus-one-decision" data-primary disabled>continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="plus-one-decision" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">+1</p>
+        <div class="arcade-copy">
+          <p>bringing a +1?</p>
+          <p>click "yes +1" to add their selfie, or click "no just me, skip."</p>
+        </div>
+        <div class="confirm-actions plus-one-actions">
+          <button class="nes-btn is-primary" type="button" data-action="to-plus-one-selfie" data-primary>yes +1</button>
+          <button class="nes-btn is-success" type="button" data-action="skip-plus-one">no just me, skip</button>
+          <button class="nes-btn arcade-back plus-one-actions__back" type="button" data-action="back-to-selfie" aria-label="go back">
+            &lt;
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="plus-one-selfie" hidden>
+      <div class="nes-container is-dark with-title arcade-panel">
+        <p class="title">+1 name + selfie</p>
+        <div class="selfie-grid">
+          <label class="nes-field arcade-field">
+            <span>what is your +1's name?</span>
+            <input class="nes-input is-dark" type="text" data-plus-one-name-input placeholder="+1 name">
+          </label>
+          <div class="camera-block">
+            <p class="camera-title">take a selfie for your +1</p>
+            <div class="camera-frame">
+              <video data-plus-one-selfie-video playsinline autoplay muted></video>
+              <img data-plus-one-selfie-preview alt="+1 selfie" hidden>
+              <canvas data-plus-one-selfie-canvas hidden></canvas>
+              <div class="camera-face-overlay" aria-hidden="true"></div>
+              <div class="camera-flash" aria-hidden="true"></div>
+            </div>
+            <p class="camera-error" data-plus-one-camera-error hidden>
+              camera access is required to play. we don't store this publicly.
+            </p>
+            <div class="camera-controls">
+              <button class="nes-btn is-success" type="button" data-action="take-plus-one-photo">take photo</button>
+              <button class="nes-btn is-warning" type="button" data-action="retake-plus-one-photo" disabled>retake</button>
+            </div>
+          </div>
+        </div>
+        <div class="selfie-actions">
           <button class="nes-btn is-primary" type="button" data-action="to-tables" data-primary disabled>continue</button>
+          <button class="nes-btn arcade-back" type="button" data-action="back-to-plus-one-decision" aria-label="go back">
+            &lt;
+          </button>
         </div>
       </div>
     </section>
@@ -123,7 +178,9 @@ eventYear: 2026
         <div class="table-grid" data-table-grid></div>
         <p class="screen-message" data-table-message aria-live="polite"></p>
         <div class="confirm-actions">
-          <button class="nes-btn" type="button" data-action="back-to-selfie">back to name + selfie</button>
+          <button class="nes-btn arcade-back" type="button" data-action="back-to-plus-one-decision" aria-label="go back">
+            &lt;
+          </button>
         </div>
       </div>
     </section>
@@ -135,7 +192,9 @@ eventYear: 2026
         <p class="screen-message" data-seat-message aria-live="polite"></p>
         <div class="confirm-actions">
           <button class="nes-btn is-primary" type="button" data-action="claim-seat" data-primary disabled>claim seat</button>
-          <button class="nes-btn" type="button" data-action="back-to-tables">go back to table selection</button>
+          <button class="nes-btn arcade-back" type="button" data-action="back-to-tables" aria-label="go back">
+            &lt;
+          </button>
         </div>
       </div>
     </section>
@@ -150,7 +209,9 @@ eventYear: 2026
         <p class="screen-message" data-note-message aria-live="polite"></p>
         <div class="confirm-actions">
           <button class="nes-btn is-primary" type="button" data-action="submit-note" data-primary>continue</button>
-          <button class="nes-btn" type="button" data-action="back-to-seats">back to seat selection</button>
+          <button class="nes-btn arcade-back" type="button" data-action="back-to-seats" aria-label="go back">
+            &lt;
+          </button>
         </div>
       </div>
     </section>
@@ -163,7 +224,9 @@ eventYear: 2026
           this was a demo run. seats only save with the secret code.
         </p>
         <div class="confirm-actions confirm-actions--final">
-          <button class="nes-btn is-danger" type="button" data-action="back-to-tables">change table selection</button>
+          <button class="nes-btn arcade-back" type="button" data-action="back-from-confirm" aria-label="go back">
+            &lt;
+          </button>
           <button class="nes-btn is-success" type="button" data-action="add-calendar" data-primary>add to calendar</button>
           <button class="nes-btn" type="button" data-action="play-again">go back to start</button>
         </div>

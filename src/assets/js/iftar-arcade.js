@@ -3,7 +3,7 @@
   if (!root) return;
 
   const config = {
-    secretCode: root.dataset.secretCode || '00000',
+    codeVerifyUrl: root.dataset.codeVerifyUrl || '/.netlify/functions/verify-iftar-code',
     privacyCopy: root.dataset.privacyCopy || '',
     eventYear: Number.parseInt(root.dataset.eventYear, 10) || new Date().getFullYear(),
     sheetyUrl: root.dataset.sheetyUrl || '',
@@ -16,20 +16,34 @@
     conflictRate: 0.1
   };
 
+  const isSheetDbApi = (() => {
+    try {
+      const url = new URL(config.sheetyUrl);
+      return url.hostname.includes('sheetdb.io');
+    } catch (err) {
+      return false;
+    }
+  })();
+
   const state = {
     audioEnabled: true,
     audioUnlocked: false,
     started: false,
     demoMode: false,
+    codeSubmitting: false,
     quizScore: 0,
     quizIndex: 0,
     playerName: '',
     playerSelfie: null,
+    bringingPlusOne: false,
+    plusOneName: '',
+    plusOneSelfie: null,
     selectedTable: null,
     selectedSeat: null,
+    selectedPlusOneSeat: null,
     playerNote: '',
     claims: [],
-    lastClaimId: null
+    lastClaimIds: []
   };
 
   const els = {
@@ -51,7 +65,16 @@
     cameraError: root.querySelector('[data-camera-error]'),
     takePhoto: root.querySelector('[data-action="take-photo"]'),
     retakePhoto: root.querySelector('[data-action="retake-photo"]'),
-    selfieContinue: root.querySelector('[data-action="to-tables"]'),
+    selfieContinue: root.querySelector('[data-action="to-plus-one-decision"]'),
+    plusOneNameInput: root.querySelector('[data-plus-one-name-input]'),
+    plusOneSelfieVideo: root.querySelector('[data-plus-one-selfie-video]'),
+    plusOneSelfiePreview: root.querySelector('[data-plus-one-selfie-preview]'),
+    plusOneSelfieCanvas: root.querySelector('[data-plus-one-selfie-canvas]'),
+    plusOneCameraError: root.querySelector('[data-plus-one-camera-error]'),
+    plusOneTakePhoto: root.querySelector('[data-action="take-plus-one-photo"]'),
+    plusOneRetakePhoto: root.querySelector('[data-action="retake-plus-one-photo"]'),
+    plusOneContinue: root.querySelector('[data-screen="plus-one-selfie"] [data-action="to-tables"]'),
+    selfieMessage: root.querySelector('[data-selfie-message]'),
     privacyInline: root.querySelector('[data-privacy-inline]'),
     privacyFooter: root.querySelector('[data-privacy-footer]'),
     privacyFooterWrap: root.querySelector('.arcade__footer'),
@@ -85,6 +108,7 @@
   let startTransitioning = false;
   let startAltIndex = 0;
   let activeStream = null;
+  let activeCameraMode = null;
 
   const quizQuestions = [
     {
@@ -112,6 +136,20 @@
   let codeFeedbackIndex = 0;
 
   const seatTooltips = ['near kitchen', 'tea refill zone', 'chaos corner'];
+  const eventDates = [
+    new Date(config.eventYear, 1, 25),
+    new Date(config.eventYear, 1, 27),
+    new Date(config.eventYear, 2, 4),
+    new Date(config.eventYear, 2, 6),
+    new Date(config.eventYear, 2, 13),
+    new Date(config.eventYear, 2, 17)
+  ];
+  const hostSeatsByDate = {
+    '17/03': [
+      { seatNumber: 1, name: 'Suzan' },
+      { seatNumber: 2, name: 'Pherkan' }
+    ]
+  };
 
   function setupAudio() {
     const create = (src, options = {}) => {
@@ -220,7 +258,7 @@
   }
 
   function handleScreenTransition(previous, next) {
-    if (previous === 'selfie' && next !== 'selfie') {
+    if ((previous === 'selfie' || previous === 'plus-one-selfie') && next !== previous) {
       stopCamera();
     }
 
@@ -239,8 +277,13 @@
     }
 
     if (next === 'selfie') {
-      startCamera();
+      startCamera('primary');
       updateSelfieContinue();
+    }
+
+    if (next === 'plus-one-selfie') {
+      startCamera('plusOne');
+      updatePlusOneContinue();
     }
 
     if (next === 'tables') {
@@ -286,22 +329,39 @@
 
   function sanitizeCodeInput() {
     if (!els.codeInput) return;
-    els.codeInput.value = els.codeInput.value.replace(/\D/g, '').slice(0, 5);
+    const maxDigits = Number.parseInt(els.codeInput.getAttribute('maxlength'), 10) || 6;
+    els.codeInput.value = els.codeInput.value.replace(/\D/g, '').slice(0, maxDigits);
   }
 
-  function handleSubmitCode() {
+  async function handleSubmitCode() {
     if (!els.codeInput) return;
+    if (state.codeSubmitting) return;
     sanitizeCodeInput();
     const value = els.codeInput.value.trim();
 
-    if (value.length < 5) {
-      showCodeFeedback('5 digits, please.');
+    const requiredCodeLength = Number.parseInt(els.codeInput.getAttribute('maxlength'), 10) || 6;
+    if (value.length < requiredCodeLength) {
+      showCodeFeedback(`${requiredCodeLength} digits, please.`);
       playSound(audio.buzzer);
       shakeElement(els.codeInput);
       return;
     }
 
-    if (value === config.secretCode) {
+    state.codeSubmitting = true;
+    const submitButton = root.querySelector('[data-action="submit-code"]');
+    if (submitButton) submitButton.disabled = true;
+
+    let verified = false;
+    try {
+      verified = await verifySecretCode(value);
+    } catch (err) {
+      verified = false;
+    } finally {
+      state.codeSubmitting = false;
+      if (submitButton) submitButton.disabled = false;
+    }
+
+    if (verified) {
       state.demoMode = false;
       showCodeFeedback('code accepted.');
       playSound(audio.coin);
@@ -313,6 +373,18 @@
     codeFeedbackIndex += 1;
     playSound(audio.buzzer);
     shakeElement(els.codeInput);
+  }
+
+  async function verifySecretCode(code) {
+    if (!config.codeVerifyUrl) return false;
+    const response = await fetch(config.codeVerifyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code })
+    });
+    if (!response.ok) return false;
+    const payload = await response.json();
+    return Boolean(payload && payload.ok);
   }
 
   function showCodeFeedback(text) {
@@ -425,11 +497,44 @@
     }
   }
 
-  async function startCamera() {
-    if (!els.selfieVideo) return;
-    if (activeStream) return;
+  function getCameraElements(mode) {
+    if (mode === 'plusOne') {
+      return {
+        video: els.plusOneSelfieVideo,
+        preview: els.plusOneSelfiePreview,
+        canvas: els.plusOneSelfieCanvas,
+        error: els.plusOneCameraError,
+        takeButton: els.plusOneTakePhoto,
+        retakeButton: els.plusOneRetakePhoto
+      };
+    }
+    return {
+      video: els.selfieVideo,
+      preview: els.selfiePreview,
+      canvas: els.selfieCanvas,
+      error: els.cameraError,
+      takeButton: els.takePhoto,
+      retakeButton: els.retakePhoto
+    };
+  }
+
+  function setSelfieValue(mode, value) {
+    if (mode === 'plusOne') {
+      state.plusOneSelfie = value;
+      return;
+    }
+    state.playerSelfie = value;
+  }
+
+  async function startCamera(mode = 'primary') {
+    const camera = getCameraElements(mode);
+    if (!camera.video) return;
+    if (activeStream && activeCameraMode === mode) return;
+    if (activeStream && activeCameraMode !== mode) {
+      stopCamera();
+    }
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      showCameraError();
+      showCameraError(mode);
       return;
     }
 
@@ -438,11 +543,12 @@
         video: { facingMode: 'user' },
         audio: false
       });
-      els.selfieVideo.srcObject = activeStream;
-      await els.selfieVideo.play();
-      hideCameraError();
+      activeCameraMode = mode;
+      camera.video.srcObject = activeStream;
+      await camera.video.play();
+      hideCameraError(mode);
     } catch (err) {
-      showCameraError();
+      showCameraError(mode);
     }
   }
 
@@ -450,43 +556,48 @@
     if (!activeStream) return;
     activeStream.getTracks().forEach((track) => track.stop());
     activeStream = null;
+    activeCameraMode = null;
     if (els.selfieVideo) els.selfieVideo.srcObject = null;
+    if (els.plusOneSelfieVideo) els.plusOneSelfieVideo.srcObject = null;
   }
 
-  function showCameraError() {
-    if (els.cameraError) {
-      els.cameraError.hidden = false;
+  function showCameraError(mode = 'primary') {
+    const camera = getCameraElements(mode);
+    if (camera.error) {
+      camera.error.hidden = false;
     }
   }
 
-  function hideCameraError() {
-    if (els.cameraError) {
-      els.cameraError.hidden = true;
+  function hideCameraError(mode = 'primary') {
+    const camera = getCameraElements(mode);
+    if (camera.error) {
+      camera.error.hidden = true;
     }
   }
 
-  function takePhoto() {
-    if (!els.selfieVideo || !els.selfieCanvas || !els.selfiePreview) return;
-    if (!activeStream || els.selfieVideo.videoWidth === 0) {
-      showCameraError();
+  function takePhoto(mode = 'primary') {
+    const camera = getCameraElements(mode);
+    if (!camera.video || !camera.canvas || !camera.preview) return;
+    if (!activeStream || activeCameraMode !== mode || camera.video.videoWidth === 0) {
+      showCameraError(mode);
       return;
     }
-    const frame = els.selfieVideo.closest('.camera-frame');
-    const width = els.selfieVideo.videoWidth || 320;
-    const height = els.selfieVideo.videoHeight || 240;
-    els.selfieCanvas.width = width;
-    els.selfieCanvas.height = height;
-    const context = els.selfieCanvas.getContext('2d');
+    const frame = camera.video.closest('.camera-frame');
+    const width = camera.video.videoWidth || 320;
+    const height = camera.video.videoHeight || 240;
+    camera.canvas.width = width;
+    camera.canvas.height = height;
+    const context = camera.canvas.getContext('2d');
     if (!context) return;
-    context.drawImage(els.selfieVideo, 0, 0, width, height);
-    const dataUrl = els.selfieCanvas.toDataURL('image/jpeg', 0.82);
+    context.drawImage(camera.video, 0, 0, width, height);
+    const dataUrl = camera.canvas.toDataURL('image/jpeg', 0.82);
 
-    state.playerSelfie = dataUrl;
-    els.selfiePreview.src = dataUrl;
-    els.selfiePreview.hidden = false;
-    els.selfieVideo.hidden = true;
-    if (els.retakePhoto) els.retakePhoto.disabled = false;
-    if (els.takePhoto) els.takePhoto.disabled = true;
+    setSelfieValue(mode, dataUrl);
+    camera.preview.src = dataUrl;
+    camera.preview.hidden = false;
+    camera.video.hidden = true;
+    if (camera.retakeButton) camera.retakeButton.disabled = false;
+    if (camera.takeButton) camera.takeButton.disabled = true;
     if (frame) {
       frame.classList.remove('is-flashing');
       void frame.offsetWidth;
@@ -494,35 +605,54 @@
       setTimeout(() => frame.classList.remove('is-flashing'), 520);
     }
     playSound(audio.shutter);
+    if (mode === 'primary' && els.selfieMessage) els.selfieMessage.textContent = '';
     updateSelfieContinue();
+    updatePlusOneContinue();
   }
 
-  function retakePhoto() {
-    state.playerSelfie = null;
-    if (els.selfiePreview) els.selfiePreview.hidden = true;
-    if (els.selfieVideo) els.selfieVideo.hidden = false;
-    if (els.retakePhoto) els.retakePhoto.disabled = true;
-    if (els.takePhoto) els.takePhoto.disabled = false;
+  function retakePhoto(mode = 'primary') {
+    const camera = getCameraElements(mode);
+    setSelfieValue(mode, null);
+    if (camera.preview) camera.preview.hidden = true;
+    if (camera.video) camera.video.hidden = false;
+    if (camera.retakeButton) camera.retakeButton.disabled = true;
+    if (camera.takeButton) camera.takeButton.disabled = false;
+    if (mode === 'primary' && els.selfieMessage) els.selfieMessage.textContent = '';
     updateSelfieContinue();
+    updatePlusOneContinue();
   }
 
   function updateSelfieContinue() {
     if (!els.selfieContinue) return;
-    const ready = state.playerName.trim().length > 0 && Boolean(state.playerSelfie);
+    const ready = state.playerName.trim().length > 0;
     els.selfieContinue.disabled = !ready;
   }
 
   function handleNameInput() {
     state.playerName = els.nameInput ? els.nameInput.value.trim() : '';
+    if (els.selfieMessage) els.selfieMessage.textContent = '';
     updateSelfieContinue();
+  }
+
+  function updatePlusOneContinue() {
+    if (!els.plusOneContinue) return;
+    const ready = state.plusOneName.trim().length > 0 && Boolean(state.plusOneSelfie);
+    els.plusOneContinue.disabled = !ready;
+  }
+
+  function handlePlusOneNameInput() {
+    state.plusOneName = els.plusOneNameInput ? els.plusOneNameInput.value.trim() : '';
+    updatePlusOneContinue();
+  }
+
+  function requiredSeatCount() {
+    return state.bringingPlusOne ? 2 : 1;
   }
 
   function generateTables(claims = []) {
     const names = ['space invader', 'pac-man', 'tetris', 'galaga', 'donkey kong', 'frogger', 'asteroids'];
     const rng = createSeededRng(config.eventYear);
-    const picked = shuffle(names, rng).slice(0, 5);
-    const start = new Date(config.eventYear, 1, 18);
-    const end = new Date(config.eventYear, 2, 18);
+    const picked = shuffle(names, rng).slice(0, eventDates.length);
 
     const claimsByTable = new Map();
     claims.forEach((claim) => {
@@ -533,10 +663,25 @@
       claimsByTable.get(claim.tableId).set(claim.seatNumber, claim);
     });
 
-    const tables = picked.map((name) => {
+    const tables = picked.map((name, index) => {
       const id = slugify(name);
-      const date = randomDate(start, end, rng);
-      const seatClaims = claimsByTable.get(id) || new Map();
+      const date = new Date(eventDates[index]);
+      const seatClaims = new Map(claimsByTable.get(id) || []);
+      const hostKey = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
+      const hostSeats = hostSeatsByDate[hostKey] || [];
+      hostSeats.forEach((host) => {
+        if (!Number.isFinite(host.seatNumber)) return;
+        if (seatClaims.has(host.seatNumber)) return;
+        seatClaims.set(host.seatNumber, {
+          id: `host-${id}-${host.seatNumber}`,
+          tableId: id,
+          seatNumber: host.seatNumber,
+          name: host.name,
+          note: 'Host seat',
+          selfieUrl: '',
+          createdAt: null
+        });
+      });
       const occupiedSeats = new Set(seatClaims.keys());
       const seatsLeft = Math.max(0, config.seatCount - occupiedSeats.size);
       return {
@@ -602,7 +747,7 @@
         button.classList.add('is-selected');
       }
 
-      if (table.seatsLeft === 0) {
+      if (table.seatsLeft < requiredSeatCount()) {
         button.classList.add('is-disabled');
         button.disabled = true;
       }
@@ -630,10 +775,20 @@
 
   function initClaimState() {
     try {
-      const stored = localStorage.getItem('iftarClaimId');
-      state.lastClaimId = stored ? Number.parseInt(stored, 10) : null;
+      const storedMulti = localStorage.getItem('iftarClaimIds');
+      if (storedMulti) {
+        const parsed = JSON.parse(storedMulti);
+        if (Array.isArray(parsed)) {
+          state.lastClaimIds = parsed
+            .map((value) => String(value || '').trim())
+            .filter((value) => value.length > 0);
+          return;
+        }
+      }
+      const storedSingle = localStorage.getItem('iftarClaimId');
+      state.lastClaimIds = storedSingle ? [String(storedSingle)] : [];
     } catch (err) {
-      state.lastClaimId = null;
+      state.lastClaimIds = [];
     }
   }
 
@@ -643,19 +798,48 @@
       const response = await fetch(config.sheetyUrl, { cache: 'no-store' });
       if (!response.ok) throw new Error('sheety');
       const data = await response.json();
-      const rows = data.sheet1 || data.sheet || [];
+      const rows = Array.isArray(data) ? data : (data.sheet1 || data.sheet || []);
+      const referenceTables = generateTables();
+      const tableIdByName = new Map(
+        referenceTables.map((table) => [slugify(String(table.name || '')), table.id])
+      );
+      const tableIdByDate = new Map(
+        referenceTables.map((table) => [String(table.displayDate || '').toLowerCase(), table.id])
+      );
+      const tableIdByDayMonth = new Map(
+        referenceTables.map((table) => {
+          const match = String(table.displayDate || '').match(/(\d{2}\/\d{2})/);
+          return [match ? match[1] : '', table.id];
+        })
+      );
       state.claims = rows
-        .map((row) => ({
-          id: row.id || row.ID || row.Id,
-          tableId: row.tableId,
-          tableName: row.tableName,
-          date: row.date,
-          seatNumber: Number.parseInt(row.seatNumber, 10),
-          name: row.name || '',
-          note: row.note || '',
-          selfieUrl: row.selfieUrl || '',
-          createdAt: row.createdAt
-        }))
+        .map((row) => {
+          const rawTableId = row.tableId || row.tableID || row.TableId || row.table_id || row.table;
+          const rawTableName = row.tableName || row.table || row.TableName || '';
+          const rawDate = String(row.date || row.Date || '').trim();
+          const normalizedInputId = slugify(String(rawTableId || rawTableName || '').trim());
+          const normalizedNameKey = slugify(String(rawTableName || '').trim());
+          const dayMonthMatch = rawDate.match(/(\d{2}\/\d{2})/);
+          const dayMonthKey = dayMonthMatch ? dayMonthMatch[1] : '';
+          const normalizedTableId = normalizedInputId
+            || tableIdByName.get(normalizedNameKey)
+            || tableIdByDate.get(rawDate.toLowerCase())
+            || tableIdByDayMonth.get(dayMonthKey)
+            || '';
+          const rawSelfieUrl = row.selfieUrl || row.selfieURL || row.selfie_url || row.photoUrl || row.photoURL || row.photo_url || '';
+          return {
+            id: row.id || row.ID || row.Id || row.claimId || row.claimID || row.claim_id || null,
+            tableId: normalizedTableId,
+            tableName: String(rawTableName || '').trim(),
+            date: row.date,
+            seatNumber: Number.parseInt(row.seatNumber || row.seat || row.seat_number, 10),
+            name: row.name || row.Name || '',
+            note: row.note || row.Note || '',
+            selfieUrl: String(rawSelfieUrl || '').trim(),
+            createdAt: row.createdAt || row.created_at || row.created,
+            claimId: row.claimId || row.claimID || row.claim_id || ''
+          };
+        })
         .filter((row) => row.tableId && Number.isFinite(row.seatNumber));
       tables = generateTables(state.claims);
       syncSelectedTable();
@@ -681,8 +865,12 @@
   function selectTable(tableId) {
     const selected = tables.find((table) => table.id === tableId);
     if (!selected) return;
-    if (selected.seatsLeft === 0) {
-      if (els.tableMessage) els.tableMessage.textContent = 'that table is full.';
+    if (selected.seatsLeft < requiredSeatCount()) {
+      if (els.tableMessage) {
+        els.tableMessage.textContent = state.bringingPlusOne
+          ? 'this table does not have 2 seats left for you and your +1.'
+          : 'that table is full.';
+      }
       return;
     }
     state.selectedTable = selected;
@@ -754,6 +942,23 @@
     }
   }
 
+  function clearPendingSeatPreview() {
+    if (!els.seatMap) return;
+    els.seatMap.querySelectorAll('.seat-photo[data-preview="true"]').forEach((photo) => {
+      const seat = photo.closest('.seat');
+      photo.remove();
+      if (seat) seat.classList.remove('has-photo');
+    });
+  }
+
+  function pickSecondSeat(table, selectedSeat) {
+    for (let seatNumber = 1; seatNumber <= config.seatCount; seatNumber += 1) {
+      if (seatNumber === selectedSeat) continue;
+      if (!table.occupiedSeats.has(seatNumber)) return seatNumber;
+    }
+    return null;
+  }
+
   function selectSeat(seatNumber) {
     if (!state.selectedTable) return;
     if (!els.seatMap) return;
@@ -767,25 +972,56 @@
       return;
     }
 
+    if (state.selectedSeat === seatNumber) {
+      state.selectedSeat = null;
+      state.selectedPlusOneSeat = null;
+      clearPendingSeatPreview();
+      els.seatMap.querySelectorAll('.seat').forEach((seatEl) => {
+        seatEl.classList.remove('is-selected');
+      });
+      if (els.seatMessage) els.seatMessage.textContent = '';
+      if (els.claimSeat) els.claimSeat.disabled = true;
+      return;
+    }
+
     state.selectedSeat = seatNumber;
+    state.selectedPlusOneSeat = null;
     if (els.seatMessage) els.seatMessage.textContent = '';
 
-    els.seatMap.querySelectorAll('.seat').forEach((seatEl) => {
-      seatEl.classList.toggle('is-selected', seatEl === seat);
-      if (seatEl !== seat && seatEl.classList.contains('is-open')) {
-        seatEl.classList.remove('has-photo');
-        const existingPhoto = seatEl.querySelector('.seat-photo');
-        if (existingPhoto) existingPhoto.remove();
+    clearPendingSeatPreview();
+    let plusOnePreviewSeatEl = null;
+    if (state.bringingPlusOne) {
+      const plusOneSeatNumber = pickSecondSeat(state.selectedTable, seatNumber);
+      if (Number.isFinite(plusOneSeatNumber)) {
+        state.selectedPlusOneSeat = plusOneSeatNumber;
+        plusOnePreviewSeatEl = els.seatMap.querySelector(`[data-seat-number="${plusOneSeatNumber}"]`);
       }
+    }
+
+    els.seatMap.querySelectorAll('.seat').forEach((seatEl) => {
+      const isPrimary = seatEl === seat;
+      const isPlusOne = plusOnePreviewSeatEl && seatEl === plusOnePreviewSeatEl;
+      seatEl.classList.toggle('is-selected', Boolean(isPrimary || isPlusOne));
     });
 
     if (state.playerSelfie) {
       const photo = document.createElement('img');
       photo.className = 'seat-photo';
+      photo.dataset.preview = 'true';
       photo.src = state.playerSelfie;
       photo.alt = 'your selfie';
       seat.appendChild(photo);
       seat.classList.add('has-photo');
+    }
+
+    if (plusOnePreviewSeatEl && state.plusOneSelfie) {
+      const plusOnePhoto = document.createElement('img');
+      plusOnePhoto.className = 'seat-photo';
+      plusOnePhoto.dataset.preview = 'true';
+      plusOnePhoto.src = state.plusOneSelfie;
+      plusOnePhoto.alt = '+1 selfie';
+      plusOnePreviewSeatEl.appendChild(plusOnePhoto);
+      plusOnePreviewSeatEl.classList.add('has-photo');
     }
 
     if (els.claimSeat) els.claimSeat.disabled = false;
@@ -810,6 +1046,8 @@
 
   async function claimSeat() {
     if (!state.selectedTable || !state.selectedSeat) return;
+    if (state.bringingPlusOne && (!state.plusOneName || !state.plusOneSelfie)) return;
+    state.selectedPlusOneSeat = null;
 
     if (els.claimSeat) els.claimSeat.disabled = true;
     setClaimMessage('locking in your seat...');
@@ -827,12 +1065,32 @@
           renderSeats();
           return;
         }
+        if (state.bringingPlusOne) {
+          const plusOneSeat = pickSecondSeat(state.selectedTable, state.selectedSeat);
+          if (!plusOneSeat) {
+            setClaimMessage('not enough seats left for your +1. choose another table.');
+            if (els.claimSeat) els.claimSeat.disabled = false;
+            return;
+          }
+          state.selectedPlusOneSeat = plusOneSeat;
+        }
+      }
+      if (state.demoMode && state.bringingPlusOne) {
+        const plusOneSeat = pickSecondSeat(state.selectedTable, state.selectedSeat);
+        if (!plusOneSeat) {
+          setClaimMessage('not enough seats left for your +1. choose another table.');
+          if (els.claimSeat) els.claimSeat.disabled = false;
+          return;
+        }
+        state.selectedPlusOneSeat = plusOneSeat;
       }
 
       if (!state.demoMode) {
-        const uploadUrl = await uploadSelfie();
+        const uploadUrl = await uploadSelfie(state.playerSelfie);
         const createdAt = new Date().toISOString();
+        const claimId = createClaimId();
         const payload = {
+          claimId,
           tableId: state.selectedTable.id,
           tableName: state.selectedTable.name,
           date: state.selectedTable.displayDate,
@@ -844,16 +1102,50 @@
         };
         const saved = await postClaim(payload);
         const savedRow = saved && (saved.sheet1 || saved.sheet);
+        const savedIds = [];
         if (savedRow && savedRow.id) {
           payload.id = savedRow.id;
-          state.lastClaimId = savedRow.id;
-          try {
-            localStorage.setItem('iftarClaimId', String(savedRow.id));
-          } catch (err) {
-            // ignore
-          }
+          savedIds.push(String(savedRow.id));
+        } else {
+          savedIds.push(payload.claimId || payload.createdAt);
         }
         state.claims.push(payload);
+
+        if (state.bringingPlusOne && Number.isFinite(state.selectedPlusOneSeat)) {
+          const plusOneUploadUrl = await uploadSelfie(state.plusOneSelfie);
+          const plusOneCreatedAt = new Date().toISOString();
+          const plusOneClaimId = createClaimId();
+          const plusOnePayload = {
+            claimId: plusOneClaimId,
+            tableId: state.selectedTable.id,
+            tableName: state.selectedTable.name,
+            date: state.selectedTable.displayDate,
+            seatNumber: state.selectedPlusOneSeat,
+            name: state.plusOneName,
+            note: state.playerNote,
+            selfieUrl: plusOneUploadUrl,
+            createdAt: plusOneCreatedAt
+          };
+          const plusOneSaved = await postClaim(plusOnePayload);
+          const plusOneSavedRow = plusOneSaved && (plusOneSaved.sheet1 || plusOneSaved.sheet);
+          if (plusOneSavedRow && plusOneSavedRow.id) {
+            plusOnePayload.id = plusOneSavedRow.id;
+            savedIds.push(String(plusOneSavedRow.id));
+          } else {
+            savedIds.push(plusOnePayload.claimId || plusOnePayload.createdAt);
+          }
+          state.claims.push(plusOnePayload);
+        }
+
+        state.lastClaimIds = savedIds;
+        try {
+          if (state.lastClaimIds.length > 0) {
+            localStorage.setItem('iftarClaimIds', JSON.stringify(state.lastClaimIds));
+            localStorage.setItem('iftarClaimId', String(state.lastClaimIds[0]));
+          }
+        } catch (err) {
+          // ignore
+        }
         tables = generateTables(state.claims);
         syncSelectedTable();
       }
@@ -885,11 +1177,11 @@
     });
   }
 
-  async function uploadSelfie() {
-    if (!state.playerSelfie) throw new Error('no selfie');
+  async function uploadSelfie(selfieData) {
+    if (!selfieData) throw new Error('no selfie');
     if (!config.cloudinaryName || !config.cloudinaryPreset) throw new Error('cloudinary');
     const formData = new FormData();
-    formData.append('file', state.playerSelfie);
+    formData.append('file', selfieData);
     formData.append('upload_preset', config.cloudinaryPreset);
     if (config.cloudinaryFolder) {
       formData.append('folder', config.cloudinaryFolder);
@@ -907,10 +1199,13 @@
 
   async function postClaim(payload) {
     if (!config.sheetyUrl) throw new Error('sheety');
+    const body = isSheetDbApi
+      ? JSON.stringify({ data: [payload] })
+      : JSON.stringify({ sheet1: payload });
     const response = await fetch(config.sheetyUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sheet1: payload })
+      body
     });
     if (!response.ok) throw new Error('sheety');
     return response.json();
@@ -918,30 +1213,37 @@
 
   async function deleteClaim(id) {
     if (!config.sheetyUrl || !id) return;
-    const response = await fetch(`${config.sheetyUrl}/${id}`, { method: 'DELETE' });
+    const endpoint = isSheetDbApi
+      ? `${config.sheetyUrl}/claimId/${encodeURIComponent(String(id))}`
+      : `${config.sheetyUrl}/${id}`;
+    const response = await fetch(endpoint, { method: 'DELETE' });
     if (!response.ok) throw new Error('sheety');
     return response.json();
   }
 
   async function handleBackToTables() {
     let deleteFailed = false;
-    if (!state.demoMode && state.lastClaimId) {
-      try {
-        setClaimMessage('removing your seat...');
-        await deleteClaim(state.lastClaimId);
-        state.claims = state.claims.filter((claim) => claim.id !== state.lastClaimId);
-        state.lastClaimId = null;
+    if (!state.demoMode && state.lastClaimIds.length > 0) {
+      setClaimMessage('removing your seat...');
+      for (const claimId of state.lastClaimIds) {
         try {
-          localStorage.removeItem('iftarClaimId');
+          await deleteClaim(claimId);
+          state.claims = state.claims.filter((claim) => claim.id !== claimId);
         } catch (err) {
-          // ignore
+          deleteFailed = true;
         }
+      }
+      state.lastClaimIds = [];
+      try {
+        localStorage.removeItem('iftarClaimIds');
+        localStorage.removeItem('iftarClaimId');
       } catch (err) {
-        deleteFailed = true;
+        // ignore
       }
     }
 
     state.selectedSeat = null;
+    state.selectedPlusOneSeat = null;
     state.selectedTable = null;
     await loadClaims({ silent: true });
     tables = generateTables(state.claims);
@@ -952,15 +1254,26 @@
     }
   }
 
+  async function handleBackFromConfirm() {
+    const ok = window.confirm('By going back, your claimed seats are removed and you will have to select a new table again');
+    if (!ok) return;
+    await handleBackToTables();
+  }
+
   function renderConfirmation() {
     if (!els.receipt || !state.selectedTable) return;
     els.receipt.innerHTML = '';
 
+    const primaryName = state.playerName || 'guest';
+    const plusOneName = state.plusOneName || 'guest';
+    const primarySeat = Number.isFinite(state.selectedSeat) ? String(state.selectedSeat) : '-';
+    const plusOneSeat = Number.isFinite(state.selectedPlusOneSeat) ? String(state.selectedPlusOneSeat) : '-';
+
     const lines = [
-      ['name', state.playerName || 'guest'],
+      ['name', state.bringingPlusOne ? `${primaryName} + ${plusOneName}` : primaryName],
       ['table', state.selectedTable.name],
       ['date', state.selectedTable.displayDate],
-      ['seat', `#${state.selectedSeat}`],
+      ['seat', state.bringingPlusOne ? `${primarySeat} + ${plusOneSeat}` : `#${primarySeat}`],
       ['address', 'herengracht 50B, 2511EJ, Den Haag']
     ];
     if (state.playerNote) lines.push(['note', state.playerNote]);
@@ -1019,19 +1332,30 @@
     state.quizIndex = 0;
     state.playerName = '';
     state.playerSelfie = null;
+    state.bringingPlusOne = false;
+    state.plusOneName = '';
+    state.plusOneSelfie = null;
     state.selectedTable = null;
     state.selectedSeat = null;
+    state.selectedPlusOneSeat = null;
     state.playerNote = '';
 
     if (els.codeInput) els.codeInput.value = '';
     if (els.codeFeedback) els.codeFeedback.textContent = '';
+    if (els.selfieMessage) els.selfieMessage.textContent = '';
     if (els.nameInput) els.nameInput.value = '';
+    if (els.plusOneNameInput) els.plusOneNameInput.value = '';
     if (els.noteInput) els.noteInput.value = '';
     if (els.selfiePreview) els.selfiePreview.hidden = true;
     if (els.selfieVideo) els.selfieVideo.hidden = false;
     if (els.retakePhoto) els.retakePhoto.disabled = true;
     if (els.takePhoto) els.takePhoto.disabled = false;
     if (els.selfieContinue) els.selfieContinue.disabled = true;
+    if (els.plusOneSelfiePreview) els.plusOneSelfiePreview.hidden = true;
+    if (els.plusOneSelfieVideo) els.plusOneSelfieVideo.hidden = false;
+    if (els.plusOneRetakePhoto) els.plusOneRetakePhoto.disabled = true;
+    if (els.plusOneTakePhoto) els.plusOneTakePhoto.disabled = false;
+    if (els.plusOneContinue) els.plusOneContinue.disabled = true;
 
     stopCamera();
     stopAllAudio();
@@ -1056,12 +1380,6 @@
     updateSoundToggle();
   }
 
-  function randomDate(start, end, rng = Math.random) {
-    const range = end.getTime() - start.getTime();
-    const offset = Math.floor(rng() * range);
-    return new Date(start.getTime() + offset);
-  }
-
   function formatDate(date) {
     const days = [
       'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
@@ -1083,6 +1401,11 @@
     const next = new Date(date);
     next.setDate(next.getDate() + days);
     return next;
+  }
+
+  function createClaimId() {
+    const randomPart = Math.random().toString(36).slice(2, 8);
+    return `claim-${Date.now()}-${randomPart}`;
   }
 
   function slugify(text) {
@@ -1157,6 +1480,9 @@
       case 'press-start':
         handlePressStart();
         break;
+      case 'back-to-start':
+        showScreen('start');
+        break;
       case 'submit-code':
         handleSubmitCode();
         break;
@@ -1170,10 +1496,46 @@
         showScreen('selfie');
         break;
       case 'take-photo':
-        takePhoto();
+        takePhoto('primary');
         break;
       case 'retake-photo':
-        retakePhoto();
+        retakePhoto('primary');
+        break;
+      case 'to-plus-one-decision':
+        if (!state.playerSelfie) {
+          if (els.selfieMessage) {
+            els.selfieMessage.textContent = 'first take a photo, no photo no continue!!';
+          }
+          return;
+        }
+        if (els.selfieMessage) els.selfieMessage.textContent = '';
+        showScreen('plus-one-decision');
+        break;
+      case 'to-plus-one-selfie':
+        state.bringingPlusOne = true;
+        showScreen('plus-one-selfie');
+        break;
+      case 'skip-plus-one':
+        state.bringingPlusOne = false;
+        state.plusOneName = '';
+        state.plusOneSelfie = null;
+        state.selectedPlusOneSeat = null;
+        if (els.plusOneNameInput) els.plusOneNameInput.value = '';
+        if (els.plusOneSelfiePreview) els.plusOneSelfiePreview.hidden = true;
+        if (els.plusOneSelfieVideo) els.plusOneSelfieVideo.hidden = false;
+        if (els.plusOneRetakePhoto) els.plusOneRetakePhoto.disabled = true;
+        if (els.plusOneTakePhoto) els.plusOneTakePhoto.disabled = false;
+        if (els.plusOneContinue) els.plusOneContinue.disabled = true;
+        showScreen('tables');
+        break;
+      case 'take-plus-one-photo':
+        takePhoto('plusOne');
+        break;
+      case 'retake-plus-one-photo':
+        retakePhoto('plusOne');
+        break;
+      case 'back-to-plus-one-decision':
+        showScreen('plus-one-decision');
         break;
       case 'to-tables':
         showScreen('tables');
@@ -1189,6 +1551,9 @@
         break;
       case 'back-to-tables':
         handleBackToTables();
+        break;
+      case 'back-from-confirm':
+        handleBackFromConfirm();
         break;
       case 'back-to-seats':
         showScreen('seats');
@@ -1241,6 +1606,10 @@
 
   if (els.nameInput) {
     els.nameInput.addEventListener('input', handleNameInput);
+  }
+
+  if (els.plusOneNameInput) {
+    els.plusOneNameInput.addEventListener('input', handlePlusOneNameInput);
   }
 
   if (els.noteInput) {

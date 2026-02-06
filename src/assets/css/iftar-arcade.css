@@ -176,6 +176,24 @@ body.iftar-arcade::after {
   text-align: center;
 }
 
+.arcade-panel > .arcade-back {
+  justify-self: start;
+  margin-bottom: 10px;
+}
+
+.screen[data-screen="code"] .arcade-panel {
+  position: relative;
+  padding-bottom: 72px;
+}
+
+.screen[data-screen="code"] .arcade-panel > .arcade-back {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  margin: 0;
+  justify-self: auto;
+}
+
 @media (min-width: 900px) {
   html,
   body.iftar-arcade {
@@ -680,6 +698,31 @@ body.iftar-arcade::after {
   justify-content: center;
 }
 
+.arcade-back {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.plus-one-actions {
+  width: 100%;
+}
+
+.plus-one-actions .nes-btn {
+  width: min(420px, 100%);
+}
+
+.plus-one-actions__back {
+  margin-top: 10px;
+}
+
 .confirm-actions--final {
   width: 100%;
 }
@@ -890,18 +933,148 @@ body.iftar-arcade .seat-table {
 }
 
 @media (max-width: 720px) {
+  .arcade-shell {
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 10px 16px;
+  }
+
+  .arcade {
+    min-height: 0;
+    gap: 14px;
+    padding: 14px 12px 16px;
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+  }
+
   .arcade-panel {
-    padding: 20px;
+    padding: 16px 12px;
+  }
+
+  .screen[data-screen="code"] .arcade-panel {
+    padding-bottom: 64px;
+  }
+
+  .screen[data-screen="code"] .arcade-panel > .arcade-back {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .arcade__stage,
+  .screen {
+    min-height: 0;
+  }
+
+  .screen {
+    align-items: center;
   }
 
   .arcade__hud {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    padding-top: 10px;
+    gap: 10px;
+  }
+
+  .arcade__logo-title {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .screen[data-screen="selfie"] .arcade-panel,
+  .screen[data-screen="plus-one-selfie"] .arcade-panel {
+    padding: 14px 10px;
+  }
+
+  .screen[data-screen="plus-one-decision"] .arcade-panel {
+    min-height: min(72dvh, 560px);
+    display: grid;
+    align-content: start;
+    gap: 10px;
+  }
+
+  .screen[data-screen="plus-one-decision"] .arcade-copy {
+    margin-bottom: 8px;
+  }
+
+  .plus-one-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .plus-one-actions .nes-btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: normal;
+  }
+
+  .plus-one-actions__back {
+    margin-top: 22px;
+  }
+
+  .plus-one-actions .arcade-back {
+    width: 56px;
+    min-width: 56px;
+    align-self: center;
+  }
+
+  .selfie-grid {
+    gap: 10px;
+  }
+
+  .camera-block {
+    margin-top: 8px;
+  }
+
+  .camera-title {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+
+  .camera-frame {
+    width: min(250px, 82vw);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .camera-controls {
+    justify-content: center;
+    margin-bottom: 8px;
   }
 
   .arcade__sound {
     top: 12px;
     right: 12px;
+    font-size: 0.52rem;
+    padding: 6px 9px;
+    z-index: 30;
+  }
+}
+
+@media (max-width: 420px) {
+  .arcade-shell {
+    padding-top: 60px;
+  }
+
+  .arcade-title {
+    font-size: clamp(1.25rem, 7vw, 1.6rem);
+  }
+
+  .arcade-subtitle,
+  .arcade-copy p {
+    font-size: 1.2rem;
+  }
+
+  .camera-frame {
+    width: min(220px, 78vw);
   }
 }
 
