@@ -115,6 +115,8 @@
   let startAltIndex = 0;
   let activeStream = null;
   let activeCameraMode = null;
+  const isIPhone = /iPhone/i.test(navigator.userAgent || '');
+  const isIOSChrome = /CriOS/i.test(navigator.userAgent || '');
 
   const quizQuestions = [
     {
@@ -285,11 +287,23 @@
     if (next === 'selfie') {
       startCamera('primary');
       updateSelfieContinue();
+      window.setTimeout(() => {
+        if (currentScreen !== 'selfie') return;
+        if (!activeStream || activeCameraMode !== 'primary') {
+          showCameraError('primary', 'please allow camera access first.');
+        }
+      }, 1500);
     }
 
     if (next === 'plus-one-selfie') {
       startCamera('plusOne');
       updatePlusOneContinue();
+      window.setTimeout(() => {
+        if (currentScreen !== 'plus-one-selfie') return;
+        if (!activeStream || activeCameraMode !== 'plusOne') {
+          showCameraError('plusOne', 'please allow camera access first.');
+        }
+      }, 1500);
     }
 
     if (next === 'tables') {
@@ -537,7 +551,11 @@
   async function startCamera(mode = 'primary') {
     const camera = getCameraElements(mode);
     if (!camera.video) return;
-    if (activeStream && activeCameraMode === mode) return;
+    if (activeStream && activeCameraMode === mode) {
+      const hasLiveVideoTrack = activeStream.getVideoTracks().some((track) => track.readyState === 'live');
+      if (hasLiveVideoTrack) return;
+      stopCamera();
+    }
     if (activeStream && activeCameraMode !== mode) {
       stopCamera();
     }
@@ -556,14 +574,18 @@
       await camera.video.play();
       hideCameraError(mode);
     } catch (err) {
+      stopCamera();
       const permissionDenied = err && (
         err.name === 'NotAllowedError'
         || err.name === 'PermissionDeniedError'
         || err.name === 'SecurityError'
       );
-      const message = permissionDenied
+      let message = permissionDenied
         ? 'please allow camera access to continue.'
         : 'camera access is required to continue.';
+      if (permissionDenied && isIPhone && isIOSChrome) {
+        message = 'camera blocked. on iphone chrome: settings > chrome > camera > allow, then tap "allow camera access".';
+      }
       showCameraError(mode, message);
     }
   }
@@ -1661,9 +1683,11 @@
         takePhoto('plusOne');
         break;
       case 'retry-camera-access':
+        stopCamera();
         startCamera('primary');
         break;
       case 'retry-plus-one-camera-access':
+        stopCamera();
         startCamera('plusOne');
         break;
       case 'retake-plus-one-photo':
