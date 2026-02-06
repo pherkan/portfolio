@@ -1343,9 +1343,10 @@
     return response.json();
   }
 
-  async function handleBackToTables() {
+  async function handleBackToTables(options = {}) {
+    const { removeClaim = false } = options;
     let deleteFailed = false;
-    if (!state.demoMode && state.lastClaimIds.length > 0) {
+    if (removeClaim && !state.demoMode && state.lastClaimIds.length > 0) {
       setClaimMessage('removing your seat...');
       for (const claimId of state.lastClaimIds) {
         try {
@@ -1379,7 +1380,7 @@
   async function handleBackFromConfirm() {
     const ok = window.confirm('By going back, your claimed seats are removed and you will have to select a new table again');
     if (!ok) return;
-    await handleBackToTables();
+    await handleBackToTables({ removeClaim: true });
   }
 
   function renderConfirmation() {
