@@ -312,6 +312,43 @@ body.iftar-arcade::after {
   text-align: center;
 }
 
+.screen[data-screen="intro"] {
+  gap: 6px;
+  justify-items: center;
+}
+
+.arcade-subtle-link {
+  border: 0;
+  background: transparent;
+  color: #000000;
+  font-family: "VT323", monospace;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 1;
+  cursor: pointer;
+  padding: 2px 6px 0;
+  margin-top: 0;
+}
+
+.arcade-subtle-link:hover {
+  animation: subtle-link-colors 1s steps(1, end) infinite;
+}
+
+.arcade-subtle-link:focus-visible {
+  color: #1a73e8;
+  text-decoration: underline;
+  outline: none;
+}
+
+@keyframes subtle-link-colors {
+  0% { color: #1a73e8; }
+  34% { color: #198754; }
+  67% { color: #c1121f; }
+  100% { color: #1a73e8; }
+}
+
 .arcade-field span {
   display: block;
   margin-bottom: 8px;
@@ -387,6 +424,7 @@ body.iftar-arcade::after {
   place-items: center;
   margin-bottom: 12px;
   box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .camera-frame video,
@@ -933,6 +971,10 @@ body.iftar-arcade .seat-table {
 }
 
 @media (max-width: 720px) {
+  body.iftar-arcade {
+    font-size: clamp(21px, 4.8vw, 25px);
+  }
+
   .arcade-shell {
     min-height: 100dvh;
     align-items: center;
@@ -978,8 +1020,43 @@ body.iftar-arcade .seat-table {
   }
 
   .arcade__logo-title {
-    font-size: 0.8rem;
+    font-size: clamp(0.9rem, 4.1vw, 1.08rem);
     line-height: 1.5;
+  }
+
+  .arcade-title {
+    font-size: clamp(1.7rem, 7vw, 2.15rem);
+  }
+
+  .arcade-subtitle,
+  .arcade-copy p,
+  .result-copy,
+  .receipt {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+  }
+
+  .arcade-field span,
+  .quiz-question,
+  .camera-title,
+  .screen-message {
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
+  }
+
+  body.iftar-arcade .nes-btn {
+    font-size: clamp(1.2rem, 4.6vw, 1.45rem);
+  }
+
+  .quiz-options .nes-btn {
+    font-size: clamp(1.2rem, 4.4vw, 1.4rem);
+  }
+
+  .table-card h3 {
+    font-size: clamp(0.9rem, 3.4vw, 1.05rem);
+  }
+
+  .table-card p,
+  .table-meta-row {
+    font-size: clamp(1.12rem, 4vw, 1.35rem);
   }
 
   .screen[data-screen="selfie"] .arcade-panel,
@@ -1057,6 +1134,18 @@ body.iftar-arcade .seat-table {
     padding: 6px 9px;
     z-index: 30;
   }
+
+  .arcade-subtle-link {
+    font-size: clamp(1rem, 3.9vw, 1.2rem);
+    margin-top: 4px;
+  }
+
+  .pixel-cat {
+    position: fixed;
+    left: 14px;
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 8px));
+    z-index: 6;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1065,12 +1154,12 @@ body.iftar-arcade .seat-table {
   }
 
   .arcade-title {
-    font-size: clamp(1.25rem, 7vw, 1.6rem);
+    font-size: clamp(1.55rem, 8vw, 1.9rem);
   }
 
   .arcade-subtitle,
   .arcade-copy p {
-    font-size: 1.2rem;
+    font-size: clamp(1.3rem, 6vw, 1.6rem);
   }
 
   .camera-frame {

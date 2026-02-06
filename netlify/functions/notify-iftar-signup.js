@@ -36,9 +36,18 @@ exports.handler = async (event) => {
   const primarySeat = String(payload.primarySeat || '').trim();
   const plusOneName = String(payload.plusOneName || '').trim();
   const plusOneSeat = String(payload.plusOneSeat || '').trim();
+  const seatsLeftRaw = payload.seatsLeft;
+  const seatsLeft = Number.isFinite(Number(seatsLeftRaw)) ? String(Number(seatsLeftRaw)) : '-';
+  const tableSignups = Array.isArray(payload.tableSignups)
+    ? payload.tableSignups
+      .map((name) => String(name || '').trim())
+      .filter(Boolean)
+    : [];
   const hasPlusOne = Boolean(plusOneName);
 
   const subject = 'User signed up for table';
+  const tableLabel = tableName || 'table';
+  const signupSummary = tableSignups.length > 0 ? tableSignups.join(' + ') : '-';
   const lines = [
     'User signed up for table',
     '',
@@ -47,7 +56,10 @@ exports.handler = async (event) => {
     `name: ${primaryName || '-'}`,
     `seat: ${primarySeat || '-'}`,
     hasPlusOne ? `+1 name: ${plusOneName}` : '',
-    hasPlusOne ? `+1 seat: ${plusOneSeat || '-'}` : ''
+    hasPlusOne ? `+1 seat: ${plusOneSeat || '-'}` : '',
+    '',
+    `${primaryName || 'A user'} has signed up for date ${date || '-'}, ${seatsLeft} seats left.`,
+    `${tableLabel} sign ups so far: ${signupSummary}`
   ].filter(Boolean);
 
   const resendResponse = await fetch('https://api.resend.com/emails', {

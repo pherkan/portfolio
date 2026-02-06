@@ -43,6 +43,7 @@
     selectedSeat: null,
     selectedPlusOneSeat: null,
     playerNote: '',
+    readOnly: false,
     claims: [],
     lastClaimIds: []
   };
@@ -748,7 +749,7 @@
         button.classList.add('is-selected');
       }
 
-      if (table.seatsLeft < requiredSeatCount()) {
+      if (!state.readOnly && table.seatsLeft < requiredSeatCount()) {
         button.classList.add('is-disabled');
         button.disabled = true;
       }
@@ -866,7 +867,7 @@
   function selectTable(tableId) {
     const selected = tables.find((table) => table.id === tableId);
     if (!selected) return;
-    if (selected.seatsLeft < requiredSeatCount()) {
+    if (!state.readOnly && selected.seatsLeft < requiredSeatCount()) {
       if (els.tableMessage) {
         els.tableMessage.textContent = state.bringingPlusOne
           ? 'this table does not have 2 seats left for you and your +1.'
@@ -889,7 +890,10 @@
 
     els.seatMap.innerHTML = '';
     if (els.seatMessage) els.seatMessage.textContent = '';
-    if (els.claimSeat) els.claimSeat.disabled = true;
+    if (els.claimSeat) {
+      els.claimSeat.hidden = state.readOnly;
+      els.claimSeat.disabled = true;
+    }
 
     const table = document.createElement('div');
     table.className = 'seat-table';
@@ -1029,6 +1033,12 @@
   }
 
   function goToNoteScreen() {
+    if (state.readOnly) {
+      if (els.seatMessage) {
+        els.seatMessage.textContent = 'view only mode: you can browse seats but not claim.';
+      }
+      return;
+    }
     if (!state.selectedTable || !state.selectedSeat) {
       if (els.seatMessage) {
         els.seatMessage.textContent = 'pick a seat first.';
@@ -1046,6 +1056,7 @@
   }
 
   async function claimSeat() {
+    if (state.readOnly) return;
     if (!state.selectedTable || !state.selectedSeat) return;
     if (state.bringingPlusOne && (!state.plusOneName || !state.plusOneSelfie)) return;
     state.selectedPlusOneSeat = null;
@@ -1149,13 +1160,21 @@
         }
         tables = generateTables(state.claims);
         syncSelectedTable();
+        const tableSignups = state.selectedTable
+          ? Array.from(state.selectedTable.seatClaims.entries())
+            .sort((a, b) => a[0] - b[0])
+            .map(([, claim]) => String(claim.name || '').trim())
+            .filter(Boolean)
+          : [];
         notifySignup({
           tableName: state.selectedTable.name,
           date: state.selectedTable.displayDate,
           primaryName: state.playerName,
           primarySeat: state.selectedSeat,
           plusOneName: state.bringingPlusOne ? state.plusOneName : '',
-          plusOneSeat: state.bringingPlusOne ? state.selectedPlusOneSeat : null
+          plusOneSeat: state.bringingPlusOne ? state.selectedPlusOneSeat : null,
+          seatsLeft: state.selectedTable ? state.selectedTable.seatsLeft : null,
+          tableSignups
         });
       }
 
@@ -1371,6 +1390,7 @@
     state.selectedSeat = null;
     state.selectedPlusOneSeat = null;
     state.playerNote = '';
+    state.readOnly = false;
 
     if (els.codeInput) els.codeInput.value = '';
     if (els.codeFeedback) els.codeFeedback.textContent = '';
@@ -1522,7 +1542,17 @@
         startDemoMode();
         break;
       case 'to-quiz':
+        state.readOnly = false;
         showScreen('quiz');
+        break;
+      case 'view-tables-readonly':
+        state.readOnly = true;
+        state.bringingPlusOne = false;
+        state.plusOneName = '';
+        state.plusOneSelfie = null;
+        state.selectedSeat = null;
+        state.selectedPlusOneSeat = null;
+        showScreen('tables');
         break;
       case 'to-selfie':
         showScreen('selfie');
@@ -1567,7 +1597,11 @@
         retakePhoto('plusOne');
         break;
       case 'back-to-plus-one-decision':
-        showScreen('plus-one-decision');
+        if (state.readOnly) {
+          showScreen('intro');
+        } else {
+          showScreen('plus-one-decision');
+        }
         break;
       case 'to-tables':
         showScreen('tables');
