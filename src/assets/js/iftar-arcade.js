@@ -65,6 +65,7 @@
     selfiePreview: root.querySelector('[data-selfie-preview]'),
     selfieCanvas: root.querySelector('[data-selfie-canvas]'),
     cameraError: root.querySelector('[data-camera-error]'),
+    retryCameraAccess: root.querySelector('[data-action="retry-camera-access"]'),
     takePhoto: root.querySelector('[data-action="take-photo"]'),
     retakePhoto: root.querySelector('[data-action="retake-photo"]'),
     selfieContinue: root.querySelector('[data-action="to-plus-one-decision"]'),
@@ -73,6 +74,7 @@
     plusOneSelfiePreview: root.querySelector('[data-plus-one-selfie-preview]'),
     plusOneSelfieCanvas: root.querySelector('[data-plus-one-selfie-canvas]'),
     plusOneCameraError: root.querySelector('[data-plus-one-camera-error]'),
+    retryPlusOneCameraAccess: root.querySelector('[data-action="retry-plus-one-camera-access"]'),
     plusOneTakePhoto: root.querySelector('[data-action="take-plus-one-photo"]'),
     plusOneRetakePhoto: root.querySelector('[data-action="retake-plus-one-photo"]'),
     plusOneContinue: root.querySelector('[data-screen="plus-one-selfie"] [data-action="to-tables"]'),
@@ -508,6 +510,7 @@
         preview: els.plusOneSelfiePreview,
         canvas: els.plusOneSelfieCanvas,
         error: els.plusOneCameraError,
+        retryButton: els.retryPlusOneCameraAccess,
         takeButton: els.plusOneTakePhoto,
         retakeButton: els.plusOneRetakePhoto
       };
@@ -517,6 +520,7 @@
       preview: els.selfiePreview,
       canvas: els.selfieCanvas,
       error: els.cameraError,
+      retryButton: els.retryCameraAccess,
       takeButton: els.takePhoto,
       retakeButton: els.retakePhoto
     };
@@ -552,7 +556,15 @@
       await camera.video.play();
       hideCameraError(mode);
     } catch (err) {
-      showCameraError(mode);
+      const permissionDenied = err && (
+        err.name === 'NotAllowedError'
+        || err.name === 'PermissionDeniedError'
+        || err.name === 'SecurityError'
+      );
+      const message = permissionDenied
+        ? 'please allow camera access to continue.'
+        : 'camera access is required to continue.';
+      showCameraError(mode, message);
     }
   }
 
@@ -565,10 +577,14 @@
     if (els.plusOneSelfieVideo) els.plusOneSelfieVideo.srcObject = null;
   }
 
-  function showCameraError(mode = 'primary') {
+  function showCameraError(mode = 'primary', message = 'camera access is required to continue.') {
     const camera = getCameraElements(mode);
     if (camera.error) {
+      camera.error.textContent = message;
       camera.error.hidden = false;
+    }
+    if (camera.retryButton) {
+      camera.retryButton.hidden = false;
     }
   }
 
@@ -576,6 +592,9 @@
     const camera = getCameraElements(mode);
     if (camera.error) {
       camera.error.hidden = true;
+    }
+    if (camera.retryButton) {
+      camera.retryButton.hidden = true;
     }
   }
 
@@ -628,7 +647,7 @@
 
   function updateSelfieContinue() {
     if (!els.selfieContinue) return;
-    const ready = state.playerName.trim().length > 0;
+    const ready = state.playerName.trim().length > 0 && Boolean(state.playerSelfie);
     els.selfieContinue.disabled = !ready;
   }
 
@@ -1605,6 +1624,14 @@
         break;
       case 'to-plus-one-decision':
         if (!state.playerSelfie) {
+          const cameraMissing = !activeStream || activeCameraMode !== 'primary';
+          if (cameraMissing) {
+            showCameraError('primary', 'please allow camera access first.');
+            if (els.selfieMessage) {
+              els.selfieMessage.textContent = 'please allow camera access first.';
+            }
+            return;
+          }
           if (els.selfieMessage) {
             els.selfieMessage.textContent = 'first take a photo, no photo no continue!!';
           }
@@ -1632,6 +1659,12 @@
         break;
       case 'take-plus-one-photo':
         takePhoto('plusOne');
+        break;
+      case 'retry-camera-access':
+        startCamera('primary');
+        break;
+      case 'retry-plus-one-camera-access':
+        startCamera('plusOne');
         break;
       case 'retake-plus-one-photo':
         retakePhoto('plusOne');

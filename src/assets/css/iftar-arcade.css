@@ -516,6 +516,11 @@ body.iftar-arcade.is-celebrating .arcade {
   margin-top: 8px;
 }
 
+.camera-retry {
+  margin: 8px auto 10px;
+  display: block;
+}
+
 .privacy-inline,
 .privacy-footer {
   font-size: 1.2rem;
