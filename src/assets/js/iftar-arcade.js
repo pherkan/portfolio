@@ -88,7 +88,9 @@
     noteMessage: root.querySelector('[data-note-message]'),
     noteInput: root.querySelector('[data-note-input]'),
     receipt: root.querySelector('[data-receipt]'),
-    demoMessage: root.querySelector('[data-demo-message]')
+    demoMessage: root.querySelector('[data-demo-message]'),
+    celebration: root.querySelector('[data-celebration]'),
+    confetti: root.querySelector('[data-confetti]')
   };
 
   if (els.privacyInline) {
@@ -1055,6 +1057,43 @@
     if (els.noteMessage) els.noteMessage.textContent = message;
   }
 
+  function launchConfetti() {
+    if (!els.confetti) return;
+    const colors = ['#eded50', '#54a7c2', '#2fbf63', '#d94a4a', '#d678c6', '#ffffff'];
+    const pieces = window.matchMedia('(max-width: 720px)').matches ? 64 : 100;
+    els.confetti.innerHTML = '';
+    for (let i = 0; i < pieces; i += 1) {
+      const piece = document.createElement('span');
+      piece.className = 'arcade-confetti__piece';
+      piece.style.setProperty('--x', `${Math.random() * 100}%`);
+      piece.style.setProperty('--delay', `${Math.random() * 0.35}s`);
+      piece.style.setProperty('--duration', `${0.95 + Math.random() * 0.9}s`);
+      piece.style.setProperty('--drift', `${(Math.random() * 2 - 1) * 120}px`);
+      piece.style.setProperty('--rotate', `${Math.random() * 540 - 270}deg`);
+      piece.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+      els.confetti.appendChild(piece);
+    }
+  }
+
+  async function playClaimCelebration() {
+    if (!els.celebration || !els.confetti) return;
+    document.body.classList.add('is-celebrating');
+    root.classList.add('is-celebrating-spin');
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, 1600);
+    });
+    root.classList.remove('is-celebrating-spin');
+
+    launchConfetti();
+    els.celebration.hidden = false;
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, 2000);
+    });
+    document.body.classList.remove('is-celebrating');
+    els.celebration.hidden = true;
+    els.confetti.innerHTML = '';
+  }
+
   async function claimSeat() {
     if (state.readOnly) return;
     if (!state.selectedTable || !state.selectedSeat) return;
@@ -1179,6 +1218,7 @@
       }
 
       playSound(audio.fanfare);
+      await playClaimCelebration();
       showScreen('confirm');
     } catch (err) {
       setClaimMessage('looks like the arcade machine hiccupped. try again in a moment.');
