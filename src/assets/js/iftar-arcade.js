@@ -1189,7 +1189,7 @@
           claimId,
           tableId: state.selectedTable.id,
           tableName: state.selectedTable.name,
-          date: state.selectedTable.displayDate,
+          date: formatDayMonth(state.selectedTable.date),
           seatNumber: state.selectedSeat,
           name: state.playerName,
           note: state.playerNote,
@@ -1215,7 +1215,7 @@
             claimId: plusOneClaimId,
             tableId: state.selectedTable.id,
             tableName: state.selectedTable.name,
-            date: state.selectedTable.displayDate,
+            date: formatDayMonth(state.selectedTable.date),
             seatNumber: state.selectedPlusOneSeat,
             name: state.plusOneName,
             note: state.playerNote,
@@ -1533,6 +1533,12 @@
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     return `${dayName} ${day}/${month}`;
+  }
+
+  function formatDayMonth(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    return `${day}/${month}`;
   }
 
   function formatDateICS(date) {

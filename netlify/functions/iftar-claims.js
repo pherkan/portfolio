@@ -165,9 +165,14 @@ async function ensureHeaders(config, token, incomingKeys) {
 }
 
 async function appendClaim(config, token, payload) {
-  const headers = await ensureHeaders(config, token, Object.keys(payload));
+  const normalizedDate = normalizeDateValue(payload.date);
+  const normalizedPayload = {
+    ...payload,
+    date: normalizedDate || payload.date
+  };
+  const headers = await ensureHeaders(config, token, Object.keys(normalizedPayload));
   const claimId = String(payload.claimId || '').trim() || `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  const normalizedPayload = { ...payload, claimId };
+  normalizedPayload.claimId = claimId;
   const row = headers.map((header) => normalizedPayload[header] ?? '');
   const appendRange = encodeURIComponent(`${config.sheetName}!A:Z`);
 
@@ -186,6 +191,16 @@ async function appendClaim(config, token, payload) {
   );
 
   return { id: claimId };
+}
+
+function normalizeDateValue(value) {
+  const input = String(value || '').trim();
+  if (!input) return '';
+  const match = input.match(/(\d{1,2})[/-](\d{1,2})/);
+  if (!match) return input;
+  const day = String(Number.parseInt(match[1], 10)).padStart(2, '0');
+  const month = String(Number.parseInt(match[2], 10)).padStart(2, '0');
+  return `${day}/${month}`;
 }
 
 async function getSheetId(config, token) {
