@@ -28,7 +28,7 @@ function getEnvConfig() {
   const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || '';
   const privateKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || '';
   const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '';
-  const sheetName = process.env.GOOGLE_SHEETS_SHEET_NAME || 'Sheet1';
+  const sheetName = 'Sheet1';
 
   const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
   if (!serviceEmail || !privateKey || !spreadsheetId) {
