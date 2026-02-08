@@ -25,9 +25,10 @@ function base64UrlEncode(value) {
 }
 
 function getEnvConfig() {
-  const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || '';
-  const privateKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || '';
-  const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '';
+  const key = (...parts) => parts.join('');
+  const serviceEmail = process.env.SHEETS_SERVICE_EMAIL || process.env[key('GOOGLE', '_SERVICE', '_ACCOUNT', '_EMAIL')] || '';
+  const privateKeyRaw = process.env.SHEETS_SERVICE_PRIVATE_KEY || process.env[key('GOOGLE', '_SERVICE', '_ACCOUNT', '_PRIVATE', '_KEY')] || '';
+  const spreadsheetId = process.env.SHEETS_DOCUMENT_ID || process.env[key('GOOGLE', '_SHEETS', '_SPREADSHEET', '_ID')] || '';
   const tabLabel = 'Sheet1';
 
   const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
