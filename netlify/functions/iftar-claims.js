@@ -28,14 +28,14 @@ function getEnvConfig() {
   const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || '';
   const privateKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || '';
   const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '';
-  const sheetName = 'Sheet1';
+  const tabLabel = 'Sheet1';
 
   const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
   if (!serviceEmail || !privateKey || !spreadsheetId) {
     throw new Error('Missing Google Sheets environment variables.');
   }
 
-  return { serviceEmail, privateKey, spreadsheetId, sheetName };
+  return { serviceEmail, privateKey, spreadsheetId, tabLabel };
 }
 
 function buildServiceAccountJwt({ serviceEmail, privateKey }) {
@@ -123,13 +123,13 @@ function toObjectRows(values) {
 }
 
 async function getAllRows(config, token) {
-  const range = encodeURIComponent(`${config.sheetName}!A:Z`);
+  const range = encodeURIComponent(`${config.tabLabel}!A:Z`);
   const data = await sheetsRequest(config, token, `/values/${range}`);
   return toObjectRows(data.values || []);
 }
 
 async function ensureHeaders(config, token, incomingKeys) {
-  const topRowRange = encodeURIComponent(`${config.sheetName}!1:1`);
+  const topRowRange = encodeURIComponent(`${config.tabLabel}!1:1`);
   const topRowData = await sheetsRequest(config, token, `/values/${topRowRange}`);
   const existing = (topRowData.values && topRowData.values[0]) ? topRowData.values[0].map((v) => String(v || '').trim()) : [];
 
@@ -152,7 +152,7 @@ async function ensureHeaders(config, token, incomingKeys) {
       {
         method: 'PUT',
         body: JSON.stringify({
-          range: `${config.sheetName}!1:1`,
+          range: `${config.tabLabel}!1:1`,
           majorDimension: 'ROWS',
           values: [finalHeaders]
         })
@@ -174,7 +174,7 @@ async function appendClaim(config, token, payload) {
   const claimId = String(payload.claimId || '').trim() || `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   normalizedPayload.claimId = claimId;
   const row = headers.map((header) => normalizedPayload[header] ?? '');
-  const appendRange = encodeURIComponent(`${config.sheetName}!A:Z`);
+  const appendRange = encodeURIComponent(`${config.tabLabel}!A:Z`);
 
   await sheetsRequest(
     config,
@@ -183,7 +183,7 @@ async function appendClaim(config, token, payload) {
     {
       method: 'POST',
       body: JSON.stringify({
-        range: `${config.sheetName}!A:Z`,
+        range: `${config.tabLabel}!A:Z`,
         majorDimension: 'ROWS',
         values: [row]
       })
@@ -211,11 +211,11 @@ async function getSheetId(config, token) {
 
   const meta = await sheetsRequest(config, token, '?fields=sheets.properties');
   const sheets = Array.isArray(meta.sheets) ? meta.sheets : [];
-  const match = sheets.find((sheet) => String(sheet.properties && sheet.properties.title).toLowerCase() === config.sheetName.toLowerCase());
+  const match = sheets.find((sheet) => String(sheet.properties && sheet.properties.title).toLowerCase() === config.tabLabel.toLowerCase());
   const fallback = sheets[0];
   const sheetId = match?.properties?.sheetId ?? fallback?.properties?.sheetId;
   if (typeof sheetId !== 'number') {
-    throw new Error(`Sheet "${config.sheetName}" not found.`);
+    throw new Error(`Sheet "${config.tabLabel}" not found.`);
   }
 
   sheetMetaCache = { sheetId, expiresAt: now + 5 * 60 * 1000 };
