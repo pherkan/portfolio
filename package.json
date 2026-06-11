@@ -19,6 +19,7 @@
     "build:once": "npm-run-all build:sass build:scripts build:eleventy postbuild",
     "postbuild": "postcss _site/assets/css/*.css -u autoprefixer cssnano -r --no-map",
     "clean": "rimraf './_site'",
+    "serve:prod": "node server.cjs",
     "dev:css": "npm-run-all watch:sass serve:once",
     "serve:once": "eleventy --serve --quiet"
   },

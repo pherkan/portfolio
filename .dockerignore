@@ -1,0 +1,15 @@
+.git
+.github
+.netlify
+.sass-cache
+.DS_Store
+node_modules
+_site
+
+.env
+.env.*
+!env.example
+pherkan-b8e32fcd3138.json
+
+npm-debug.log*
+*.log
