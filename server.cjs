@@ -1,16 +1,10 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const { URLSearchParams } = require('node:url');
-
-const verifyIftarCode = require('./netlify/functions/verify-iftar-code');
-const notifyIftarSignup = require('./netlify/functions/notify-iftar-signup');
-const iftarClaims = require('./netlify/functions/iftar-claims');
 
 const SITE_DIR = path.join(__dirname, '_site');
 const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || '0.0.0.0';
-const MAX_BODY_BYTES = 1024 * 1024;
 
 const CONTENT_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -29,12 +23,6 @@ const CONTENT_TYPES = {
   '.mp3': 'audio/mpeg',
 };
 
-const FUNCTION_HANDLERS = {
-  '/.netlify/functions/verify-iftar-code': verifyIftarCode.handler,
-  '/.netlify/functions/notify-iftar-signup': notifyIftarSignup.handler,
-  '/.netlify/functions/iftar-claims': iftarClaims.handler,
-};
-
 function send(res, statusCode, body, headers = {}) {
   res.writeHead(statusCode, headers);
   res.end(body);
@@ -44,118 +32,6 @@ function sendJson(res, statusCode, payload, headers = {}) {
   send(res, statusCode, JSON.stringify(payload), {
     'Content-Type': 'application/json; charset=utf-8',
     ...headers,
-  });
-}
-
-function readBody(req) {
-  return new Promise((resolve, reject) => {
-    let size = 0;
-    const chunks = [];
-
-    req.on('data', (chunk) => {
-      size += chunk.length;
-      if (size > MAX_BODY_BYTES) {
-        reject(new Error('request_body_too_large'));
-        req.destroy();
-        return;
-      }
-      chunks.push(chunk);
-    });
-
-    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    req.on('error', reject);
-  });
-}
-
-function getFunctionHandler(pathname) {
-  return Object.entries(FUNCTION_HANDLERS).find(([prefix]) => (
-    pathname === prefix || pathname.startsWith(`${prefix}/`)
-  ));
-}
-
-async function handleFunction(req, res, pathname, searchParams, handler) {
-  const body = await readBody(req);
-  const queryStringParameters = {};
-  for (const [key, value] of searchParams.entries()) {
-    queryStringParameters[key] = value;
-  }
-
-  const result = await handler({
-    httpMethod: req.method,
-    headers: req.headers,
-    path: pathname,
-    rawUrl: `${req.headers.host || ''}${req.url || ''}`,
-    queryStringParameters,
-    body,
-    isBase64Encoded: false,
-  });
-
-  send(res, result.statusCode || 200, result.body || '', result.headers || {});
-}
-
-function parseContactPayload(rawBody, contentType = '') {
-  if (contentType.includes('application/json')) {
-    return JSON.parse(rawBody || '{}');
-  }
-
-  const params = new URLSearchParams(rawBody);
-  return Object.fromEntries(params.entries());
-}
-
-async function sendContactEmail(payload) {
-  const apiKey = (process.env.RESEND_API_KEY || '').trim();
-  if (!apiKey) {
-    throw new Error('resend_api_key_missing');
-  }
-
-  const from = (process.env.RESEND_FROM_EMAIL || process.env.RESEND_FROM || 'onboarding@resend.dev').trim();
-  const to = (process.env.CONTACT_TO_EMAIL || process.env.RESEND_TO || 'me@pherkan.com').trim();
-  const name = String(payload.name || '').trim();
-  const email = String(payload.email || '').trim();
-  const message = String(payload.message || '').trim();
-
-  if (!name || !email || !message) {
-    const error = new Error('missing_required_contact_fields');
-    error.statusCode = 400;
-    throw error;
-  }
-
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: email,
-      subject: `New pherkan.com contact form message from ${name}`,
-      text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        '',
-        message,
-      ].join('\n'),
-    }),
-  });
-
-  if (!response.ok) {
-    const detail = await response.text();
-    const error = new Error(`resend_failed: ${detail}`);
-    error.statusCode = response.status;
-    throw error;
-  }
-}
-
-async function handleContact(req, res) {
-  const rawBody = await readBody(req);
-  const payload = parseContactPayload(rawBody, req.headers['content-type'] || '');
-  await sendContactEmail(payload);
-
-  send(res, 303, '', {
-    Location: '/contact/?sent=1',
-    'Cache-Control': 'no-store',
   });
 }
 
@@ -232,26 +108,16 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
-    const functionRoute = getFunctionHandler(pathname);
-    if (functionRoute) {
-      return await handleFunction(req, res, pathname, url.searchParams, functionRoute[1]);
-    }
-
-    if (req.method === 'POST' && (pathname === '/contact/' || pathname === '/contact/index.html')) {
-      return await handleContact(req, res);
-    }
-
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       return send(res, 405, 'Method not allowed', {
         'Content-Type': 'text/plain; charset=utf-8',
-        Allow: 'GET, HEAD, POST',
+        Allow: 'GET, HEAD',
       });
     }
 
     return serveStatic(req, res, pathname);
   } catch (error) {
-    const statusCode = error.statusCode || (error.message === 'request_body_too_large' ? 413 : 500);
-    return sendJson(res, statusCode, {
+    return sendJson(res, 500, {
       ok: false,
       error: error.message || 'internal_error',
     }, {

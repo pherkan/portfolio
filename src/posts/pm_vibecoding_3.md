@@ -104,9 +104,9 @@ And then I realised the question I would definitely get.
 
 “So who’s coming tomorrow?”
 
-I had already used Resend before for <a href="https://koffie.work" target="_blank" rel="noopener noreferrer">Koffiework</a> and really liked their platform, so I integrated it here as well.
+For the original invite, I added a small email notification.
 
-Now, whenever someone signs up:
+Whenever someone signed up:
 - my wife and I get an email
 - it tells us who signed up
 - and for which date

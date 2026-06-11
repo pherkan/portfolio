@@ -23,7 +23,6 @@ RUN groupadd --system --gid 1001 nodejs \
   && useradd --system --uid 1001 --gid nodejs portfolio
 
 COPY --from=builder --chown=portfolio:nodejs /app/_site ./_site
-COPY --from=builder --chown=portfolio:nodejs /app/netlify/functions ./netlify/functions
 COPY --from=builder --chown=portfolio:nodejs /app/server.cjs ./server.cjs
 
 USER portfolio

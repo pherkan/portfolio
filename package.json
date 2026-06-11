@@ -1,14 +1,13 @@
 {
   "name": "fernfolio-11ty-template",
   "version": "1.0.0",
-  "description": "The super simple portfolio template built with Eleventy and Netlify CMS",
+  "description": "Personal portfolio built with Eleventy",
   "engines": {
     "node": ">=18.17.0"
   },
   "scripts": {
     "prebuild": "node scripts/check-no-secrets.js",
     "start": "cross-env npm-run-all build:sass --parallel watch:*",
-    "dev:netlify": "npx netlify dev",
     "build": "cross-env npm-run-all build:sass build:scripts build:eleventy",
     "watch:scripts": "esbuild \"./src/assets/js/main.js\" --target=es6 --bundle --outfile=\"./_site/assets/js/main.bundle.js\"",
     "build:scripts": "esbuild \"./src/assets/js/main.js\" --target=es6 --bundle --minify --outfile=\"./_site/assets/js/main.bundle.js\"",

@@ -15,17 +15,6 @@ if (enableThemeSwitch) {
   darkMode();
 }
 
-// Handle Netlify Identity Login
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', (user) => {
-    if (!user) {
-      window.netlifyIdentity.on('login', () => {
-        document.location.href = '/admin/';
-      });
-    }
-  });
-}
-
 document.addEventListener("turbolinks:load", () => {
   // 👇 Re-run theme logic or re-trigger any DOM-based styling
   const themeConfig = document.documentElement.dataset;
