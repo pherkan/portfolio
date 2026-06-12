@@ -13,7 +13,7 @@
   opacity: 0;
   transition: opacity 0.3s;
   will-change: opacity;
-  background-color: #000;
+  background-color: var(--color-overlay-strong);
   user-select: none;
 }
 
@@ -65,11 +65,11 @@
   overflow: auto;
   transition: transform 0.3s;
   will-change: transform;
-  background-color: #fff;
+  background-color: var(--color-surface-raised);
   display: flex;
   flex-direction: column;
   transform: translate3d(103%, 0, 0); /* extra 3% because of box-shadow */
-  box-shadow: 0 2px 6px #777;
+  box-shadow: 0 2px 6px var(--color-shadow-strong);
 
   :root[data-theme="dark"] &{
     background-color: var(--color-bg-wrapper-bg-dark);

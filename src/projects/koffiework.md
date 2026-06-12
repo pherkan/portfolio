@@ -11,7 +11,10 @@ tags:
 ogImage: "/assets/img/koffiework/koffiework_og.jpg"
 ---
 
-![Logo of Koffiework with coffee cup on laptop and tagline about laptop-friendly cafés.](/src/assets/img/koffiework/koffiework_1.jpg)
+<picture>
+  <source srcset="/assets/img/koffiework/koffiework-scroll.webp" type="image/webp">
+  <img class="project-video" src="/assets/img/koffiework/koffiework-scroll.gif" alt="Screen recording of the Koffiework homepage slowly scrolling through laptop-friendly cafe listings." width="700" height="394">
+</picture>
 
 Ever searched for a café on Google Maps that looked perfect in the photos, only to get there and discover burnt dark roast beans, barely two or three seats, and no chance of opening your laptop without being in the way? That was unfortunately my experience during my holiday this year in **Türkiye**, and that became the spark to start **Koffiework**.  
 

@@ -3,7 +3,7 @@ import format from 'https://unpkg.com/date-fns@2.7.0/esm/format/index.js?module'
 
 const html = htm.bind(h);
 
-// Preview component for an Article
+// Preview component for a blogpost
 const Article = createClass({
   render() {
     const entry = this.props.entry;

@@ -8,7 +8,7 @@ permalink: /blog/index.html
   {{ layoutContent | safe }}
 	<hr/>
 
-  {# Article List #}
+  {# Blogpost List #}
   {% from "macros/articlelist.njk" import articlelist %}
   {{ articlelist(
     articles = pagination.items | reverse,

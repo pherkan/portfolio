@@ -11,6 +11,9 @@ section: home
       {% if home.body %}
         <h1 class="hero__headline">{{ home.body | safe }}</h1>
       {% endif %}
+      <div class="hero__actions">
+        <a class="btn btn--special-cta hero__cta" href="{{ '/contact/' | url }}">Get in touch</a>
+      </div>
     </div>
   </div>
 
@@ -20,12 +23,12 @@ section: home
     <a class="btn btn--outline btn--sm" href="/projects" aria-label="View all projects">View All</a>
   </div>
   {% from "macros/projectcards.njk" import projectcards %}
-  {{ projectcards(collections.project | reverse, 3, 'Featured projects') }}
+  {{ projectcards(collections.project | reverse, 2, 'Featured projects', 'home-projects--featured') }}
 
-  {# Articles #}
+  {# Blogposts #}
   <div class="list-header">
-    <h2 class="list-header__title">Articles</h2>
-    <a class="btn btn--outline btn--sm" href="/blog" aria-label="View all articles">View All</a>
+    <h2 class="list-header__title">Blogposts</h2>
+    <a class="btn btn--outline btn--sm" href="/blog" aria-label="View all blogposts">View All</a>
   </div>
   {% from "macros/articlelist.njk" import articlelist %}
   {{ articlelist(
@@ -34,9 +37,9 @@ section: home
     limit = 3
   ) }}
 
-  {# External Links #}
+  {# Elsewhere #}
   <div class="list-header">
-    <h2 class="list-header__title">External Links</h2>
+    <h2 class="list-header__title">elsewhere:</h2>
     {# Optional: Add a "View All" link if you plan a dedicated page later #}
     {# <a class="btn btn--outline btn--sm" href="/external-links">View All</a> #}
   </div>

@@ -1,21 +1,87 @@
 :root {
-  /* Brand Colors */
-  --color-primary: #222;
-  --color-secondary: #D39983;
+  /* Core palette */
+  --palette-blush-base: #eed8d0;
 
-  /* Background Colors */
-  --color-bg: #F7EEEA;
-  --color-bg-secondary: #f7f7f7;
-  --color-bg-accent: rgb(174, 182, 225);
-  --color-bg-hover: #EED8D0;
+  --palette-blush-shade-10: #d6c2bb;
+  --palette-blush-shade-20: #beada6;
+  --palette-blush-shade-30: #a79792;
+  --palette-blush-shade-40: #8f827d;
+  --palette-blush-shade-50: #776c68;
+  --palette-blush-shade-60: #5f5653;
+  --palette-blush-shade-70: #47413e;
+  --palette-blush-shade-80: #302b2a;
+  --palette-blush-shade-90: #181615;
 
-  /* Text and Border Colors */
-  --color-text: #222;
-  --color-text-alt: #fff;
-  --color-text-gray: #6b7280;
-  --color-border: rgb(0 0 0 / 6%);
+  --palette-blush-tint-10: #f0dcd5;
+  --palette-blush-tint-20: #f1e0d9;
+  --palette-blush-tint-30: #f3e4de;
+  --palette-blush-tint-40: #f5e8e3;
+  --palette-blush-tint-50: #f7ece8;
+  --palette-blush-tint-60: #f8efec;
+  --palette-blush-tint-70: #faf3f1;
+  --palette-blush-tint-80: #fcf7f6;
+  --palette-blush-tint-90: #fdfbfa;
 
-  /* Status Colors */
+  /* Semantic colors */
+  --color-page: var(--palette-blush-tint-50);
+  --color-surface: var(--palette-blush-tint-80);
+  --color-surface-raised: var(--palette-blush-tint-90);
+  --color-surface-muted: var(--palette-blush-base);
+  --color-surface-hover: var(--palette-blush-tint-30);
+  --color-surface-selected: var(--palette-blush-tint-20);
+
+  --color-text-primary: var(--palette-blush-shade-90);
+  --color-text-secondary: var(--palette-blush-shade-60);
+  --color-text-inverse: var(--palette-blush-tint-90);
+  --color-link: var(--palette-blush-shade-60);
+  --color-link-hover: var(--palette-blush-shade-50);
+  --color-accent: var(--palette-blush-shade-60);
+  --color-accent-hover: var(--palette-blush-shade-50);
+
+  --color-border-subtle: var(--palette-blush-shade-10);
+  --color-overlay: rgb(24 22 21 / 50%);
+  --color-overlay-strong: rgb(24 22 21 / 80%);
+  --color-shadow: rgb(24 22 21 / 10%);
+  --color-shadow-strong: rgb(24 22 21 / 60%);
+  --color-shadow-soft: rgb(24 22 21 / 8%);
+  --color-chip-bg: var(--palette-blush-tint-30);
+  --color-media-bg: var(--palette-blush-tint-20);
+
+  /* Dark theme semantic colors */
+  --color-page-dark: var(--palette-blush-shade-90);
+  --color-surface-dark: var(--palette-blush-shade-80);
+  --color-surface-raised-dark: var(--palette-blush-shade-70);
+  --color-surface-hover-dark: var(--palette-blush-shade-70);
+  --color-text-primary-dark: var(--palette-blush-tint-90);
+  --color-text-secondary-dark: var(--palette-blush-tint-30);
+  --color-link-dark: var(--palette-blush-tint-20);
+  --color-accent-dark: var(--palette-blush-base);
+  --color-border-subtle-dark: var(--palette-blush-shade-60);
+  --color-chip-bg-dark: var(--palette-blush-shade-70);
+  --color-media-bg-dark: var(--palette-blush-shade-70);
+
+  /* Legacy aliases */
+  --color-primary: var(--color-text-primary);
+  --color-secondary: var(--color-accent);
+  --color-bg: var(--color-page);
+  --color-bg-secondary: var(--color-surface);
+  --color-bg-accent: var(--color-surface-muted);
+  --color-bg-hover: var(--color-surface-hover);
+  --color-text: var(--color-text-primary);
+  --color-text-alt: var(--color-text-inverse);
+  --color-text-gray: var(--color-text-secondary);
+  --color-border: var(--color-border-subtle);
+
+  --color-secondary-dark: var(--color-accent-dark);
+  --color-bg-dark: var(--color-page-dark);
+  --color-bg-wrapper-bg-dark: var(--color-page-dark);
+  --color-bg-secondary-dark: var(--color-surface-dark);
+  --color-bg-accent-dark: var(--color-surface-raised-dark);
+  --color-title-dark: var(--color-text-primary-dark);
+  --color-text-dark: var(--color-text-secondary-dark);
+  --color-border-dark: var(--color-border-subtle-dark);
+
+  /* Status colors */
   --color-danger: #e03e3e;
 
   /* Typography */
@@ -37,8 +103,14 @@
   --font-size-small: 0.875rem;
   --font-size-button: 1rem;
 
+  /* Button spacing */
+  --button-padding-block: 0.625rem;
+  --button-padding-inline: 0.9375rem;
+  --button-sm-padding-block: 0.45rem;
+  --button-sm-padding-inline: 1.1rem;
+
   /* Sizes */
-  --site-width: 850px;
+  --site-width: 1060px;
   --header-height: 66px;
   --header-height-lg: 76px;
 
@@ -48,21 +120,5 @@
   /* Other */
   --border-radius: 24px;
   --border-radius-sm: 12px;
-  --shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
-
-  // Dark mode colors
-  --color-secondary-dark: rgb(158, 112, 95);
-
-  --color-link-dark: rgb(223, 180, 164);
-
-  --color-bg-dark: rgb(49 31 23);
-  --color-bg-wrapper-bg-dark: rgb(49 31 23);
-  --color-bg-secondary-dark: rgb(76, 39, 29);
-  --color-bg-accent-dark: rgb(8, 51, 68);
-
-  --color-title-dark: rgb(244 244 245);
-  --color-text-dark: rgb(217, 218, 217);
-
-  --color-border-dark: rgb(39, 39, 42);
-
+  --shadow: 0 10px 15px -3px var(--color-shadow), 0 4px 6px -2px var(--color-shadow-soft);
 }

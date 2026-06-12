@@ -1,62 +1,44 @@
 ---
 title: About Me
-subtitle: I’m a product manager working at the intersection of AI,
-  accessibility, and inclusive design.
-metaDescription: a page about pherkan.
+subtitle: I’m a senior product manager working at the intersection of AI,
+  automation, UX, and real-world workflows.
+metaDescription: a page about pherkan, senior product manager working across AI, automation, UX, accessibility, and product development.
 date: 2017-01-01T00:00:00.000Z
 permalink: /about/index.html
 eleventyNavigation:
   key: About
   order: 1
 ---
-So, something about me I guess?
+heya, welcome.
 
-Well, I have a background in **industrial design engineering (BSc)** and **design for interaction (MSc)**. My journey began in **UX research** and then I progressed into **product design**, and now, as a **Product Manager at [Envision](https://letsenvision.com)**, i lead the development of groundbreaking AI-powered solutions for people who are blind or have low vision.
+i’m a senior product manager working at the intersection of **AI**, **automation**, **UX**, and **real-world workflows**. i like working on complex problems where technology, people, and everyday work come together.
 
-## my work at envision
+## currently
 
-at **envision**, i work on products like the **[Envision Glasses](https://letsenvision.com/glasses)**—an AI-powered wearable that converts visual information into speech, enhancing **independence and accessibility** for thousands globally.
+currently, i work at **Exact** in product line accountancy, automation and AI. my focus is **banking automation**: shaping smarter workflows that help accountancy professionals save time, reduce manual work, and manage financial processes more efficiently.
 
-my role involves:
+## before exact
 
-* defining **product strategy**
-* balancing **user needs** with **technological possibilities**
-* leading a **cross-functional team** in a fast-paced **startup environment**
+before Exact, i spent 5+ years at **[Envision](https://letsenvision.com)** building AI-powered accessibility products for people who are blind or have low vision.
 
-## what i do
+i worked across **smartglasses**, **mobile apps**, **computer vision**, **LLMs**, and **conversational AI**, helping turn the visual world into speech and making technology more usable for more people.
 
-As a **product manager**, i leverage:
+## koffiework
 
-* **figma** for design and prototyping  
-* **notion** for agile project management  
-* analytics tools like **google analytics** and **mixpanel** for data-driven insights  
+next to my work, i’m building **Koffiework**: a platform for discovering laptop-friendly cafes and specialty coffee spots.
 
-My familiarity with backend tools such as **Firebase, Supabase** and **Gradio** enables me to collaborate effectively with technical teams, ensuring that our **AI and machine learning models** align seamlessly with our product vision.  
+it has become my hands-on product lab for **AI-assisted development**, community reviews, analytics, growth, databases, authentication, and running a real platform end to end.
 
-I combine:
+## background
 
-* **data analysis**
-* **user observation**
-* **interviews**
-* **co-creation workshops**  
+my background includes an **MSc in Design for Interaction from TU Delft**, and my career has moved from **UX research** to **product design** to **product management**.
 
-to ground our products in real-world feedback.
+that mix helps me connect user needs, product strategy, design quality, and technical possibilities.
 
-## my approach
+## what i care about
 
-i’m committed to **continuous iteration** and **inclusive design**, updating our products **monthly** with new features shaped by our **user community**.  
+i’m especially interested in **AI-native product development**, **automation**, **LLMs**, complex workflows, and products that become genuinely useful in everyday life.
 
-with a strong foundation in **accessibility standards**, i ensure that our solutions are:
-
-* **functional**
-* **empowering** for users  
-
-collaboration is key to my process, and i’m adept at **bridging diverse teams**, from development to customer support, to keep projects **aligned** and **innovative**.
-
-## looking forward
-
-i’m driven by a vision to push the boundaries of **assistive technology**, ensuring that AI remains a tool for **inclusivity** and **transformation**.  
-
-my goal is to keep creating products that make a lasting, **positive impact** on people’s lives—**empowering individuals** with the tools they need to **navigate their world independently**.
+whether it’s banking automation, accessibility technology, or a side project like Koffiework, my focus is the same: build things that are **clear**, **useful**, and **actually used**.
 
 ![pherkan with cat](/src/assets/img/pherkan_cat.jpeg "photo of pherkan on his laptop with katmer, a british longhair cat")

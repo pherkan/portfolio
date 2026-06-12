@@ -5,5 +5,42 @@ section: contact
 <div class="page-container">
   <h1>{{ title }}</h1>
   <hr/>
-  {{ layoutContent | safe }}
+  <div class="contact-page">
+    <div class="contact-page__intro">
+      {{ layoutContent | safe }}
+    </div>
+
+    <form class="contact-form" name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="contact-form__honeypot">
+        <label>Do not fill this out if you are human: <input name="bot-field"></label>
+      </p>
+
+      <div class="contact-form__field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" autocomplete="name" placeholder="Your name" required>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" autocomplete="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="7" placeholder="What would you like to chat about?" required></textarea>
+      </div>
+
+      <button class="contact-form__submit btn" type="submit">Send message</button>
+    </form>
+
+    <section class="contact-socials" aria-labelledby="contact-socials-title">
+      <h2 id="contact-socials-title">Elsewhere</h2>
+      <p>You can also contact me on LinkedIn or X.</p>
+      <div class="contact-socials__links">
+        <a class="btn btn--outline" href="https://nl.linkedin.com/in/ferkanmetin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn--outline" href="https://x.com/pherkan" target="_blank" rel="noopener noreferrer">X</a>
+      </div>
+    </section>
+  </div>
 </div>

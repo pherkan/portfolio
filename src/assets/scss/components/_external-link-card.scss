@@ -1,51 +1,79 @@
-.external-link-grid {
+.external-link-list {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6, 1.5rem);
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.external-link-card {
+.external-link-list__item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 52px;
+}
+
+.external-link-list__logo {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 44px;
+  margin: 0;
+  border-radius: 8px;
   background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-base, 12px);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  object-fit: contain;
 
   :root[data-theme="dark"] & {
     background-color: var(--color-bg-secondary-dark);
   }
+}
 
-  &__content {
-    padding: var(--spacing-6, 1rem);
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 0.75rem;
+.external-link-list__logo--text {
+  padding: 0.25rem;
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  text-transform: none !important;
+
+  :root[data-theme="dark"] & {
+    border-color: var(--color-border-subtle-dark);
+    color: var(--color-text-alt);
+  }
+}
+
+.external-link-list__logo--placeholder {
+  background-color: var(--color-chip-bg);
+
+  :root[data-theme="dark"] & {
+    background-color: var(--color-chip-bg-dark);
+  }
+}
+
+.external-link-list__link {
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+
+  &:hover,
+  &:focus {
+    color: var(--color-link);
   }
 
-  &__title {
-    margin: 0 0 var(--spacing-2, 0.5rem);
+  :root[data-theme="dark"] & {
+    color: var(--color-text-alt);
   }
 
-  &__description {
-    margin: 0;
-    color: var(--color-text-gray);
-
-    :root[data-theme="dark"] & {
-      color: var(--color-text-alt); /* white in dark mode as requested */
-    }
-
-    p {
-      margin: 0; /* keep compact inside cards */
-    }
-  }
-
-  &__button {
-    align-self: flex-start;
+  :root[data-theme="dark"] &:hover,
+  :root[data-theme="dark"] &:focus {
+    color: var(--color-link-dark);
   }
 }

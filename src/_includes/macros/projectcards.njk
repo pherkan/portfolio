@@ -1,4 +1,4 @@
-{% macro projectcards(projects, limit = 0, section_label = 'Projects') %}
+{% macro projectcards(projects, limit = 0, section_label = 'Projects', modifier = '') %}
   {% if limit and limit > 0 %}
     {% set items = projects | take(limit) %}
   {% else %}
@@ -6,7 +6,7 @@
   {% endif %}
 
   {% if items | length %}
-    <section class="home-projects" aria-label="{{ section_label }}">
+    <section class="home-projects{% if modifier %} {{ modifier }}{% endif %}" aria-label="{{ section_label }}">
       {% for project in items %}
         {% set projectUrl = project.url | url %}
         {% set projectTitle = project.data.title or 'Untitled project' %}
@@ -15,7 +15,7 @@
         {% set previewAlt = project.data.previewImageAlt %}
         {% set projectTags = project.data.tags or [] %}
         {% set headingId = 'project-card-title-' ~ loop.index0 ~ '-' ~ project.fileSlug %}
-        <article class="home-project-card">
+        <article class="home-project-card{% if previewImage %} home-project-card--has-media{% endif %}{% if previewImage and loop.index0 % 2 == 1 %} home-project-card--reverse{% endif %}">
           <div class="home-project-card__content">
             <h3 class="home-project-card__title" id="{{ headingId }}">
               <a class="home-project-card__title-link" href="{{ projectUrl }}">{{ projectTitle }}</a>

@@ -25,14 +25,14 @@
 } */
 
 .gradient-text {
-  background: linear-gradient(130deg, #5183f5, #af002d 41.07%, #c79191 76.05%);
+  background: linear-gradient(130deg, var(--palette-blush-shade-70), var(--palette-blush-base) 45%, var(--palette-blush-shade-40));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .btn {
-  padding: 10px 15px;
+  padding: var(--button-padding-block) var(--button-padding-inline);
   border: none;
   border-radius: var(--border-radius-sm);
   background-color: var(--color-secondary);
@@ -59,7 +59,7 @@
 }
 
 .btn--sm {
-  padding: 6px 8px;
+  padding: var(--button-sm-padding-block) var(--button-sm-padding-inline);
 }
 
 .btn--outline {
@@ -78,6 +78,8 @@
   }
 
   &:hover, &:focus {
+    border: 2px solid var(--color-secondary);
+    border-bottom: 2px solid var(--color-secondary) !important;
     border-color: var(--color-secondary);
     filter: none;
     background-color: transparent;

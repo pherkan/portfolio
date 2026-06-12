@@ -10,4 +10,6 @@ eleventyNavigation:
   key: Contact
   order: 4
 ---
-get in touch with me by email: [me@pherkan.com](mailto:me@pherkan.com)
+Email still works: [me@pherkan.com](mailto:me@pherkan.com).
+
+Or send a message through the form below.

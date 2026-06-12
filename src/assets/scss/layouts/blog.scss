@@ -26,7 +26,7 @@
   }
 
   :root[data-theme="dark"] & {
-    background-color: #1D1714;
+    background-color: var(--color-surface-dark);
     box-shadow: none;
   }
 
@@ -38,7 +38,7 @@
   width: 100%;
   aspect-ratio: 1 / 1; /* square */
   object-fit: contain; /* show entire image */
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--color-media-bg);
   display: block;
   margin-bottom: 0.5rem;
   /* Match the card's corner radius on the top */
@@ -148,7 +148,7 @@
 .tag {
   margin: 10px 10px 0 0;
   padding: 0.2rem 0.5rem;
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: var(--color-chip-bg);
   border-radius: 999px; /* match project tags */
   color: var(--color-text);
   white-space: nowrap;
@@ -179,7 +179,7 @@
   }
 
   :root[data-theme="dark"] & {
-    background-color: rgba(255, 255, 255, 0.14);
+    background-color: var(--color-chip-bg-dark);
     color: var(--color-text-dark);
   }
 }

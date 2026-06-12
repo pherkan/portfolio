@@ -17,6 +17,7 @@ const CONTENT_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
   '.wav': 'audio/wav',
@@ -87,7 +88,7 @@ function serveFile(res, filePath, statusCode) {
     'X-Content-Type-Options': 'nosniff',
   };
 
-  if (['.css', '.js', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.wav', '.mp3'].includes(ext)) {
+  if (['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.wav', '.mp3'].includes(ext)) {
     headers['Cache-Control'] = 'public, max-age=31536000, immutable';
   } else {
     headers['Cache-Control'] = 'public, max-age=0, must-revalidate';

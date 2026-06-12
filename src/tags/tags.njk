@@ -7,11 +7,11 @@ permalink: /tags/{{ tag }}/
 layout: base.njk
 renderData:
   title: "Posts tagged “{{ tag }}”"
-  metaDescription: "All posts from the Blog tagged with “{{ tag }}”"
+  metaDescription: "All blogposts tagged with “{{ tag }}”"
 ---
 <div class="page-container">
   <div class="tag-list tag-list--no-wrap">
-    <h1 class="tag-list__title">Articles Tagged: "{{ tag | capitalize }}"</h1>
+    <h1 class="tag-list__title">Blogposts Tagged: "{{ tag | capitalize }}"</h1>
     <a class="btn btn--sm btn--danger" href="/blog">Remove Tag</a>
   </div>
 
@@ -22,6 +22,6 @@ renderData:
   ) }}
 
   <nav>
-    <a href="{{ '/blog/' | url }}">← View All Articles</a>
+    <a href="{{ '/blog/' | url }}">← View All Blogposts</a>
   </nav>
 </div>
