@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Caprasimo&family=Domine:wght@400..700&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
   
   {# CSS #}
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=' ~ assetVersion | url }}">
   
   {# OG + Twitter meta tags #}
   {% set ogTitle = renderData.title or title or metadata.title %}
@@ -55,5 +55,5 @@
       themeConfig.theme = (useSystemTheme && prefersDark) ? 'dark' : defaultTheme;
     }
   </script>
-  <script defer src="{{ '/assets/js/main.bundle.js' | url }}"></script>
+  <script defer src="{{ '/assets/js/main.bundle.js?v=' ~ assetVersion | url }}"></script>
 </head>

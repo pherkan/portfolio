@@ -20,6 +20,7 @@
   place-items: center;
   width: 64px;
   height: 44px;
+  max-width: 64px;
   margin: 0;
   border-radius: 8px;
   background-color: var(--color-bg-secondary);
@@ -28,6 +29,15 @@
   :root[data-theme="dark"] & {
     background-color: var(--color-bg-secondary-dark);
   }
+}
+
+img.external-link-list__logo {
+  display: block;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 44px;
+  max-width: 64px;
+  margin: 0;
 }
 
 .external-link-list__logo--text {

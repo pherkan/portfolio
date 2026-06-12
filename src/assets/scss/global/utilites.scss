@@ -5,7 +5,7 @@
   padding: 1rem;
 
   /* Apply default image styling to content images, but not to card previews */
-  img:not(.article-card__image) {
+  img:not(.article-card__image):not(.external-link-list__logo) {
     display: flex;
     width: 100%;
     max-width: 700px;
