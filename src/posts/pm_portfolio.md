@@ -1,7 +1,7 @@
 ---
 title: "From No-Code Comfort to Coding Confidence: A Designer's Journey Beyond WordPress"
 date: 2025-03-23T10:34:03.530Z
-summary: Transforming my outdated WordPress portfolio into a custom-coded website with Netlify, GitHub, and 11ty. Embracing code unlocked invaluable technical skills and creative freedom.
+summary: Transforming my outdated WordPress portfolio into a custom-coded website with GitHub, 11ty, and a VPS. Embracing code unlocked invaluable technical skills and creative freedom.
 metaDescription: Explore my journey from no-code comfort to coding confidence as I build a custom portfolio using modern web development tools, saving costs and gaining new skills.
 tags:
   - Webdevelopment
@@ -30,10 +30,10 @@ I began by exploring several no-code platforms:
 
 These solutions work well for many, but I realized that by sticking with no-code, I’d be missing out on the opportunity to learn the technology that powers our digital world.
 
-## The Netlify, GitHub, and 11ty Adventure
+## The GitHub, 11ty, and VPS Adventure
 
 Determined to break out of my no-code comfort zone, I embarked on a more technical journey:
-- **Choosing the Right Stack:** I settled on using Netlify, GitHub, and an 11ty template. I also experimented with Jekyll, Hugo, Gatsby, and Next.js, but 11ty struck the perfect balance between simplicity and flexibility.
+- **Choosing the Right Stack:** I settled on using GitHub, 11ty, and a Docker-based VPS setup. I also experimented with Jekyll, Hugo, Gatsby, and Next.js, but 11ty struck the perfect balance between simplicity and flexibility.
 - **Diving into Development Tools:** Transitioning from no-code tools to a code-based workflow was a major shift. I learned to use npm, npx, and Visual Studio Code. Now, I can quickly make changes in VS Code, see the results locally via localhost, and then push the changes to GitHub if I’m satisfied. The process of setting up a local development environment, managing packages, and deploying through GitHub wasn’t instantaneous—it took time, effort, and a lot of learning. Yet, every moment invested expanded my technical toolkit.
 - **Guided by Modern AI:** Leaning on ChatGPT and Claude, I navigated troubleshooting and debugging. Their support transformed what could have been a frustrating ordeal into a series of manageable, educational steps.
 - **A Designer’s Journey Into Code:** As a designer in university, my strong suit was design and UX. I knew the basics of coding but never really enjoyed it. However, as I pushed through this challenge—breaking my brain over new concepts—I discovered that overcoming these hurdles truly enhances your skill set and confidence.

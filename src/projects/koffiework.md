@@ -47,7 +47,7 @@ The answer was simple: no. Dozens of people confirmed the same frustration. Some
 ---
 
 ## Starting building  
-I kicked things off by setting up the basics: **Next.js** for the frontend, **Supabase** for the backend, **Netlify** for hosting, Google Auth through Supabase, and Supabase Storage for images. It was a lean stack that allowed me to move fast without overcomplicating things (just kidding; this was already as complex as it can get for someone like me).  
+I kicked things off by setting up the basics: **Next.js** for the frontend, **Supabase** for the backend, a lightweight hosting setup, Google Auth through Supabase, and Supabase Storage for images. It was a lean stack that allowed me to move fast without overcomplicating things (just kidding; this was already as complex as it can get for someone like me).  
 
 To speed up development and learn as I went, I experimented with different AI coding assistants. I started in VS Code with Roo integration (using Requesty.ai), moved on to get a monthly subscription to Cursor, then switched to Claude Code, and nowadays I even test out Codex for some use cases. Each tool helped me code faster, debug smarter, and understand why certain changes were needed. But also each tool and model taught me about the differences between them; which is worth another separate blogpost later.  
 

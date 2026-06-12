@@ -17,8 +17,7 @@ const SECRET_PATTERNS = [
   { name: 'AWS access key', regex: /\bAKIA[0-9A-Z]{16}\b/g },
   { name: 'Google API key', regex: /\bAIza[0-9A-Za-z\-_]{35}\b/g },
   { name: 'Slack token', regex: /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/g },
-  { name: 'Stripe key', regex: /\bsk_(?:live|test)_[0-9A-Za-z]{16,}\b/g },
-  { name: 'Netlify token', regex: /\bnfp_[0-9a-f]{32,}\b/gi }
+  { name: 'Stripe key', regex: /\bsk_(?:live|test)_[0-9A-Za-z]{16,}\b/g }
 ];
 
 function getTrackedFiles() {

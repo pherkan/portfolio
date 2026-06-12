@@ -12,4 +12,4 @@ eleventyNavigation:
 ---
 Email still works: [me@pherkan.com](mailto:me@pherkan.com).
 
-Or send a message through the form below.
+I am always happy to talk about product work, AI prototyping, accessibility, or thoughtful side projects.
