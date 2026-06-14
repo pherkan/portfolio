@@ -37,7 +37,8 @@
 .article-card__image {
   width: 100%;
   aspect-ratio: 1 / 1; /* square */
-  object-fit: contain; /* show entire image */
+  object-fit: cover;
+  object-position: center;
   background-color: var(--color-media-bg);
   display: block;
   margin-bottom: 0.5rem;
