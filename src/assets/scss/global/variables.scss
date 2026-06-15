@@ -60,6 +60,14 @@
   --color-chip-bg-dark: var(--palette-blush-shade-70);
   --color-media-bg-dark: var(--palette-blush-shade-70);
 
+  /* Button colors */
+  --color-button-bg: var(--palette-blush-shade-90);
+  --color-button-text: var(--palette-blush-tint-90);
+  --color-button-bg-dark: var(--palette-blush-tint-90);
+  --color-button-text-dark: var(--palette-blush-shade-90);
+  --color-button-hover-bg: var(--palette-blush-base);
+  --color-button-hover-text: var(--palette-blush-shade-90);
+
   /* Legacy aliases */
   --color-primary: var(--color-text-primary);
   --color-secondary: var(--color-accent);

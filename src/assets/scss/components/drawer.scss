@@ -35,21 +35,27 @@
   margin: 0;
   padding: 0;
   border: none;
-  background-color: transparent;
-  color: var(--color-text);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   cursor: pointer;
   width: 18px;
   height: 18px;
   flex-shrink: 0;
   margin-left: 1rem;
 
+  &:hover,
+  &:focus {
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
+  }
+
   svg {
     width: 100%;
   }
 
   :root[data-theme="dark"] &{
-    color: var(--color-text-dark);
-    background-color:transparent
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
   }
 }
 
@@ -130,10 +136,16 @@
   padding: 0;
   margin: 0;
   border: none;
-  background: none;
-  color: var(--color-text);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   text-align: left;
   font: inherit;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
+  }
 
   svg {
     width: 20px;
@@ -142,5 +154,12 @@
 }
 
 :root[data-theme="dark"] .drawer__theme-switch {
-  color: var(--color-title-dark);
+  background-color: var(--color-button-bg-dark);
+  color: var(--color-button-text-dark);
+}
+
+:root[data-theme="dark"] .drawer__theme-switch:hover,
+:root[data-theme="dark"] .drawer__theme-switch:focus {
+  background-color: var(--color-button-hover-bg);
+  color: var(--color-button-hover-text);
 }

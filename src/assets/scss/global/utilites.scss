@@ -35,8 +35,8 @@
   padding: var(--button-padding-block) var(--button-padding-inline);
   border: none;
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-secondary);
-  color: var(--color-text-alt);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   font-size: var(--font-size-button);
   white-space: nowrap;
   border-bottom: none;
@@ -48,7 +48,14 @@
   transform: none;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 
+  :root[data-theme="dark"] & {
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
+  }
+
   &:hover, &:focus {
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
     border-bottom: none !important;
     filter: none;
     box-shadow: none;
@@ -63,58 +70,58 @@
 }
 
 .btn--outline {
-  border: 2px solid var(--color-text);
-  background-color: transparent;
-  color: var(--color-text);
+  border: 2px solid var(--color-button-bg);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   border-radius: 999px; /* pill */
   text-decoration: none;
   box-shadow: none;
   transform: none;
 
   :root[data-theme="dark"] & {
-    border-color: var(--color-text-alt); /* white in dark mode */
-    background-color: transparent;
-    color: var(--color-text-alt);
+    border-color: var(--color-button-bg-dark);
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
   }
 
   &:hover, &:focus {
-    border: 2px solid var(--color-secondary);
-    border-bottom: 2px solid var(--color-secondary) !important;
-    border-color: var(--color-secondary);
+    border: 2px solid var(--color-button-hover-bg);
+    border-bottom: 2px solid var(--color-button-hover-bg) !important;
+    border-color: var(--color-button-hover-bg);
     filter: none;
-    background-color: transparent;
-    color: var(--color-secondary);
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
     text-decoration: none;
     box-shadow: none;
     transform: none;
 
     :root[data-theme="dark"] & {
-      border-color: var(--color-secondary);
-      background-color: transparent;
-      color: var(--color-secondary);
+      border-color: var(--color-button-hover-bg);
+      background-color: var(--color-button-hover-bg);
+      color: var(--color-button-hover-text);
     }
   }
 }
 
 .btn--danger {
-  background-color: var(--color-danger);
-  color: var(--color-text-alt);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-danger);
-    color: var(--color-text-alt);
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
   }
 }
 
 .btn--danger:hover,
 .btn--danger:focus {
   border: none;
-  background-color: var(--color-danger);
-  color: var(--color-text-alt);
-  filter: brightness(90%);
+  background-color: var(--color-button-hover-bg);
+  color: var(--color-button-hover-text);
+  filter: none;
 
   :root[data-theme="dark"] & {
-    color: var(--color-text-alt);
+    color: var(--color-button-hover-text);
   }
 }
 

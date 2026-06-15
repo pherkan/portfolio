@@ -89,30 +89,30 @@
 
 .btn--special-cta {
   border-radius: 999px;
-  background-color: var(--color-primary);
-  color: var(--color-text-alt);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   box-shadow: none;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover,
   &:focus {
-    background-color: var(--color-surface-muted);
-    color: var(--color-primary);
-    box-shadow: 6px 6px 0 var(--color-primary);
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
+    box-shadow: 6px 6px 0 var(--color-button-bg);
     transform: translate(-2px, -2px);
   }
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-primary);
-    color: var(--color-text-alt);
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
     box-shadow: none;
   }
 
   :root[data-theme="dark"] &:hover,
   :root[data-theme="dark"] &:focus {
-    background-color: var(--color-accent-dark);
-    color: var(--color-primary);
-    box-shadow: 6px 6px 0 var(--color-primary);
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
+    box-shadow: 6px 6px 0 var(--color-button-bg-dark);
   }
 }
 
@@ -303,8 +303,8 @@
   margin-top: auto;
   padding: 0.8rem 1.5rem;
   border-radius: 999px;
-  background-color: var(--color-primary);
-  color: var(--color-text-alt);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   font-weight: 600;
   font-size: var(--font-size-button);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -314,15 +314,15 @@
   box-shadow: none;
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-bg-secondary-dark);
-    color: var(--color-bg);
+    background-color: var(--color-button-bg-dark);
+    color: var(--color-button-text-dark);
   }
 
   /* Direct hover/focus states for buttons (used in projects and articles) */
   &:hover,
   &:focus {
-    background-color: var(--color-secondary);
-    color: var(--color-text-alt);
+    background-color: var(--color-button-hover-bg);
+    color: var(--color-button-hover-text);
     text-decoration: none;
     border: none !important;
     border-bottom: none !important;
