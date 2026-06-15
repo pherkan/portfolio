@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Koffiework hosting mental model</title>
+  <desc id="desc">A flow diagram showing a user reaching koffie.work through Cloudflare, Hetzner, Coolify, and the Koffiework app, which connects to Supabase and external services.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f5653"/>
+    </marker>
+    <filter id="soft-shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#181615" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    .bg { fill: #f7ece8; }
+    .node { fill: #fcf7f6; stroke: #beada6; stroke-width: 3; filter: url(#soft-shadow); }
+    .node-accent { fill: #f1e0d9; stroke: #8f827d; }
+    .label { fill: #181615; font-family: Lexend, Arial, sans-serif; font-size: 28px; font-weight: 700; text-anchor: middle; }
+    .small { fill: #47413e; font-family: Lexend, Arial, sans-serif; font-size: 21px; font-weight: 500; text-anchor: middle; }
+    .line { fill: none; stroke: #5f5653; stroke-width: 4; marker-end: url(#arrow); }
+    .branch { fill: none; stroke: #776c68; stroke-width: 4; marker-end: url(#arrow); }
+  </style>
+  <rect class="bg" width="1200" height="760" rx="36"/>
+
+  <rect class="node" x="80" y="76" width="250" height="112" rx="24"/>
+  <text class="label" x="205" y="122">User opens</text>
+  <text class="small" x="205" y="154">koffie.work</text>
+
+  <rect class="node" x="475" y="76" width="250" height="112" rx="24"/>
+  <text class="label" x="600" y="122">Cloudflare</text>
+  <text class="small" x="600" y="154">DNS and proxy</text>
+
+  <rect class="node" x="870" y="76" width="250" height="112" rx="24"/>
+  <text class="label" x="995" y="122">hetzner VPS</text>
+  <text class="small" x="995" y="154">rented server</text>
+
+  <rect class="node" x="870" y="286" width="250" height="112" rx="24"/>
+  <text class="label" x="995" y="332">Coolify</text>
+  <text class="small" x="995" y="364">deployments</text>
+
+  <rect class="node node-accent" x="475" y="286" width="250" height="112" rx="24"/>
+  <text class="label" x="600" y="332">Koffiework</text>
+  <text class="small" x="600" y="364">Next.js app</text>
+
+  <rect class="node" x="205" y="510" width="250" height="112" rx="24"/>
+  <text class="label" x="330" y="556">Supabase</text>
+  <text class="small" x="330" y="588">managed backend</text>
+
+  <rect class="node" x="615" y="510" width="330" height="112" rx="24"/>
+  <text class="label" x="780" y="556">External services</text>
+  <text class="small" x="780" y="588">places, email, payments</text>
+
+  <rect class="node" x="80" y="654" width="170" height="64" rx="18"/>
+  <text class="small" x="165" y="694">Database</text>
+
+  <rect class="node" x="282" y="654" width="170" height="64" rx="18"/>
+  <text class="small" x="367" y="694">Auth</text>
+
+  <rect class="node" x="484" y="654" width="170" height="64" rx="18"/>
+  <text class="small" x="569" y="694">Photo storage</text>
+
+  <rect class="node" x="724" y="654" width="170" height="64" rx="18"/>
+  <text class="small" x="809" y="694">Google Places</text>
+
+  <rect class="node" x="926" y="654" width="220" height="64" rx="18"/>
+  <text class="small" x="1036" y="694">Resend, Stripe...</text>
+
+  <path class="line" d="M 330 132 H 463"/>
+  <path class="line" d="M 725 132 H 858"/>
+  <path class="line" d="M 995 188 V 274"/>
+  <path class="line" d="M 870 342 H 738"/>
+  <path class="branch" d="M 540 398 C 500 448 430 470 365 500"/>
+  <path class="branch" d="M 665 398 C 700 448 745 470 770 500"/>
+  <path class="branch" d="M 300 622 C 270 638 220 638 178 648"/>
+  <path class="branch" d="M 340 622 V 642"/>
+  <path class="branch" d="M 380 622 C 420 638 500 638 556 648"/>
+  <path class="branch" d="M 780 622 V 642"/>
+  <path class="branch" d="M 845 622 C 890 638 960 638 1026 648"/>
+</svg>

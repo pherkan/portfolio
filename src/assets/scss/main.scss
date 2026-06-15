@@ -25,9 +25,22 @@
 }
 
 /* Remove lowercase transform for individual posts and projects */
-html[data-current="post"] .page-container article *:not(.tag):not(.btn),
+html[data-current="post"] body.is-post .page-container article,
+html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn),
 html[data-current="project"] .page-container *:not(nav):not(.tag):not(.btn) {
   text-transform: none !important;
+}
+
+html[data-current="post"] .article-diagram {
+  margin: 4rem auto;
+  max-width: 760px;
+}
+
+html[data-current="post"] .article-diagram img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Remove lowercase transform on homepage hero body */

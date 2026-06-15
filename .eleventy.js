@@ -12,7 +12,7 @@ const { readableDateFilter, machineDateFilter } = require('./src/_11ty/filters/d
 
 const SASS_COOLDOWN_MS = 10_000;
 let lastSassCompile = 0;
-const assetVersion = process.env.SOURCE_COMMIT || Date.now().toString(36);
+let assetVersion = process.env.SOURCE_COMMIT || Date.now().toString(36);
 
 module.exports = function (eleventyConfig) {
   // Plugins
@@ -37,7 +37,7 @@ module.exports = function (eleventyConfig) {
 
     return collection.slice(0, count);
   });
-  eleventyConfig.addGlobalData('assetVersion', assetVersion);
+  eleventyConfig.addGlobalData('assetVersion', () => assetVersion);
 
   // Shortcodes
   eleventyConfig.addNunjucksAsyncShortcode('image', imageShortcode);
@@ -63,6 +63,7 @@ module.exports = function (eleventyConfig) {
       });
 
       fs.writeFileSync("src/assets/css/main.css", result.css);
+      assetVersion = process.env.SOURCE_COMMIT || Date.now().toString(36);
       lastSassCompile = now;
       console.log("✅ SCSS compiled successfully!");
     } catch (error) {

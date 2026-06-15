@@ -106,20 +106,9 @@ That might sound like a technical choice, but to me it felt like a product choic
 
 This is the simplified mental model I needed to understand what was happening. It is not meant to be a perfect architecture diagram, but more a way to explain the moving parts to myself.
 
-```mermaid
-flowchart TD
-  A["User opens koffie.work"] --> B["Cloudflare DNS and proxy"]
-  B --> C["Hetzner VPS"]
-  C --> D["Coolify"]
-  D --> E["Koffiework Next.js app"]
-  E --> F["Supabase"]
-  F --> G["Database"]
-  F --> H["Authentication"]
-  F --> I["Storage for cafe photos"]
-  E --> J["External services"]
-  J --> K["Google Places"]
-  J --> L["Resend, Telegram, Stripe, RevenueCat"]
-```
+<figure class="article-diagram">
+  <img src="/assets/img/pm_backend_before_understanding/koffiework-mental-model.svg" alt="Flow diagram showing a user reaching koffie.work through Cloudflare, Hetzner, Coolify, and the Koffiework app, which connects to Supabase and external services.">
+</figure>
 
 In less diagrammy words: Cloudflare controls where `koffie.work` points and adds protection in front of the site. Hetzner is the rented server. Coolify runs on that server and handles deployments. The Koffiework app runs there as a Docker container. Supabase still handles the database, authentication, and storage. External services handle things like Google Places, emails, payments, app subscriptions, and notifications.
 
