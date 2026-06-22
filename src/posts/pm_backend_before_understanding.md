@@ -17,6 +17,8 @@ ogImage: "/assets/img/pm_backend_before_understanding/pm_backend_before_understa
 
 It would be an understatement to say that I have been into the so-called 'vibecoding' for more than a year now.
 
+(I mean the photo above was even one simple prompt to turn a photo of me at the beach into an "AI" photo where I'm shrugging).
+
 Less than two years ago, building something on the web usually meant opening a tool I already understood: WordPress, Framer, Figma, Carrd, to name a few. Maybe a plugin here, a template there, a few settings, some styling, publish, done.
 
 There is nothing wrong with that. Those tools are great. They help you get something online fast. They are especially useful when the idea is still small, when the goal is mostly visual, or when you just want to validate something without turning it into a whole technical adventure. (And also the only feasible solution before LLMs where such a thing)

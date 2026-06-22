@@ -24,9 +24,15 @@
   text-transform: lowercase !important;
 }
 
-/* Remove lowercase transform for individual posts and projects */
+/* Remove lowercase transform for written content */
 html[data-current="post"] body.is-post .page-container article,
 html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn),
+html[data-current="blog"] .page-container > h1,
+html[data-current="blog"] .page-container > p,
+html[data-current="blog"] .article-card__content,
+html[data-current="blog"] .article-card__content *:not(.tag):not(.btn),
+html[data-current="home"] .article-card__content,
+html[data-current="home"] .article-card__content *:not(.tag):not(.btn),
 html[data-current="project"] .page-container *:not(nav):not(.tag):not(.btn) {
   text-transform: none !important;
 }
