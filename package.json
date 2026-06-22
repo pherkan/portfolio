@@ -59,5 +59,8 @@
   },
   "dependencies": {
     "turbolinks": "^5.2.0"
+  },
+  "overrides": {
+    "browserslist": "4.28.1"
   }
 }
