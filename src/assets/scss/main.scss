@@ -49,9 +49,9 @@ html[data-current="post"] .article-diagram img {
   margin: 0 auto;
 }
 
-/* Remove lowercase transform on homepage hero body */
-html[data-current="home"] .hero__body,
-html[data-current="home"] .hero__body * {
+/* Remove lowercase transform on homepage hero headline */
+html[data-current="home"] .hero__headline,
+html[data-current="home"] .hero__headline * {
   text-transform: none !important;
 }
 

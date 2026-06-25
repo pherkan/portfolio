@@ -116,19 +116,33 @@
   }
 }
 
+.hero__intro-wrap {
+  display: inline-block;
+  position: relative;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
+}
+
 .hero__avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 60px;
-  height: 60px;
-  margin-right: 0.5rem;
-  margin-top: 12px; /* add spacing above on mobile */
+  position: absolute;
+  left: calc(100% + 0.5rem);
+  top: 50%;
+  width: 1.35em;
+  height: 1.35em;
+  margin: 0;
+  transform: translateY(-50%);
   vertical-align: middle;
 
-  @media (min-width: 768px) {
-    margin-top: 0; /* reset on tablet/desktop */
+  @media (max-width: 480px) {
+    display: flex;
+    position: static;
+    margin: 0.25rem auto 0;
+    transform: none;
   }
 }
 
