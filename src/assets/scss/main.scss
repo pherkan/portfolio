@@ -24,16 +24,14 @@
   text-transform: lowercase !important;
 }
 
-/* Remove lowercase transform for written content */
+/* Keep blog post articles in normal case */
 html[data-current="post"] body.is-post .page-container article,
-html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn),
-html[data-current="blog"] .page-container > h1,
-html[data-current="blog"] .page-container > p,
-html[data-current="blog"] .article-card__content,
-html[data-current="blog"] .article-card__content *:not(.tag):not(.btn),
-html[data-current="home"] .article-card__content,
-html[data-current="home"] .article-card__content *:not(.tag):not(.btn),
-html[data-current="project"] .page-container *:not(nav):not(.tag):not(.btn) {
+html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn) {
+  text-transform: none !important;
+}
+
+/* Preserve abbreviations outside blog posts */
+.casing-abbr {
   text-transform: none !important;
 }
 
@@ -47,12 +45,6 @@ html[data-current="post"] .article-diagram img {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-}
-
-/* Remove lowercase transform on homepage hero headline */
-html[data-current="home"] .hero__headline,
-html[data-current="home"] .hero__headline * {
-  text-transform: none !important;
 }
 
 /* Apply 'Domine' to body text, links, and subheadings */

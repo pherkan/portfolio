@@ -1,49 +1,49 @@
 ---
-title: Suzkan's Summer BBQ 2025
+title: suzkan's summer BBQ 2025
 layout: page.njk
 permalink: /bbq/index.html
-metaDescription: Start of summer BBQ party hosted by Ferkan & Suzan — with great food, friends, and a side of birthday.
+metaDescription: start of summer BBQ party hosted by ferkan & suzan — with great food, friends, and a side of birthday.
 ogImage: "/assets/img/bbq.png"
 ---
-**📆 Date:**
-Saturday, May 17th – 16:00 to 23:00
+**📆 date:**
+saturday, may 17th – 16:00 to 23:00
 
-**📍 Location:**
-Herengracht 50B  
-2511 EJ DEN HAAG
+**📍 location:**
+herengracht 50B<br>
+2511 EJ den haag
 
 ---
 
-It’s time to light the grill, crack open something cold, and officially welcome summer with a backyard-style BBQ.
+it’s time to light the grill, crack open something cold, and officially welcome summer with a backyard-style BBQ.
 
 <img src="/assets/img/bbq.png" alt="BBQ party banner" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 12px;" />
 
 ---
 
-## 🥳 Join us!  
-Suzan and I are hosting a cozy get-together with good food, chill vibes, and great company.
+## 🥳 join us!
+suzan and i are hosting a cozy get-together with good food, chill vibes, and great company.
 
-There’ll be plenty of meat, veggie options, snacks, music, and that *slightly chaotic* energy that every good BBQ needs.
+there’ll be plenty of meat, veggie options, snacks, music, and that *slightly chaotic* energy that every good BBQ needs.
 
-Oh — and I’m also turning 31 😅🥳.
+oh — and i’m also turning 31 😅🥳.
 
 ---
 
 ## 🍗 RSVP below to save your spot
 
 <form id="rsvpForm">
-  <label>Your Name:<br>
+  <label>your name:<br>
     <input type="text" name="name" id="name" required>
   </label><br><br>
 
-  <label>Are you bringing a +1?<br>
+  <label>are you bringing a +1?<br>
     <select name="plusOne" id="plusOne" required>
-      <option value="no">No, it's just me ugh.</option>
-      <option value="yes">Si, oui, yes. I'm bringing one extra human.</option>
+      <option value="no">no, it's just me ugh.</option>
+      <option value="yes">si, oui, yes. i'm bringing one extra human.</option>
     </select>
   </label><br><br>
 
-  <button type="submit">Count me in 🎉</button>
+  <button type="submit">count me in 🎉</button>
 </form>
 
 <p id="submitMessage" style="margin-top: 1rem;"></p>
@@ -56,7 +56,7 @@ Oh — and I’m also turning 31 😅🥳.
     const plusOne = document.getElementById("plusOne").value;
 
     if (!name) {
-      alert("Please enter your name.");
+      alert("please enter your name.");
       return;
     }
 
@@ -81,7 +81,7 @@ Oh — and I’m also turning 31 😅🥳.
       })
       .catch(error => {
         console.error("Error submitting RSVP:", error);
-        document.getElementById("submitMessage").innerText = "Something went wrong. Please try again!";
+        document.getElementById("submitMessage").innerText = "something went wrong. please try again!";
       });
   });
 </script>
@@ -90,5 +90,5 @@ Oh — and I’m also turning 31 😅🥳.
 
 ---
 
-Looking forward to seeing you there!  
-**– Ferkan & Suzan**
+looking forward to seeing you there!<br>
+**– ferkan & suzan**

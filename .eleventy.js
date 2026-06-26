@@ -5,6 +5,7 @@ const fs = require("fs");
 const imageShortcode = require('./src/_11ty/shortcodes/image-shortcode');
 const markdownLibrary = require('./src/_11ty/libraries/markdown-library');
 const minifyHtml = require('./src/_11ty/utils/minify-html');
+const preserveAbbreviations = require('./src/_11ty/utils/preserve-abbreviations');
 const markdownFilter = require('./src/_11ty/filters/markdown-filter');
 const svgFilter = require('./src/_11ty/filters/svg-filter');
 const browserSyncConfig = require('./src/_11ty/utils/browser-sync-config');
@@ -74,6 +75,9 @@ module.exports = function (eleventyConfig) {
   // ✅ Ensure CSS and SCSS are properly handled
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
   eleventyConfig.addWatchTarget('./src/assets/scss/');
+
+  // ✅ Preserve abbreviations before global lowercase CSS is applied
+  eleventyConfig.addTransform('preserveAbbreviations', preserveAbbreviations);
 
   // ✅ Minify HTML output
   eleventyConfig.addTransform('htmlmin', minifyHtml);
