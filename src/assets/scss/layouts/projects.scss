@@ -39,22 +39,88 @@
 }
 
 .project-card__tag {
-  background-color: var(--color-secondary);
-  color: var(--color-text-alt);
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  min-height: 1.85rem;
+  margin-top: 0.5rem;
+  padding: 0.32rem 0.68rem;
+  border: 1px solid rgb(255 255 255 / 46%);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 36%), rgb(255 255 255 / 12%)),
+    rgb(247 247 247 / 34%);
+  box-shadow:
+    0 8px 18px rgb(24 22 21 / 4%),
+    inset 0 1px 0 rgb(255 255 255 / 46%);
+  color: #141414;
+  font-family: var(--font-family-base);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: none !important;
+  white-space: nowrap;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+  &::before {
+    content: "";
+    width: 0.36rem;
+    height: 0.36rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #251bff;
+  }
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-secondary-dark);
-    color: var(--color-text-alt);
+    border-color: rgb(255 255 255 / 10%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 9%), rgb(255 255 255 / 3%)),
+      rgb(48 43 42 / 34%);
+    box-shadow:
+      0 8px 18px rgb(0 0 0 / 12%),
+      inset 0 1px 0 rgb(255 255 255 / 8%);
+    color: var(--color-text-dark);
   }
 
-  &:hover {
-    color: var(--color-text-alt);
-    filter: brightness(90%);
+  &:hover,
+  &:focus {
+    border-color: rgb(255 255 255 / 62%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 48%), rgb(255 255 255 / 18%)),
+      rgb(247 247 247 / 42%);
+    color: #141414;
+    filter: none;
 
     :root[data-theme="dark"] & {
-      color: var(--color-text-alt);
+      border-color: rgb(255 255 255 / 16%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 5%)),
+        rgb(48 43 42 / 42%);
+      color: var(--color-title-dark);
     }
   }
+}
+
+.project-card .tag-list .project-card__tag:nth-of-type(2)::before {
+  background: #ff5b1a;
+}
+
+.project-card .tag-list .project-card__tag:nth-of-type(3)::before {
+  background: #d414ee;
+}
+
+.project-card .tag-list .project-card__tag:nth-of-type(4)::before {
+  background: #ff1616;
+}
+
+.project-card .tag-list .project-card__tag:nth-of-type(5)::before {
+  background: #159a43;
+}
+
+.project-card .tag-list .project-card__tag:nth-of-type(6)::before {
+  background: #52d9ee;
 }
 
 .project-card__emoji {

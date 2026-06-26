@@ -13,6 +13,10 @@
   }
 }
 
+body.is-post .page-container {
+  max-width: 760px;
+}
+
 /* Slightly tighter gutters on small screens */
 @media (max-width: 480px) {
   .page-container {
@@ -33,10 +37,12 @@
 
 .btn {
   padding: var(--button-padding-block) var(--button-padding-inline);
-  border: none;
-  border-radius: var(--border-radius-sm);
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 58%), rgb(255 255 255 / 20%)),
+    rgb(253 251 250 / 42%);
+  color: var(--color-text);
   font-size: var(--font-size-button);
   white-space: nowrap;
   border-bottom: none;
@@ -44,24 +50,56 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: none;
+  box-shadow:
+    0 8px 18px rgb(24 22 21 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 64%),
+    inset 0 -1px 0 rgb(24 22 21 / 5%);
   transform: none;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-button-bg-dark);
-    color: var(--color-button-text-dark);
+    border-color: rgb(255 255 255 / 15%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+      rgb(255 255 255 / 8%);
+    color: var(--color-title-dark);
+    -webkit-text-fill-color: var(--color-title-dark);
+    box-shadow:
+      0 8px 18px rgb(0 0 0 / 24%),
+      inset 0 1px 0 rgb(255 255 255 / 12%),
+      inset 0 -1px 0 rgb(0 0 0 / 24%);
   }
 
   &:hover, &:focus {
-    background-color: var(--color-button-hover-bg);
-    color: var(--color-button-hover-text);
+    border-color: rgb(255 255 255 / 68%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 30%)),
+      rgb(253 251 250 / 54%);
+    color: var(--color-text);
     border-bottom: none !important;
     filter: none;
-    box-shadow: none;
+    box-shadow:
+      0 10px 22px rgb(24 22 21 / 11%),
+      inset 0 1px 0 rgb(255 255 255 / 76%),
+      inset 0 -1px 0 rgb(24 22 21 / 5%);
     transform: none;
     outline: none;
     text-decoration: none;
+
+    :root[data-theme="dark"] & {
+      border-color: rgb(255 255 255 / 24%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 23%), rgb(255 255 255 / 8%)),
+        rgb(255 255 255 / 12%);
+      color: var(--color-title-dark);
+      -webkit-text-fill-color: var(--color-title-dark);
+    }
   }
 }
 
@@ -70,58 +108,75 @@
 }
 
 .btn--outline {
-  border: 2px solid var(--color-button-bg);
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
+  border: 2px solid rgb(255 255 255 / 50%);
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 58%), rgb(255 255 255 / 20%)),
+    rgb(253 251 250 / 42%);
+  color: var(--color-text);
   border-radius: 999px; /* pill */
   text-decoration: none;
-  box-shadow: none;
+  box-shadow:
+    0 8px 18px rgb(24 22 21 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 64%),
+    inset 0 -1px 0 rgb(24 22 21 / 5%);
   transform: none;
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
 
   :root[data-theme="dark"] & {
-    border-color: var(--color-button-bg-dark);
-    background-color: var(--color-button-bg-dark);
-    color: var(--color-button-text-dark);
+    border-color: rgb(255 255 255 / 15%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+      rgb(255 255 255 / 8%);
+    color: var(--color-title-dark);
+    -webkit-text-fill-color: var(--color-title-dark);
+    box-shadow:
+      0 8px 18px rgb(0 0 0 / 24%),
+      inset 0 1px 0 rgb(255 255 255 / 12%),
+      inset 0 -1px 0 rgb(0 0 0 / 24%);
   }
 
   &:hover, &:focus {
-    border: 2px solid var(--color-button-hover-bg);
-    border-bottom: 2px solid var(--color-button-hover-bg) !important;
-    border-color: var(--color-button-hover-bg);
+    border: 2px solid rgb(255 255 255 / 68%);
+    border-bottom: 2px solid rgb(255 255 255 / 68%) !important;
     filter: none;
-    background-color: var(--color-button-hover-bg);
-    color: var(--color-button-hover-text);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 30%)),
+      rgb(253 251 250 / 54%);
+    color: var(--color-text);
     text-decoration: none;
-    box-shadow: none;
+    box-shadow:
+      0 10px 22px rgb(24 22 21 / 11%),
+      inset 0 1px 0 rgb(255 255 255 / 76%),
+      inset 0 -1px 0 rgb(24 22 21 / 5%);
     transform: none;
 
     :root[data-theme="dark"] & {
-      border-color: var(--color-button-hover-bg);
-      background-color: var(--color-button-hover-bg);
-      color: var(--color-button-hover-text);
+      border-color: rgb(255 255 255 / 24%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 23%), rgb(255 255 255 / 8%)),
+        rgb(255 255 255 / 12%);
+      color: var(--color-title-dark);
+      -webkit-text-fill-color: var(--color-title-dark);
     }
   }
 }
 
 .btn--danger {
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
+  border-color: rgb(255 255 255 / 50%);
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-button-bg-dark);
-    color: var(--color-button-text-dark);
+    border-color: rgb(255 255 255 / 15%);
   }
 }
 
 .btn--danger:hover,
 .btn--danger:focus {
-  border: none;
-  background-color: var(--color-button-hover-bg);
-  color: var(--color-button-hover-text);
+  border-color: rgb(255 255 255 / 68%);
   filter: none;
 
   :root[data-theme="dark"] & {
-    color: var(--color-button-hover-text);
+    border-color: rgb(255 255 255 / 24%);
   }
 }
 

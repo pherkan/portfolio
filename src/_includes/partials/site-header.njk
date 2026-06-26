@@ -14,29 +14,51 @@
     >
       {{ global.menu_icon | svg | safe }}
     </button>
-    <nav class="site-header__nav">
-      {% set navPages = collections.all | eleventyNavigation %}
+    {% set navPages = collections.all | eleventyNavigation %}
+    <nav class="site-header__nav" aria-label="Primary navigation">
       <ul class="site-header__items">
-        {%- for entry in navPages %}
-          <li class="site-header__item">
-            <a
-              class="site-header__link"
-              href="{{ entry.url | url }}"
-              {% if entry.url == page.url %} aria-current data-current="current item"{% endif %}
-            >
-              {{ entry.title }}
-            </a>
-          </li>
+        <li class="site-header__item">
+          <a
+            class="site-header__link"
+            href="{{ '/' | url }}"
+            {% if page.url == "/" %} aria-current="page" data-current="current item"{% endif %}
+          >
+            Home
+          </a>
+        </li>
+        {%- for entry in navPages | reverse %}
+          {% if entry.url != "/contact/" %}
+            <li class="site-header__item">
+              <a
+                class="site-header__link"
+                href="{{ entry.url | url }}"
+                {% if entry.url == page.url or (entry.url == "/blog/" and section == "post") or (entry.url == "/projects/" and section == "project") %} aria-current="page" data-current="current item"{% endif %}
+              >
+                {{ entry.title }}
+              </a>
+            </li>
+          {% endif %}
         {%- endfor %}
-
-        {% if global.enable_theme_switch %}
-          <li class="site-header__item">
-            <button class="site-header__link site-header__link--theme-switch" data-theme-switch aria-label="Toggle theme">
-              {{ global.switch_theme_icon | svg | safe }}
-            </button>
-          </li>
-        {% endif %}
       </ul>
     </nav>
+    <div class="site-header__actions">
+      {% if global.enable_theme_switch %}
+        <button class="site-header__link site-header__link--theme-switch" data-theme-switch aria-label="Toggle theme">
+          {{ global.switch_theme_icon | svg | safe }}
+        </button>
+      {% endif %}
+
+      {%- for entry in navPages %}
+        {% if entry.url == "/contact/" %}
+          <a
+            class="site-header__link site-header__link--cta"
+            href="{{ entry.url | url }}"
+            {% if entry.url == page.url %} aria-current="page" data-current="current item"{% endif %}
+          >
+            get in touch
+          </a>
+        {% endif %}
+      {%- endfor %}
+    </div>
   </div>
 </header>

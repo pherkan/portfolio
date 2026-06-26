@@ -11,9 +11,32 @@ section: home
       {% if home.body %}
         <h1 class="hero__headline">{{ home.body | safe }}</h1>
       {% endif %}
-      <div class="hero__actions">
-        <a class="btn btn--special-cta hero__cta" href="{{ '/contact/' | url }}">Get in touch</a>
-      </div>
+      <ul class="hero-tags" aria-label="Focus areas">
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>AI</span>
+        </li>
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>Automation</span>
+        </li>
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>Accessibility</span>
+        </li>
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>Product Strategy</span>
+        </li>
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>AI-assisted Prototyping</span>
+        </li>
+        <li class="hero-tag">
+          <span class="hero-tag__dot" aria-hidden="true"></span>
+          <span>0→1 Products</span>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -36,14 +59,5 @@ section: home
     show_tags = true,
     limit = 3
   ) }}
-
-  {# Elsewhere #}
-  <div class="list-header">
-    <h2 class="list-header__title">elsewhere:</h2>
-    {# Optional: Add a "View All" link if you plan a dedicated page later #}
-    {# <a class="btn btn--outline btn--sm" href="/external-links">View All</a> #}
-  </div>
-  {% from "macros/externallinklist.njk" import externallinklist %}
-  {{ externallinklist(links = collections.externalLink | reverse) }}
 
 </div>

@@ -66,15 +66,18 @@ img.external-link-list__logo {
 
 .external-link-list__link {
   width: fit-content;
+  border-bottom: 2px solid transparent;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
   color: var(--color-text);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.18em;
+  transition: border-color 0.2s ease, color 0.2s ease;
 
   &:hover,
   &:focus {
+    border-bottom-color: var(--color-link);
     color: var(--color-link);
   }
 
@@ -84,6 +87,7 @@ img.external-link-list__logo {
 
   :root[data-theme="dark"] &:hover,
   :root[data-theme="dark"] &:focus {
+    border-bottom-color: var(--color-link-dark);
     color: var(--color-link-dark);
   }
 }

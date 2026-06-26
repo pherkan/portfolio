@@ -7,9 +7,7 @@ permalink: /contact/index.html
 subtitle: Contact Subtitle
 title: Get in touch
 eleventyNavigation:
-  key: Contact
+  key: Get in touch
   order: 4
 ---
-Email still works: [me@pherkan.com](mailto:me@pherkan.com).
-
-I am always happy to talk about product work, AI prototyping, accessibility, or thoughtful side projects.
+I am always happy to talk about anything related to Product Management, AI, LLMs, Accessibility, wearables, or specialty coffee.

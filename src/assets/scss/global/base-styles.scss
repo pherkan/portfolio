@@ -9,6 +9,12 @@ html {
   scroll-padding-top: 100px;
   font-size: 100%;
   font-family: var(--font-family-base);
+  background-color: var(--color-bg);
+  overscroll-behavior-y: none;
+}
+
+:root[data-theme="dark"] {
+  background-color: var(--color-bg-dark);
 }
 
 body {
@@ -20,6 +26,7 @@ body {
   line-height: 1.4;
   color: var(--color-text);
   background-color: var(--color-bg);
+  overscroll-behavior-y: none;
 
   :root[data-theme="dark"] & {
     background-color: var(--color-bg-dark);
@@ -312,15 +319,32 @@ input[type='button'] {
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
-  border-radius: 1px;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 58%), rgb(255 255 255 / 20%)),
+    rgb(253 251 250 / 42%);
+  box-shadow:
+    0 8px 18px rgb(24 22 21 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 64%),
+    inset 0 -1px 0 rgb(24 22 21 / 5%);
+  color: var(--color-text);
   cursor: pointer;
   box-sizing: border-box;
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-button-bg-dark);
-    color: var(--color-button-text-dark);
+    border-color: rgb(255 255 255 / 15%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+      rgb(255 255 255 / 8%);
+    box-shadow:
+      0 8px 18px rgb(0 0 0 / 24%),
+      inset 0 1px 0 rgb(255 255 255 / 12%),
+      inset 0 -1px 0 rgb(0 0 0 / 24%);
+    color: var(--color-title-dark);
+    -webkit-text-fill-color: var(--color-title-dark);
   }
 }
 
@@ -343,9 +367,25 @@ input[type='reset']:focus:enabled,
 input[type='reset']:hover:enabled,
 input[type='button']:focus:enabled,
 input[type='button']:hover:enabled {
-  background-color: var(--color-button-hover-bg);
-  color: var(--color-button-hover-text);
+  border-color: rgb(255 255 255 / 68%);
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 30%)),
+    rgb(253 251 250 / 54%);
+  box-shadow:
+    0 10px 22px rgb(24 22 21 / 11%),
+    inset 0 1px 0 rgb(255 255 255 / 76%),
+    inset 0 -1px 0 rgb(24 22 21 / 5%);
+  color: var(--color-text);
   outline: 0;
+
+  :root[data-theme="dark"] & {
+    border-color: rgb(255 255 255 / 24%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 23%), rgb(255 255 255 / 8%)),
+      rgb(255 255 255 / 12%);
+    color: var(--color-title-dark);
+    -webkit-text-fill-color: var(--color-title-dark);
+  }
 }
 
 textarea,

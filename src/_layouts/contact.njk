@@ -4,23 +4,42 @@ section: contact
 ---
 <div class="page-container">
   <h1>{{ title }}</h1>
-  <hr/>
   <div class="contact-page">
-    <div class="contact-page__intro">
+    <div class="contact-page__intro" id="contact-intro">
       {{ layoutContent | safe }}
     </div>
 
-    <div class="contact-actions" aria-label="Contact options">
-      <a class="btn" href="mailto:me@pherkan.com">Email me</a>
-      <a class="btn btn--outline" href="https://nl.linkedin.com/in/ferkanmetin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-
-    <section class="contact-socials" aria-labelledby="contact-socials-title">
-      <h2 id="contact-socials-title">Elsewhere</h2>
-      <p>You can also contact me on LinkedIn or X.</p>
-      <div class="contact-socials__links">
-        <a class="btn btn--outline" href="https://x.com/pherkan" target="_blank" rel="noopener noreferrer">X</a>
+    <form class="contact-form" action="mailto:me@pherkan.com" method="post" enctype="text/plain" aria-describedby="contact-intro">
+      <div class="contact-form__field">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" required aria-required="true">
       </div>
-    </section>
+
+      <div class="contact-form__field">
+        <label for="contact-email">Email address</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" required aria-required="true">
+      </div>
+
+      <div class="contact-form__field">
+        <label for="contact-subject">Subject</label>
+        <input id="contact-subject" name="subject" type="text" autocomplete="off">
+      </div>
+
+      <div class="contact-form__field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="7" required aria-required="true"></textarea>
+      </div>
+
+      <button class="btn btn--special-cta contact-form__submit" type="submit">Email me</button>
+    </form>
+
+    <p class="contact-direct">
+      You can also email me directly:
+      <a href="mailto:me@pherkan.com">me@pherkan.com</a>
+      or contact me on
+      <a href="https://nl.linkedin.com/in/ferkanmetin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      or
+      <a href="https://x.com/pherkan" target="_blank" rel="noopener noreferrer">Twitter</a>.
+    </p>
   </div>
 </div>

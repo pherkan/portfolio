@@ -1,10 +1,26 @@
 .site-header {
   position: fixed;
+  top: -160px;
+  left: 0;
   width: 100%;
+  box-sizing: border-box;
+  padding-top: 168px;
   z-index: var(--z-header);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0,
+    var(--color-bg) calc(100% - 10px),
+    transparent 100%
+  );
   font-family: var(--font-family-base);
 
   :root[data-theme="dark"] & {
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg-dark) 0,
+      var(--color-bg-dark) calc(100% - 10px),
+      transparent 100%
+    );
     border-color: var(--color-bg-accent-dark);
   }
 }
@@ -14,21 +30,43 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin: 8px 12px 0;
-  padding: 4px 8px;
-  /* border: 1px solid var(--color-border); */
+  box-sizing: border-box;
+  width: calc(100% - 24px);
+  margin: 0 12px;
+  padding: 6px 16px 6px 18px;
+  border: 1px solid rgb(255 255 255 / 55%);
   border-radius: 100px !important;
-  background-color: var(--color-bg);
-  /* box-shadow: var(--shadow); */
-  background-color: var(--color-bg-secondary) !important;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 44%), rgb(255 255 255 / 14%)),
+    rgb(253 251 250 / 42%);
+  box-shadow:
+    0 14px 34px rgb(24 22 21 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 62%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
 
   @media (min-width: 1024px) {
     max-width: var(--site-width);
-    margin: 8px auto 0;
+    margin: 0 auto;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    flex-wrap: nowrap;
+    gap: 12px;
   }
 
   :root[data-theme="dark"] & {
-    background-color: var(--color-bg-secondary-dark) !important;
+    border-color: rgb(255 255 255 / 13%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 10%), rgb(255 255 255 / 3%)),
+      rgb(48 43 42 / 42%);
+    box-shadow:
+      0 14px 34px rgb(0 0 0 / 20%),
+      inset 0 1px 0 rgb(255 255 255 / 10%);
   }
 }
 
@@ -37,6 +75,10 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+
+  @media (min-width: 768px) {
+    justify-self: start;
+  }
 }
 
 .site-header__logo {
@@ -79,10 +121,6 @@
   transition: filter 0.3s ease-in-out;
 }
 
-.site-header__logo:hover img {
-  filter: invert(1);
-}
-
 .site-header__logo img {
   display: block;
   max-width: 100%;
@@ -99,6 +137,39 @@
     display: block;
     width: auto;
     margin-top: 0;
+    padding: 3px;
+    border: 1px solid rgb(255 255 255 / 22%);
+    border-radius: 999px;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+      rgb(255 255 255 / 8%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 20%),
+      0 6px 14px rgb(24 22 21 / 4%);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    justify-self: center;
+  }
+
+  :root[data-theme="dark"] & {
+    border-color: rgb(255 255 255 / 9%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 8%), rgb(255 255 255 / 3%)),
+      rgb(255 255 255 / 5%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 7%),
+      0 6px 14px rgb(0 0 0 / 14%);
+  }
+}
+
+.site-header__actions {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 8px;
   }
 }
 
@@ -137,20 +208,20 @@
 .site-header__items {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  gap: 2px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .site-header__item {
-  margin: 0 6px;
+  margin: 0;
   font-weight: 500;
   font-size: 14px;
 
   @media (min-width: 1024px) {
-    margin: 0 15px;
     font-size: 15px;
   }
 }
@@ -158,28 +229,57 @@
 .site-header__link {
   display: flex;
   align-items: center;
-  padding: 6px 8px;
-  border-radius: var(--border-radius-sm);
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   color: var(--color-text);
-  transition: color 0.3s ease, background-color 0.3s ease;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  @media (min-width: 1024px) {
+    padding-inline: 16px;
+  }
 
   &:hover {
     border-bottom: none;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-secondary);
+    border-color: rgb(255 255 255 / 38%);
+    background-color: rgb(255 255 255 / 24%);
+    color: var(--color-text);
 
     :root[data-theme="dark"] & {
-      background-color: var(--color-bg-wrapper-bg-dark);
+      border-color: rgb(255 255 255 / 12%);
+      background-color: rgb(255 255 255 / 8%);
       color: var(--color-title-dark);
     }
   }
 
   &[aria-current] {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-secondary);
+    border-color: rgb(255 255 255 / 68%);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 82%), rgb(255 255 255 / 42%)),
+      rgb(253 251 250 / 70%);
+    box-shadow:
+      0 8px 18px rgb(24 22 21 / 12%),
+      inset 0 1px 0 rgb(255 255 255 / 80%),
+      inset 0 -1px 0 rgb(24 22 21 / 6%);
+    color: var(--color-text);
 
     :root[data-theme="dark"] & {
-      background-color: var(--color-bg-wrapper-bg-dark);
+      border-color: rgb(255 255 255 / 18%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 20%), rgb(255 255 255 / 8%)),
+        rgb(255 255 255 / 10%);
+      box-shadow:
+        0 8px 18px rgb(0 0 0 / 28%),
+        inset 0 1px 0 rgb(255 255 255 / 14%),
+        inset 0 -1px 0 rgb(0 0 0 / 24%);
       color: var(--color-title-dark);
     }
   }
@@ -189,25 +289,118 @@
   }
 
   &--theme-switch {
-    border: none;
-    background-color: var(--color-button-bg);
-    color: var(--color-button-text);
+    justify-content: center;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: 1px solid rgb(255 255 255 / 48%);
+    border-radius: 50%;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 58%), rgb(255 255 255 / 20%)),
+      rgb(253 251 250 / 42%);
+    box-shadow:
+      0 8px 18px rgb(24 22 21 / 8%),
+      inset 0 1px 0 rgb(255 255 255 / 62%),
+      inset 0 -1px 0 rgb(24 22 21 / 5%);
+    color: var(--color-text);
+    line-height: 0;
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+
+    svg {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 auto;
+    }
 
     &:hover,
     &:focus {
-      background-color: var(--color-button-hover-bg);
-      color: var(--color-button-hover-text);
+      border-color: rgb(255 255 255 / 64%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 72%), rgb(255 255 255 / 30%)),
+        rgb(253 251 250 / 54%);
+      color: var(--color-text);
+      box-shadow:
+        0 10px 22px rgb(24 22 21 / 11%),
+        inset 0 1px 0 rgb(255 255 255 / 74%),
+        inset 0 -1px 0 rgb(24 22 21 / 5%);
     }
 
     :root[data-theme="dark"] & {
-      background-color: var(--color-button-bg-dark);
-      color: var(--color-button-text-dark);
+      border-color: rgb(255 255 255 / 14%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+        rgb(255 255 255 / 8%);
+      box-shadow:
+        0 8px 18px rgb(0 0 0 / 22%),
+        inset 0 1px 0 rgb(255 255 255 / 12%),
+        inset 0 -1px 0 rgb(0 0 0 / 24%);
+      color: var(--color-title-dark);
     }
 
     :root[data-theme="dark"] &:hover,
     :root[data-theme="dark"] &:focus {
-      background-color: var(--color-button-hover-bg);
-      color: var(--color-button-hover-text);
+      border-color: rgb(255 255 255 / 22%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 8%)),
+        rgb(255 255 255 / 12%);
+      color: var(--color-title-dark);
+    }
+  }
+
+  &--cta {
+    min-height: 42px;
+    padding: 0 22px;
+    border: 1px solid rgb(255 255 255 / 52%);
+    border-radius: 999px;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 22%)),
+      rgb(253 251 250 / 44%);
+    box-shadow:
+      0 10px 22px rgb(24 22 21 / 10%),
+      inset 0 1px 0 rgb(255 255 255 / 68%),
+      inset 0 -1px 0 rgb(24 22 21 / 6%);
+    color: var(--color-text);
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+
+    &:hover,
+    &:focus,
+    &[aria-current] {
+      border-color: rgb(255 255 255 / 68%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 76%), rgb(255 255 255 / 34%)),
+        rgb(253 251 250 / 58%);
+      color: var(--color-text);
+      box-shadow:
+        0 12px 26px rgb(24 22 21 / 13%),
+        inset 0 1px 0 rgb(255 255 255 / 78%),
+        inset 0 -1px 0 rgb(24 22 21 / 6%);
+    }
+
+    :root[data-theme="dark"] & {
+      border-color: rgb(255 255 255 / 16%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 18%), rgb(255 255 255 / 6%)),
+        rgb(255 255 255 / 9%);
+      box-shadow:
+        0 10px 22px rgb(0 0 0 / 28%),
+        inset 0 1px 0 rgb(255 255 255 / 13%),
+        inset 0 -1px 0 rgb(0 0 0 / 24%);
+      color: var(--color-title-dark);
+    }
+
+    :root[data-theme="dark"] &:hover,
+    :root[data-theme="dark"] &:focus,
+    :root[data-theme="dark"] &[aria-current] {
+      border-color: rgb(255 255 255 / 24%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 24%), rgb(255 255 255 / 10%)),
+        rgb(255 255 255 / 13%);
+      color: var(--color-title-dark);
     }
   }
 }
