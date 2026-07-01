@@ -178,6 +178,11 @@ a {
   text-decoration: none;
   color: var(--color-secondary);
   font-weight: 500;
+
+  &[href] {
+    cursor: pointer;
+  }
+
   :root[data-theme="dark"] & {
     color: var(--color-link-dark);
   }
