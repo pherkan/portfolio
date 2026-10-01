@@ -87,6 +87,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/admin');
   eleventyConfig.addPassthroughCopy('./src/assets/img');
   eleventyConfig.addPassthroughCopy('./src/assets/audio');
+  eleventyConfig.addPassthroughCopy('./src/assets/videos');
 
   // Collections
   eleventyConfig.addCollection('externalLink', function(collectionApi) {
