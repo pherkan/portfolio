@@ -22,6 +22,7 @@ const CONTENT_TYPES = {
   '.ico': 'image/x-icon',
   '.wav': 'audio/wav',
   '.mp3': 'audio/mpeg',
+  '.mp4': 'video/mp4',
 };
 
 function send(res, statusCode, body, headers = {}) {
@@ -73,29 +74,52 @@ function serveStatic(req, res, pathname) {
   if (!filePath) {
     const notFound = getStaticFile('/404.html');
     if (notFound) {
-      return serveFile(res, notFound, 404);
+      return serveFile(req, res, notFound, 404);
     }
     return send(res, 404, 'Not found', { 'Content-Type': 'text/plain; charset=utf-8' });
   }
 
-  return serveFile(res, filePath, 200);
+  return serveFile(req, res, filePath, 200);
 }
 
-function serveFile(res, filePath, statusCode) {
+function serveFile(req, res, filePath, statusCode) {
   const ext = path.extname(filePath).toLowerCase();
+  const { size } = fs.statSync(filePath);
   const headers = {
     'Content-Type': CONTENT_TYPES[ext] || 'application/octet-stream',
     'X-Content-Type-Options': 'nosniff',
   };
 
-  if (['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.wav', '.mp3'].includes(ext)) {
+  if (['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.wav', '.mp3', '.mp4'].includes(ext)) {
     headers['Cache-Control'] = 'public, max-age=31536000, immutable';
   } else {
     headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
   }
 
+  if (ext === '.mp4') {
+    const range = req.headers.range;
+    headers['Accept-Ranges'] = 'bytes';
+
+    if (range) {
+      const match = /^bytes=(\d*)-(\d*)$/.exec(range);
+      const start = match?.[1] ? Number(match[1]) : 0;
+      const end = match?.[2] ? Number(match[2]) : size - 1;
+
+      if (!match || start >= size || end >= size || start > end) {
+        return send(res, 416, '', { 'Content-Range': `bytes */${size}` });
+      }
+
+      headers['Content-Length'] = end - start + 1;
+      headers['Content-Range'] = `bytes ${start}-${end}/${size}`;
+      res.writeHead(206, headers);
+      return fs.createReadStream(filePath, { start, end }).pipe(res);
+    }
+  }
+
+  headers['Content-Length'] = size;
   res.writeHead(statusCode, headers);
-  fs.createReadStream(filePath).pipe(res);
+  if (req.method === 'HEAD') return res.end();
+  return fs.createReadStream(filePath).pipe(res);
 }
 
 const server = http.createServer(async (req, res) => {

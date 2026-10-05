@@ -1,5 +1,6 @@
 ---
-title: "A new app is live on the App Store: una mano"
+title: "una mano: a keyboard that follows your thumb"
+permalink: "/projects/a-new-app-is-live-on-the-app-store:-una-mano/"
 date: 2026-10-01T12:00:00.000Z
 summary: "After becoming a dad, I made una mano: an iPhone keyboard that moves left, centre, or right to stay close to the thumb you have free."
 metaDescription: "Meet una mano, a new iPhone keyboard by pherkan that moves within thumb reach. Built around the realities of one-handed typing and now free on the App Store."
@@ -12,7 +13,7 @@ tags:
 ogImage: "/assets/img/unamano/unamano-opengraph.png"
 ---
 
-<video class="project-video" controls muted playsinline poster="/assets/videos/una-mano-in-action-poster.jpg" aria-label="A person moving the una mano iPhone keyboard closer to their thumb.">
+<video class="project-video project-video--portrait" controls muted playsinline preload="metadata" poster="/assets/videos/una-mano-in-action-poster.jpg" aria-label="A person moving the una mano iPhone keyboard closer to their thumb.">
   <source src="/assets/videos/una-mano-in-action.mp4" type="video/mp4">
   Your browser does not support embedded video. <a href="/assets/videos/una-mano-in-action.mp4">Watch the una mano demo</a>.
 </video>

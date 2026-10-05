@@ -253,6 +253,12 @@ video {
   object-fit: cover;
 }
 
+.project-video--portrait {
+  aspect-ratio: 506 / 900;
+  max-width: 390px;
+  object-fit: contain;
+}
+
 /* Pre and Code */
 pre {
   background-color: var(--color-bg-secondary);
