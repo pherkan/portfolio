@@ -40,3 +40,8 @@ Do not print, copy, or commit those secrets. The per-project deploy webhook and 
 - Coolify receives the deploy request, builds the Docker image, starts the container, and reports deployment status.
 - NetBird is useful for private VPS maintenance/SSH, but the normal production deploy path is the Coolify API over HTTPS.
 
+## Website Analytics
+
+- `pherkan.com` uses Cloudflare Web Analytics through the manual beacon in the public layouts. It provides cookie-free aggregate traffic and web-performance data.
+- Do not add Plausible, Google Analytics, Mixpanel, a consent banner, or another website analytics provider without the owner's approval.
+
