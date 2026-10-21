@@ -41,7 +41,7 @@ In the past, an idea like this would have stayed an idea. I would have needed to
 
 Now I can build a first version myself, use it in real life, and improve it while we go.
 
-<img src="/assets/img/malikbaby/malikbaby-app-overview.jpg" alt="Malikbaby shown on desktop and mobile, with a latest-feed card and shared feeding activity." width="1400" height="788" loading="lazy" decoding="async">
+<img src="/assets/img/malikbaby/malikbaby-landing-page.png" alt="The Malikbaby landing page showing its shared feed-tracking message, a feeding photo, and a button to start a free log." width="1440" height="1000" loading="lazy" decoding="async">
 
 ## Building the thing we wished existed
 
@@ -52,6 +52,8 @@ I liked Nara Baby, but one thing kept bothering me: the button to add a feed sit
 Six years of working in accessibility taught me one very practical thing: put the actions people use most where they can comfortably reach them. So in Malikbaby, the main actions sit closer to the bottom of the screen.
 
 It is a tiny decision. But those tiny decisions are exactly why making your own tool is so satisfying. You do not have to accept the parts that annoy you. You can change them.
+
+<img src="/assets/img/malikbaby/malikbaby-app-dashboard.png" alt="The Malikbaby mobile dashboard for the test household, showing a latest bottle feed, daily totals, recent activity, and the bottom navigation." width="824" height="1830" loading="lazy" decoding="async">
 
 ## Free to use on any device
 
