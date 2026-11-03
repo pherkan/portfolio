@@ -11,6 +11,13 @@ tags:
   - Side Projects
   - Product Design
   - Parenting
+previewVideo: "/assets/videos/thumbs/malikbaby.mp4"
+previewPoster: "/assets/videos/thumbs/malikbaby.jpg"
+homeGroup: building
+appIcon: "/assets/img/app-icons/malikbaby.png"
+linkLabel: "malikbaby.com"
+teaser: "a free shared feed tracker for parents"
+liveUrl: "https://malikbaby.com"
 ---
 
 <img src="/assets/img/malikbaby/malikbaby-opengraph.jpg" alt="A parent bottle-feeding a baby on a sofa in a sunlit living room." width="1200" height="630" loading="eager" decoding="async">

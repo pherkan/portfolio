@@ -586,7 +586,8 @@
     background-color: var(--color-media-bg-dark);
   }
 
-  img {
+  img,
+  video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -617,4 +618,466 @@
 
 .list-header__title {
   margin: 0;
+}
+
+/* ---------- Homepage hero: one sentence + app dock ---------- */
+.home-hero {
+  --hero-pink: #b56f58;
+  --hero-pink-soft: #e9a990;
+  --hero-pink-line: #8f4f3b;
+
+  display: grid;
+  gap: 2rem;
+  margin: 2.5rem auto 0;
+  overflow-x: clip; /* keeps the hidden avatar tooltip from widening the page */
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+
+  :root[data-theme="dark"] & {
+    --hero-pink: #e9a990;
+    --hero-pink-soft: #d2957e;
+    --hero-pink-line: #fbe3d9;
+  }
+}
+
+.home-hero__main {
+  min-width: 0;
+}
+
+.home-hero__title {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 1.625rem;
+  font-weight: 600;
+  line-height: 1.35;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h1);
+  }
+}
+
+/* Avatar sits inline in the sentence, at text size */
+.hero__avatar.home-hero__avatar {
+  display: inline-flex;
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.1em;
+  vertical-align: -0.2em;
+}
+
+/* Rotating word: the track holds every word plus a copy of the first, so the loop restarts invisibly */
+.home-hero__rotator {
+  display: inline-block;
+  height: 1.35em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.home-hero__rotator-track {
+  display: flex;
+  flex-direction: column;
+  animation: home-rotator 20s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+.home-hero__rotator-word {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  height: 1.35em;
+  white-space: nowrap;
+  color: var(--hero-pink);
+}
+
+/* 5 words, about 4 seconds each */
+@keyframes home-rotator {
+  0%, 17% { transform: translateY(0); }
+  20%, 37% { transform: translateY(-1.35em); }
+  40%, 57% { transform: translateY(-2.7em); }
+  60%, 77% { transform: translateY(-4.05em); }
+  80%, 97% { transform: translateY(-5.4em); }
+  100% { transform: translateY(-6.75em); }
+}
+
+.hero-tags--floating {
+  justify-content: flex-start;
+  margin-top: 1.75rem;
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    width: auto;
+    transform: none;
+  }
+}
+
+/* ---------- 3D animation after each rotating word ---------- */
+.hero-3d {
+  display: inline-flex;
+  flex: 0 0 auto;
+
+  img {
+    width: 1.35em;
+    height: 1.35em;
+    margin: 0;
+  }
+}
+
+/* ---------- Statement between sections ---------- */
+.home-statement {
+  margin: 5rem 0 1rem;
+  font-family: var(--font-family-base);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    margin-top: 7rem;
+    font-size: 4rem;
+  }
+
+  span {
+    display: block;
+    color: #b56f58;
+
+    :root[data-theme="dark"] & {
+      color: #e9a990;
+    }
+  }
+}
+
+/* ---------- App dock ---------- */
+.home-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-secondary);
+
+  :root[data-theme="dark"] & {
+    background-color: var(--color-surface-dark);
+  }
+}
+
+.home-apps__title {
+  margin: 0;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--color-text-gray);
+
+  :root[data-theme="dark"] & {
+    color: var(--color-text-dark);
+  }
+}
+
+.home-apps__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+}
+
+.home-apps__app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  text-align: center;
+
+  &:hover {
+    text-decoration: none;
+
+    .home-apps__name {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+
+  :root[data-theme="dark"] & {
+    color: var(--color-title-dark);
+  }
+}
+
+.home-apps__icon {
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  border-radius: 22%;
+  box-shadow: 0 6px 16px var(--color-shadow);
+}
+
+.home-apps__name {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.home-apps__post {
+  display: block;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-weight: 500;
+  line-height: 1.5;
+
+  :root[data-theme="dark"] & {
+    border-color: var(--color-border-dark);
+  }
+}
+
+.home-apps__post-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--color-text-gray);
+
+  :root[data-theme="dark"] & {
+    color: var(--color-text-dark);
+  }
+}
+
+/* ---------- Tag ticker ---------- */
+.home-ticker {
+  margin: 2.5rem 0 0;
+  padding: 0.85rem 0;
+  overflow: hidden;
+  border-block: 1px solid var(--color-border);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  :root[data-theme="dark"] & {
+    border-color: var(--color-border-dark);
+  }
+}
+
+.home-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: home-ticker 40s linear infinite;
+}
+
+.home-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  font-size: var(--font-size-h4);
+  font-weight: 500;
+  white-space: nowrap;
+
+  &::after {
+    content: "✦";
+    font-size: 0.7em;
+    color: #ff5b1a;
+  }
+}
+
+@keyframes home-ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Building now ---------- */
+.home-building {
+  display: flex;
+  gap: 1rem;
+  margin: 0 -20px;
+  padding: 0 20px 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+.home-building__card {
+  flex: 0 0 82%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-secondary);
+
+  :root[data-theme="dark"] & {
+    background-color: var(--color-surface-dark);
+  }
+}
+
+.home-building__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-media-bg);
+  border-bottom: none;
+
+  &:hover {
+    border-bottom: none;
+  }
+
+  img,
+  video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+  }
+}
+
+.home-building__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.home-building__icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin: -3rem 0 0.25rem;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 22%;
+    border: 3px solid var(--color-bg-secondary);
+    box-shadow: 0 6px 16px var(--color-shadow);
+
+    :root[data-theme="dark"] & {
+      border-color: var(--color-surface-dark);
+    }
+  }
+}
+
+.home-building__title {
+  margin: 0;
+  font-size: var(--font-size-h4);
+
+  a {
+    color: var(--color-text);
+    border-bottom: none;
+  }
+}
+
+.home-building__teaser {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--color-text-gray);
+
+  :root[data-theme="dark"] & {
+    color: var(--color-text-dark);
+  }
+}
+
+.home-building__live {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+/* ---------- Finding the bottleneck series ---------- */
+.home-series {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.home-series__link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1.25rem;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  border-bottom: none;
+  text-decoration: none;
+
+  :root[data-theme="dark"] & {
+    background-color: var(--color-surface-dark);
+    color: var(--color-title-dark);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .home-series__title {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+.home-series__number {
+  grid-row: span 2;
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  line-height: 1;
+  color: #251bff;
+}
+
+.home-series__title {
+  font-weight: 600;
+}
+
+.home-series__summary {
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  color: var(--color-text-gray);
+
+  :root[data-theme="dark"] & {
+    color: var(--color-text-dark);
+  }
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__rotator-track,
+  .home-ticker__track {
+    animation: none;
+  }
+
+  .home-ticker {
+    overflow-x: auto;
+  }
 }

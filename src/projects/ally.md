@@ -9,6 +9,9 @@ summary: A behind-the-scenes look at how we launched Ally, the world's first acc
 tags:
 - Product Management
 - Accessibility
+previewVideo: "/assets/videos/thumbs/ally.mp4"
+previewPoster: "/assets/videos/thumbs/ally.jpg"
+homeGroup: work
 ---
 
 ![Illustration showing 'ally', accessibility first AI assistant.](/src/assets/img/ally.jpg)

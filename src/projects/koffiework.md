@@ -9,6 +9,13 @@ tags:
   - Product Management
   - Entrepreneurship
 ogImage: "/assets/img/koffiework/koffiework_og.jpg"
+previewVideo: "/assets/videos/thumbs/koffiework.mp4"
+previewPoster: "/assets/videos/thumbs/koffiework.jpg"
+homeGroup: building
+appIcon: "/assets/img/app-icons/koffiework.png"
+linkLabel: "koffie.work"
+teaser: "find laptop-friendly specialty coffee cafés"
+liveUrl: "https://koffie.work"
 ---
 
 <picture>

@@ -8,6 +8,9 @@ date: 2019-01-01T00:00:00.000Z
 summary: an unpronounceable clothing brand
 tags:
   - Entrepreneurship
+previewVideo: "/assets/videos/thumbs/aeuoeu.mp4"
+previewPoster: "/assets/videos/thumbs/aeuoeu.jpg"
+homeGroup: earlier
 ---
 
 ### aeu.. what?

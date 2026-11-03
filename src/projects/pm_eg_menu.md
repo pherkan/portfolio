@@ -9,6 +9,9 @@ metaDescription: An inside look at how we evolved the smartglasses interface to 
 tags:
   - Product Management
   - Product Design
+previewVideo: "/assets/videos/thumbs/envision-menu.mp4"
+previewPoster: "/assets/videos/thumbs/envision-menu.jpg"
+homeGroup: work
 ---
 
 ![Photo of a man wearing Envision Glasses and holding a vinyl. Text says: From prototypes to personalization: advancing accessibility in Envision Glasses.](/src/assets/img/eg_personalisation_0.jpg)

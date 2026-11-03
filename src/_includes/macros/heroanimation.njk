@@ -1,0 +1,8 @@
+{# Small looping 3D animation after each rotating hero word (animated WebP rendered with three.js).
+   Visitors who prefer reduced motion get the still first frame. #}
+{% macro heroanimation(name) %}
+<picture class="hero-3d">
+  <source srcset="/assets/img/hero-3d/{{ name }}-still.webp" media="(prefers-reduced-motion: reduce)" />
+  <img src="/assets/img/hero-3d/{{ name }}.webp" alt="" width="64" height="64" decoding="async" />
+</picture>
+{% endmacro %}

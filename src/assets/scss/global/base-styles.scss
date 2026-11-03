@@ -187,13 +187,15 @@ a {
     color: var(--color-link-dark);
   }
 
+  /* Underline instead of a border so hovering never shifts the layout */
   &:hover {
     color: var(--color-secondary);
-    border-bottom: 2px solid var(--color-secondary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 
     :root[data-theme="dark"] & {
       color: var(--color-link-dark);
-      border-color: var(--color-link-dark);
     }
   }
 }

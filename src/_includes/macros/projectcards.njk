@@ -1,4 +1,5 @@
 {% macro projectcards(projects, limit = 0, section_label = 'Projects', modifier = '') %}
+  {% from "macros/projectmedia.njk" import projectmedia %}
   {% if limit and limit > 0 %}
     {% set items = projects | take(limit) %}
   {% else %}
@@ -37,7 +38,7 @@
           </div>
           {% if previewImage %}
             <div class="home-project-card__media">
-              <img src="{{ previewImage | url }}" alt="{{ previewAlt or ('Preview image for ' ~ projectTitle) }}" loading="lazy" decoding="async" />
+              {{ projectmedia(project, projectTitle) }}
             </div>
           {% endif %}
         </article>

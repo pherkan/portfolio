@@ -2,5 +2,43 @@
   "title": "hey there 👋",
   "image": "src/assets/img/pherkan_cat.jpeg",
   "image_alt": "pherkan with cat",
-  "body": "<span class=\"hero__intro-wrap\"><span class=\"hero__intro\">hi there, my name is pherkan.</span> <span class=\"hero__avatar\" tabindex=\"0\" aria-describedby=\"hero-avatar-tooltip\"><img src=\"/assets/img/pherkan_circle_katmer.png\" alt=\"image of ferkan with katmer, british longhair cat, on his lap working on a laptop\" width=\"60\" height=\"60\" /><span class=\"hero__avatar-tooltip\" id=\"hero-avatar-tooltip\" role=\"tooltip\">that's me and katmer.</span></span></span><br />i’m a product manager who blends AI, automation, accessibility and design to build useful products, from banking workflows and LLM-powered assistants to smartglasses and side projects, with a maker’s mindset and an eye for human-centered detail."
+  "body": "<span class=\"hero__intro-wrap\"><span class=\"hero__intro\">hi there, my name is pherkan.</span> <span class=\"hero__avatar\" tabindex=\"0\" aria-describedby=\"hero-avatar-tooltip\"><img src=\"/assets/img/pherkan_circle_katmer.png\" alt=\"image of ferkan with katmer, british longhair cat, on his lap working on a laptop\" width=\"60\" height=\"60\" /><span class=\"hero__avatar-tooltip\" id=\"hero-avatar-tooltip\" role=\"tooltip\">that's me and katmer.</span></span></span><br />i’m a product manager who blends AI, automation, accessibility and design to build useful products, from banking workflows and LLM-powered assistants to smartglasses and side projects, with a maker’s mindset and an eye for human-centered detail.",
+  "intro": "hi there, my name is pherkan.",
+  "lead": "i’m a user-centered product manager. i find the bottleneck in",
+  "rotating": [
+    {
+      "word": "AI products",
+      "animation": "ai"
+    },
+    {
+      "word": "smartglasses",
+      "animation": "glasses"
+    },
+    {
+      "word": "everyday workflows",
+      "animation": "workflow"
+    },
+    {
+      "word": "accessibility tech",
+      "animation": "accessibility"
+    },
+    {
+      "word": "apps for tired parents",
+      "animation": "tired"
+    }
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "accessibility",
+    "data-informed decisions",
+    "user research",
+    "AI-assisted prototyping",
+    "0→1 products"
+  ],
+  "appsTitle": "apps i’ve shipped",
+  "statement": [
+    "data where it exists,",
+    "people always."
+  ]
 }

@@ -11,6 +11,13 @@ tags:
   - Entrepreneurship
   - App Development
 ogImage: "/assets/img/unamano/unamano-opengraph.png"
+previewVideo: "/assets/videos/thumbs/una-mano.mp4"
+previewPoster: "/assets/videos/thumbs/una-mano.jpg"
+homeGroup: building
+appIcon: "/assets/img/app-icons/una-mano.png"
+linkLabel: "app store"
+teaser: "an iPhone keyboard that follows your thumb"
+liveUrl: "https://apps.apple.com/nl/app/una-mano-one-hand-keyboard/id6803099666"
 ---
 
 <video class="project-video project-video--portrait" controls muted playsinline preload="metadata" poster="/assets/videos/una-mano-in-action-poster.jpg" aria-label="A person moving the una mano iPhone keyboard closer to their thumb.">

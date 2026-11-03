@@ -1,0 +1,14 @@
+{# Moving thumbnail: muted looping video when available, otherwise the preview image.
+   Playback is started and paused by assets/js/thumb-videos.js. #}
+{% macro projectmedia(project, title) %}
+  {% set video = project.data.previewVideo %}
+  {% set poster = project.data.previewPoster or project.data.previewImage %}
+  {% set alt = project.data.previewImageAlt or ('Preview image for ' ~ title) %}
+  {% if video %}
+    <video class="thumb-video" muted loop playsinline preload="none" poster="{{ poster | url }}" aria-label="{{ alt }}" data-thumb-video>
+      <source src="{{ video | url }}" type="video/mp4" />
+    </video>
+  {% elif poster %}
+    <img src="{{ poster | url }}" alt="{{ alt }}" loading="lazy" decoding="async" />
+  {% endif %}
+{% endmacro %}

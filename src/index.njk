@@ -2,58 +2,148 @@
 layout: base.njk
 section: home
 ---
+{% from "macros/projectmedia.njk" import projectmedia %}
+{% from "macros/projectcards.njk" import projectcards %}
+{% from "macros/articlelist.njk" import articlelist %}
+{% from "macros/heroanimation.njk" import heroanimation %}
+
+{% set building = [] %}
+{% set work = [] %}
+{% for project in collections.project | reverse %}
+  {% if project.data.homeGroup == 'building' %}
+    {% set building = (building.push(project), building) %}
+  {% elif project.data.homeGroup == 'work' or project.data.homeGroup == 'earlier' %}
+    {% set work = (work.push(project), work) %}
+  {% endif %}
+{% endfor %}
+{% set series = [] %}
+{% for post in collections.post | reverse %}
+  {% if post.data.series == 'finding-the-bottleneck' %}
+    {% set series = (series.push(post), series) %}
+  {% endif %}
+{% endfor %}
+{% set latestPost = (collections.post | reverse | first) %}
+
 <div class="home-page">
-	<div class="home-page__bg-square"></div>
 
   {# Hero #}
-  <div class="hero">
-    <div class="hero__col">
-      {% if home.body %}
-        <h1 class="hero__headline">{{ home.body | safe }}</h1>
-      {% endif %}
-      <ul class="hero-tags" aria-label="Focus areas">
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>AI</span>
-        </li>
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>Automation</span>
-        </li>
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>Accessibility</span>
-        </li>
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>Product Strategy</span>
-        </li>
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>AI-assisted Prototyping</span>
-        </li>
-        <li class="hero-tag">
-          <span class="hero-tag__dot" aria-hidden="true"></span>
-          <span>0→1 Products</span>
-        </li>
+  <section class="home-hero" aria-labelledby="home-hero-title">
+    <div class="home-hero__main">
+      <h1 class="home-hero__title" id="home-hero-title">
+        {{ home.intro }}
+        <span class="hero__avatar home-hero__avatar" tabindex="0" aria-describedby="hero-avatar-tooltip">
+          <img src="/assets/img/pherkan_circle_katmer.png" alt="image of ferkan with katmer, british longhair cat, on his lap working on a laptop" width="60" height="60" />
+          <span class="hero__avatar-tooltip" id="hero-avatar-tooltip" role="tooltip">that's me and katmer.</span>
+        </span>
+        {{ home.lead }}
+        <span class="sr-only">{% for item in home.rotating %}{{ item.word }}{{ ', ' if not loop.last else '.' }}{% endfor %}</span>
+        <span class="home-hero__rotator" aria-hidden="true">
+          <span class="home-hero__rotator-track">
+            {% for item in home.rotating %}
+              <span class="home-hero__rotator-word">{{ item.word }}{{ heroanimation(item.animation) }}</span>
+            {% endfor %}
+            {% set firstItem = home.rotating | first %}
+            <span class="home-hero__rotator-word">{{ firstItem.word }}{{ heroanimation(firstItem.animation) }}</span>
+          </span>
+        </span>
+      </h1>
+      <ul class="hero-tags hero-tags--floating" aria-label="Focus areas">
+        {% for tag in home.tags %}{% if loop.index <= 4 %}
+          <li class="hero-tag"><span class="hero-tag__dot" aria-hidden="true"></span><span>{{ tag }}</span></li>
+        {% endif %}{% endfor %}
       </ul>
+    </div>
+
+    <aside class="home-apps" aria-labelledby="home-apps-title">
+      <p class="home-apps__title" id="home-apps-title">{{ home.appsTitle }}</p>
+      <ul class="home-apps__list">
+        {% for project in building %}
+          {% set appName = project.fileSlug | replace('-', ' ') %}
+          <li>
+            <a class="home-apps__app" href="{{ project.data.liveUrl or (project.url | url) }}" target="_blank" rel="noopener" aria-label="Open {{ appName }}">
+              <img class="home-apps__icon" src="{{ project.data.appIcon }}" alt="" width="72" height="72" loading="lazy" />
+              <span class="home-apps__name">{{ appName }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if latestPost %}
+        <a class="home-apps__post" href="{{ latestPost.url | url }}">
+          <span class="home-apps__post-label">latest post</span>
+          {{ latestPost.data.title }} →
+        </a>
+      {% endif %}
+    </aside>
+  </section>
+
+  {# Tag ticker: the second copy makes the loop seamless and is hidden from screen readers #}
+  <div class="home-ticker" aria-hidden="true">
+    <div class="home-ticker__track">
+      {% for copy in [1, 2] %}
+        {% for tag in home.tags %}<span class="home-ticker__item"><span>{{ tag }}</span></span>{% endfor %}
+      {% endfor %}
     </div>
   </div>
 
-  {# Projects #}
+  {# Shipped apps #}
   <div class="list-header">
-    <h2 class="list-header__title">Projects</h2>
+    <h2 class="list-header__title">shipped &amp; live</h2>
     <a class="btn btn--outline btn--sm" href="/projects" aria-label="View all projects">View All</a>
   </div>
-  {% from "macros/projectcards.njk" import projectcards %}
-  {{ projectcards(collections.project | reverse, 2, 'Featured projects', 'home-projects--featured') }}
+  <section class="home-building" aria-label="Apps I have shipped">
+    {% for project in building %}
+      <article class="home-building__card">
+        <a class="home-building__media" href="{{ project.url | url }}" tabindex="-1">
+          {{ projectmedia(project, project.data.title) }}
+        </a>
+        <div class="home-building__body">
+          {% if project.data.appIcon %}
+            <a class="home-building__icon" href="{{ project.data.liveUrl or (project.url | url) }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+              <img src="{{ project.data.appIcon }}" alt="" width="56" height="56" loading="lazy" />
+            </a>
+          {% endif %}
+          <h3 class="home-building__title"><a href="{{ project.url | url }}">{{ project.fileSlug | replace('-', ' ') }}</a></h3>
+          <p class="home-building__teaser">{{ project.data.teaser or project.data.summary }}</p>
+          {% if project.data.liveUrl %}
+            <a class="home-building__live" href="{{ project.data.liveUrl }}" target="_blank" rel="noopener">{{ project.data.linkLabel }} ↗</a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+
+  {# Finding the bottleneck: only shown once a post in the series is published #}
+  {% if series | length %}
+    <div class="list-header">
+      <h2 class="list-header__title">finding the bottleneck</h2>
+    </div>
+    <ol class="home-series">
+      {% for post in series %}
+        <li class="home-series__item">
+          <a class="home-series__link" href="{{ post.url | url }}">
+            <span class="home-series__number">{{ '0' if loop.index < 10 }}{{ loop.index }}</span>
+            <span class="home-series__title">{{ post.data.title }}</span>
+            <span class="home-series__summary">{{ post.data.summary }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+
+  {# Statement #}
+  <p class="home-statement">{{ home.statement[0] }} <span>{{ home.statement[1] }}</span></p>
+
+  {# Work case studies #}
+  <div class="list-header">
+    <h2 class="list-header__title">selected work</h2>
+  </div>
+  {{ projectcards(work, 0, 'Selected work', 'home-projects--featured') }}
 
   {# Blogposts #}
   <div class="list-header">
-    <h2 class="list-header__title">Blogposts</h2>
+    <h2 class="list-header__title">writing</h2>
     <a class="btn btn--outline btn--sm" href="/blog" aria-label="View all blogposts">View All</a>
   </div>
-  {% from "macros/articlelist.njk" import articlelist %}
   {{ articlelist(
     articles = collections.post | reverse,
     show_tags = true,

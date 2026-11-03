@@ -1,6 +1,7 @@
 const Turbolinks = require('turbolinks');
 const drawer = require('./drawer');
 const darkMode = require('./dark-mode');
+const thumbVideos = require('./thumb-videos');
 
 // Initialize Turbolinks
 Turbolinks.start();
@@ -34,6 +35,8 @@ document.addEventListener("turbolinks:load", () => {
   document.body.style.display = 'none';
   void document.body.offsetHeight; // trigger reflow
   document.body.style.display = '';
+
+  thumbVideos();
 });
 
 document.addEventListener("turbolinks:load", () => {

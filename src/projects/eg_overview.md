@@ -9,6 +9,9 @@ summary: AI-powered smartglasses for people who are blind or have low vision.
 tags:
   - Product Management
   - Product Design
+previewVideo: "/assets/videos/thumbs/envision-glasses.mp4"
+previewPoster: "/assets/videos/thumbs/envision-glasses.jpg"
+homeGroup: work
 ---
 
 ![Close-up photo of a man wearing Google Glass smartglasses, touching the side of the device with one finger.](/src/assets/img/eg_personalisation_3.jpg)

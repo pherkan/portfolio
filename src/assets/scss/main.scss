@@ -6,6 +6,7 @@
 @use 'global/variables.scss';
 @use 'global/base-styles.scss';
 @use 'global/utilites.scss';
+@use 'global/sr-only.scss';
 
 /* Layout */
 @use 'layouts/home.scss';
@@ -93,10 +94,9 @@ nav,
   width: 24px;
   height: 24px;
   color: var(--color-text);
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
     color: var(--color-secondary);
     border-bottom: none;
   }
