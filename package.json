@@ -55,7 +55,8 @@
     "postcss-cli": "^10.0.0",
     "postcss-scss": "^4.0.4",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.3"
+    "sass": "^1.54.3",
+    "sharp": "^0.33.5"
   },
   "dependencies": {
     "turbolinks": "^5.2.0"

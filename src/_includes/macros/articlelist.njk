@@ -12,7 +12,7 @@
       {% set imageAlt = article.data.previewImageAlt or ('Preview image for ' ~ title) %}
       <article class="article-card" {% if article.url == url %} data-current="current item"{% endif %}>
         {% if image %}
-          <img class="article-card__image" src="{{ image | url }}" alt="{{ imageAlt }}" loading="lazy" decoding="async" />
+          <img class="article-card__image" src="{{ image | thumb(900) | url }}" alt="{{ imageAlt }}" loading="lazy" decoding="async" />
         {% endif %}
         <div class="article-card__content">
           <time class="article-card__date" datetime="{{ dateISO }}">{{ dateText }}</time>

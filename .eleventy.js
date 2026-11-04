@@ -9,6 +9,7 @@ const preserveAbbreviations = require('./src/_11ty/utils/preserve-abbreviations'
 const markdownFilter = require('./src/_11ty/filters/markdown-filter');
 const svgFilter = require('./src/_11ty/filters/svg-filter');
 const browserSyncConfig = require('./src/_11ty/utils/browser-sync-config');
+const { thumbFilter, writeThumbnails } = require('./src/_11ty/utils/thumbnails');
 const { readableDateFilter, machineDateFilter } = require('./src/_11ty/filters/date-filters');
 
 const SASS_COOLDOWN_MS = 10_000;
@@ -25,6 +26,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('readableDate', readableDateFilter);
   eleventyConfig.addFilter('machineDate', machineDateFilter);
   eleventyConfig.addFilter('svg', svgFilter);
+  eleventyConfig.addFilter('thumb', thumbFilter);
+  eleventyConfig.on('eleventy.after', writeThumbnails);
   // Utility: get first <img> src from HTML content
   eleventyConfig.addFilter('firstImageSrc', (content) => {
     if (!content || typeof content !== 'string') return null;

@@ -32,7 +32,7 @@ section: home
       <h1 class="home-hero__title" id="home-hero-title">
         {{ home.intro }}
         <span class="hero__avatar home-hero__avatar" tabindex="0" aria-describedby="hero-avatar-tooltip">
-          <img src="/assets/img/pherkan_circle_katmer.png" alt="image of ferkan with katmer, british longhair cat, on his lap working on a laptop" width="60" height="60" />
+          <img src="{{ '/assets/img/pherkan_circle_katmer.png' | thumb(240) }}" alt="image of ferkan with katmer, british longhair cat, on his lap working on a laptop" width="60" height="60" />
           <span class="hero__avatar-tooltip" id="hero-avatar-tooltip" role="tooltip">that's me and katmer.</span>
         </span>
         {{ home.lead }}
@@ -61,7 +61,7 @@ section: home
           {% set appName = project.fileSlug | replace('-', ' ') %}
           <li>
             <a class="home-apps__app" href="{{ project.data.liveUrl or (project.url | url) }}" target="_blank" rel="noopener" aria-label="Open {{ appName }}">
-              <img class="home-apps__icon" src="{{ project.data.appIcon }}" alt="" width="72" height="72" loading="lazy" />
+              <img class="home-apps__icon" src="{{ project.data.appIcon | thumb(144) }}" alt="" width="72" height="72" decoding="async" />
               <span class="home-apps__name">{{ appName }}</span>
             </a>
           </li>
@@ -99,7 +99,7 @@ section: home
         <div class="home-building__body">
           {% if project.data.appIcon %}
             <a class="home-building__icon" href="{{ project.data.liveUrl or (project.url | url) }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-              <img src="{{ project.data.appIcon }}" alt="" width="56" height="56" loading="lazy" />
+              <img src="{{ project.data.appIcon | thumb(144) }}" alt="" width="56" height="56" loading="lazy" decoding="async" />
             </a>
           {% endif %}
           <h3 class="home-building__title"><a href="{{ project.url | url }}">{{ project.fileSlug | replace('-', ' ') }}</a></h3>
@@ -137,25 +137,25 @@ section: home
         <span class="home-statement__quote-fragment">{{ home.statement[0] }}</span>
         <div class="home-statement__polaroids" aria-label="Photos of Ferkan working with people">
         <figure class="home-statement__polaroid home-statement__polaroid--cat">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/pherkan_cat.jpeg" alt="Ferkan working on a laptop with Katmer the cat on his lap" width="1000" height="1333" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/pherkan_cat.jpeg' | thumb(640) }}" decoding="async" alt="Ferkan working on a laptop with Katmer the cat on his lap" width="1000" height="1333" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--smartglasses">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-smartglasses.jpeg" alt="Ferkan wearing smartglasses among flowers" width="4032" height="3024" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/ferkan-smartglasses.jpeg' | thumb(640) }}" loading="lazy" decoding="async" alt="Ferkan wearing smartglasses among flowers" width="4032" height="3024" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--conversation">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-conversation.jpg" alt="Ferkan demonstrating smartglasses at an event" width="4032" height="3024" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/ferkan-conversation.jpg' | thumb(640) }}" loading="lazy" decoding="async" alt="Ferkan demonstrating smartglasses at an event" width="4032" height="3024" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--envision">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-and-envision.jpeg" alt="Ferkan beside a pair of Envision smartglasses" width="3088" height="2316" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/ferkan-and-envision.jpeg' | thumb(640) }}" loading="lazy" decoding="async" alt="Ferkan beside a pair of Envision smartglasses" width="3088" height="2316" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--user-testing">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/envision-user-testing.png" alt="An Envision smartglasses user testing the product while the team observes" width="1408" height="1228" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/envision-user-testing.png' | thumb(640) }}" loading="lazy" decoding="async" alt="An Envision smartglasses user testing the product while the team observes" width="1408" height="1228" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--phone-testing">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/phone-user-testing.png" alt="A participant testing a phone at a table" width="1096" height="1030" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/phone-user-testing.png' | thumb(640) }}" loading="lazy" decoding="async" alt="A participant testing a phone at a table" width="1096" height="1030" /></span></span>
         </figure>
         <figure class="home-statement__polaroid home-statement__polaroid--assistance-call">
-          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/envision-assistance-call.png" alt="A video call showing Envision assistance near a row of bicycles" width="996" height="1036" /></span></span>
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="{{ '/assets/img/people/envision-assistance-call.png' | thumb(640) }}" loading="lazy" decoding="async" alt="A video call showing Envision assistance near a row of bicycles" width="996" height="1036" /></span></span>
         </figure>
         </div>
         <strong class="home-statement__quote-fragment">{{ home.statement[1] }}</strong>

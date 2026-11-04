@@ -2,6 +2,8 @@ const Turbolinks = require('turbolinks');
 const drawer = require('./drawer');
 const darkMode = require('./dark-mode');
 const thumbVideos = require('./thumb-videos');
+const reveal = require('./reveal');
+const avatarTooltip = require('./avatar-tooltip');
 
 // Initialize Turbolinks
 Turbolinks.start();
@@ -31,12 +33,9 @@ document.addEventListener("turbolinks:load", () => {
     themeConfig.theme = (useSystemTheme && prefersDark) ? 'dark' : defaultTheme;
   }
 
-  // 👇 Force font recalculation (helpful for Google Fonts)
-  document.body.style.display = 'none';
-  void document.body.offsetHeight; // trigger reflow
-  document.body.style.display = '';
-
   thumbVideos();
+  reveal();
+  avatarTooltip();
 
   const contactCta = document.querySelector('.site-header__link--cta');
 
