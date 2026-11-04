@@ -76,10 +76,10 @@ section: home
     </aside>
   </section>
 
-  {# Tag ticker: the second copy makes the loop seamless and is hidden from screen readers #}
+  {# Tag ticker: each half repeats the tags 3x so it fills ultra-wide screens; the second half makes the loop seamless #}
   <div class="home-ticker" aria-hidden="true">
     <div class="home-ticker__track">
-      {% for copy in [1, 2] %}
+      {% for copy in range(6) %}
         {% for tag in home.tags %}<span class="home-ticker__item"><span>{{ tag }}</span></span>{% endfor %}
       {% endfor %}
     </div>

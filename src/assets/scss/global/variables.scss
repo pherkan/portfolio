@@ -119,6 +119,15 @@
 
   /* Sizes */
   --site-width: 1060px;
+
+  /* Use more of large monitors; article text keeps its own reading width */
+  @media (min-width: 1600px) {
+    --site-width: 1280px;
+  }
+
+  @media (min-width: 2200px) {
+    --site-width: 1440px;
+  }
   --header-height: 66px;
   --header-height-lg: 76px;
 
