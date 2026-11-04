@@ -315,15 +315,13 @@
 }
 
 /* ---------- Scroll reveal (classes are added by assets/js/reveal.js) ---------- */
-.reveal {
-  transition:
-    opacity 600ms ease-out,
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+/* Scoped to .home-page so it outranks the cards' own transition rules */
+.home-page .reveal {
+  transition: opacity 600ms ease-out;
 }
 
-.reveal:not(.is-revealed) {
+.home-page .reveal:not(.is-revealed) {
   opacity: 0;
-  transform: translateY(1.25rem);
 }
 
 .home-projects {
