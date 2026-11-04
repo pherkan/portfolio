@@ -191,3 +191,23 @@ body.is-post .page-container {
     opacity: 0;
   }
 }
+
+// Theme switch: show the moon in light mode, the sun in dark mode
+.theme-switch-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+
+  &--sun {
+    display: none;
+  }
+
+  :root[data-theme="dark"] &--moon {
+    display: none;
+  }
+
+  :root[data-theme="dark"] &--sun {
+    display: inline-flex;
+  }
+}
