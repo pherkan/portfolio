@@ -22,6 +22,8 @@ Envision Glasses are **AI-powered smart glasses** designed to empower **blind an
 
 During my **Master’s program in Design for Interaction**, I conducted extensive **user research**, working closely with blind and low-vision individuals to understand their needs, pain points, and daily challenges. This research laid the foundation for what eventually became **Envision Glasses**, shaping the product into the powerful assistive tool it is today.  
 
+![Context-of-use research showing Ferkan observing and testing how blind and low-vision people use Envision technology at home, at work, and while travelling.](/src/assets/img/context-of-use-research.png "Context-of-use research: understanding how blind and low-vision people use technology at home, at work, and while moving through the world.")
+
 What makes Envision Glasses truly unique is the **combination of cutting-edge AI and Google Glass hardware**. By leveraging **Google’s smart glasses platform**, Envision is able to deliver a lightweight, comfortable, and highly responsive wearable that seamlessly integrates **AI-powered OCR, real-time object recognition, and scene description**—offering an experience unlike any other in the world of accessibility.  
 
 #### **My Role & Responsibilities**  

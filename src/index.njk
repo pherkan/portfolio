@@ -131,7 +131,37 @@ section: home
   {% endif %}
 
   {# Statement #}
-  <p class="home-statement">{{ home.statement[0] }} <span>{{ home.statement[1] }}</span></p>
+  <section class="home-statement" aria-label="Product principle">
+    <div class="home-statement__inner">
+      <div class="home-statement__quote" aria-label="{{ home.statement[0] }} {{ home.statement[1] }}">
+        <span class="home-statement__quote-fragment">{{ home.statement[0] }}</span>
+        <div class="home-statement__polaroids" aria-label="Photos of Ferkan working with people">
+        <figure class="home-statement__polaroid home-statement__polaroid--cat">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/pherkan_cat.jpeg" alt="Ferkan working on a laptop with Katmer the cat on his lap" width="1000" height="1333" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--smartglasses">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-smartglasses.jpeg" alt="Ferkan wearing smartglasses among flowers" width="4032" height="3024" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--conversation">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-conversation.jpg" alt="Ferkan demonstrating smartglasses at an event" width="4032" height="3024" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--envision">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/ferkan-and-envision.jpeg" alt="Ferkan beside a pair of Envision smartglasses" width="3088" height="2316" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--user-testing">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/envision-user-testing.png" alt="An Envision smartglasses user testing the product while the team observes" width="1408" height="1228" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--phone-testing">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/phone-user-testing.png" alt="A participant testing a phone at a table" width="1096" height="1030" /></span></span>
+        </figure>
+        <figure class="home-statement__polaroid home-statement__polaroid--assistance-call">
+          <span class="home-statement__polaroid-frame"><span class="home-statement__polaroid-image"><img src="/assets/img/people/envision-assistance-call.png" alt="A video call showing Envision assistance near a row of bicycles" width="996" height="1036" /></span></span>
+        </figure>
+        </div>
+        <strong class="home-statement__quote-fragment">{{ home.statement[1] }}</strong>
+      </div>
+    </div>
+  </section>
 
   {# Work case studies #}
   <div class="list-header">

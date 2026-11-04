@@ -6,21 +6,11 @@
   box-sizing: border-box;
   padding-top: 168px;
   z-index: var(--z-header);
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 0,
-    var(--color-bg) calc(100% - 10px),
-    transparent 100%
-  );
+  background: transparent;
   font-family: var(--font-family-base);
 
   :root[data-theme="dark"] & {
-    background: linear-gradient(
-      to bottom,
-      var(--color-bg-dark) 0,
-      var(--color-bg-dark) calc(100% - 10px),
-      transparent 100%
-    );
+    background: transparent;
     border-color: var(--color-bg-accent-dark);
   }
 }
@@ -33,17 +23,17 @@
   box-sizing: border-box;
   width: calc(100% - 24px);
   margin: 0 12px;
-  padding: 6px 16px 6px 18px;
-  border: 1px solid rgb(255 255 255 / 55%);
+  padding: 4px 16px 4px 18px;
+  border: 1px solid rgb(255 255 255 / 46%);
   border-radius: 100px !important;
   background:
-    linear-gradient(135deg, rgb(255 255 255 / 44%), rgb(255 255 255 / 14%)),
-    rgb(253 251 250 / 42%);
+    linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 3%)),
+    rgb(253 251 250 / 16%);
   box-shadow:
-    0 14px 34px rgb(24 22 21 / 8%),
-    inset 0 1px 0 rgb(255 255 255 / 62%);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+    0 12px 28px rgb(24 22 21 / 7%),
+    inset 0 1px 0 rgb(255 255 255 / 52%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 
   @media (min-width: 1024px) {
     max-width: var(--site-width);
@@ -62,11 +52,11 @@
   :root[data-theme="dark"] & {
     border-color: rgb(255 255 255 / 13%);
     background:
-      linear-gradient(135deg, rgb(255 255 255 / 10%), rgb(255 255 255 / 3%)),
-      rgb(48 43 42 / 42%);
+      linear-gradient(135deg, rgb(255 255 255 / 6%), rgb(255 255 255 / 2%)),
+      rgb(48 43 42 / 18%);
     box-shadow:
-      0 14px 34px rgb(0 0 0 / 20%),
-      inset 0 1px 0 rgb(255 255 255 / 10%);
+      0 12px 28px rgb(0 0 0 / 18%),
+      inset 0 1px 0 rgb(255 255 255 / 8%);
   }
 }
 
@@ -93,8 +83,8 @@
   transition: color 0.3s ease, background-color 0.3s ease;
 
   @media (min-width: 1024px) {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
   }
 
   &:hover {
@@ -224,7 +214,8 @@
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     color 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.35s ease;
 
   @media (min-width: 1024px) {
     padding-inline: 16px;
@@ -306,7 +297,10 @@
   }
 
   &--cta {
-    min-height: 42px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 38px;
     padding: 0 22px;
     border: 1px solid rgb(255 255 255 / 52%);
     border-radius: 999px;
@@ -321,7 +315,40 @@
     backdrop-filter: blur(18px) saturate(170%);
     -webkit-backdrop-filter: blur(18px) saturate(170%);
 
-    &:hover,
+    &::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      content: '';
+      border-radius: inherit;
+      opacity: 0;
+      background: radial-gradient(
+        circle 48px at var(--cta-glow-x, 50%) var(--cta-glow-y, 50%),
+        rgb(255 255 255 / 82%),
+        rgb(255 255 255 / 20%) 42%,
+        transparent 74%
+      );
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .site-header__cta-label {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:hover {
+      border-color: rgb(255 255 255 / 52%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 22%)),
+        rgb(253 251 250 / 44%);
+      box-shadow:
+        0 10px 22px rgb(24 22 21 / 10%),
+        inset 0 1px 0 rgb(255 255 255 / 68%),
+        inset 0 -1px 0 rgb(24 22 21 / 6%);
+      color: var(--color-text);
+    }
+
     &:focus,
     &[aria-current] {
       text-decoration: none;
@@ -348,7 +375,14 @@
       color: var(--color-title-dark);
     }
 
-    :root[data-theme="dark"] &:hover,
+    :root[data-theme="dark"] &:hover {
+      border-color: rgb(255 255 255 / 16%);
+      background:
+        linear-gradient(135deg, rgb(255 255 255 / 18%), rgb(255 255 255 / 6%)),
+        rgb(255 255 255 / 9%);
+      color: var(--color-title-dark);
+    }
+
     :root[data-theme="dark"] &:focus,
     :root[data-theme="dark"] &[aria-current] {
       border-color: rgb(255 255 255 / 24%);
@@ -356,6 +390,12 @@
         linear-gradient(135deg, rgb(255 255 255 / 24%), rgb(255 255 255 / 10%)),
         rgb(255 255 255 / 13%);
       color: var(--color-title-dark);
+    }
+
+    @media (min-width: 768px) {
+      &:hover::before {
+        opacity: 0.72;
+      }
     }
   }
 }

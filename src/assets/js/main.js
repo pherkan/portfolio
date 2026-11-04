@@ -37,6 +37,22 @@ document.addEventListener("turbolinks:load", () => {
   document.body.style.display = '';
 
   thumbVideos();
+
+  const contactCta = document.querySelector('.site-header__link--cta');
+
+  if (contactCta && !contactCta.dataset.cursorGlowReady) {
+    contactCta.dataset.cursorGlowReady = 'true';
+
+    const updateCursorGlow = ({ clientX, clientY }) => {
+      const { left, top } = contactCta.getBoundingClientRect();
+
+      contactCta.style.setProperty('--cta-glow-x', `${clientX - left}px`);
+      contactCta.style.setProperty('--cta-glow-y', `${clientY - top}px`);
+    };
+
+    contactCta.addEventListener('pointerenter', updateCursorGlow);
+    contactCta.addEventListener('pointermove', updateCursorGlow);
+  }
 });
 
 document.addEventListener("turbolinks:load", () => {
