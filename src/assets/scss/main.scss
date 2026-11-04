@@ -25,9 +25,23 @@
   text-transform: lowercase !important;
 }
 
-/* Keep blog post articles in normal case */
+/* Keep written content (blog posts, project pages, card titles and summaries) in normal case */
 html[data-current="post"] body.is-post .page-container article,
-html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn) {
+html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn),
+html[data-current="project"] body.is-project .page-container,
+html[data-current="project"] body.is-project .page-container *:not(.tag):not(.btn):not(nav):not(nav *),
+.article-card__date,
+.article-card__title,
+.article-card__title *,
+.article-card__summary,
+.article-card__summary *,
+.home-project-card__title,
+.home-project-card__title *,
+.home-project-card__summary,
+.home-project-card__summary *,
+.home-apps__post,
+.home-series__title,
+.home-series__summary {
   text-transform: none !important;
 }
 
