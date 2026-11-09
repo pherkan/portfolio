@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Lexend:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #f7ece8;
+    font-family: "Lexend", sans-serif;
+    color: #181615;
+    overflow: hidden;
+  }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg id="c" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+// Illustrative MAU: slow climb, three flat months, then growth after a non-AI launch.
+const params = new URLSearchParams(location.search);
+const W = +params.get('w') || 1600;
+const H = +params.get('h') || 1000;
+const layout = params.get('layout') || 'wide';
+const s = Math.min(W, H) / 1000; // type scale
+
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const mau    = [ 41,   43,   45,   47.5, 50,   51.5, 51.8, 51.6, 52,   55.5, 60,   65.5 ];
+const flatStart = 5, flatEnd = 8, launch = 8; // indices: Jun–Sep flat, launch at Sep
+
+const svg = document.getElementById('c');
+svg.setAttribute('width', W);
+svg.setAttribute('height', H);
+svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+const pad = layout === 'square'
+  ? { l: 90*s, r: 70*s, t: 300*s, b: 120*s }
+  : { l: 110*s, r: 90*s, t: 330*s, b: 120*s };
+const x0 = pad.l, x1 = W - pad.r, y0 = pad.t, y1 = H - pad.b;
+const yMin = 35, yMax = 70;
+const X = i => x0 + (x1 - x0) * i / (months.length - 1);
+const Y = v => y1 - (y1 - y0) * (v - yMin) / (yMax - yMin);
+
+const ink = '#181615', muted = '#776c68', grid = '#d6c2bb';
+const accent = '#e4572e', yellow = '#f6c544';
+
+let out = '';
+out += `<defs>
+  <pattern id="hatch" width="${14*s}" height="${14*s}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <rect width="${14*s}" height="${14*s}" fill="#eed8d0"/>
+    <line x1="0" y1="0" x2="0" y2="${14*s}" stroke="#d6c2bb" stroke-width="${5*s}"/>
+  </pattern>
+  <linearGradient id="after" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0" stop-color="${accent}" stop-opacity="0.28"/>
+    <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="before" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0" stop-color="${ink}" stop-opacity="0.10"/>
+    <stop offset="1" stop-color="${ink}" stop-opacity="0"/>
+  </linearGradient>
+</defs>`;
+
+// Headline
+const hx = x0 - 10*s;
+const hs = layout === 'square' ? 60 : 64;
+out += `<text x="${hx}" y="${pad.t - 215*s}" font-size="${28*s}" font-weight="500" fill="${muted}" letter-spacing="${3*s}">MONTHLY ACTIVE USERS</text>`;
+out += `<text x="${hx}" y="${pad.t - 145*s}" font-family="Caprasimo" font-size="${hs*s}" fill="${ink}">Flat for three months.</text>`;
+out += `<text x="${hx}" y="${pad.t - 72*s}" font-family="Caprasimo" font-size="${hs*s}" fill="${accent}">Then the boring fix moved it.</text>`;
+
+// Gridlines
+for (let v = 40; v <= 70; v += 10) {
+  out += `<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="${grid}" stroke-width="${1.5*s}" stroke-dasharray="${4*s} ${6*s}"/>`;
+}
+
+// Plateau band
+out += `<rect x="${X(flatStart)}" y="${y0 - 10*s}" width="${X(flatEnd) - X(flatStart)}" height="${y1 - y0 + 10*s}" fill="url(#hatch)" rx="${10*s}"/>`;
+out += `<text x="${(X(flatStart) + X(flatEnd)) / 2}" y="${Y(52) + 70*s}" text-anchor="middle" font-size="${26*s}" font-weight="600" fill="${muted}">3 months flat</text>`;
+
+// Areas + lines
+const pts = (a, b) => mau.slice(a, b + 1).map((v, k) => [X(a + k), Y(v)]);
+const path = p => p.map((q, k) => (k ? 'L' : 'M') + q[0].toFixed(1) + ' ' + q[1].toFixed(1)).join(' ');
+const area = p => path(p) + ` L${p[p.length-1][0]} ${y1} L${p[0][0]} ${y1} Z`;
+const pre = pts(0, launch), post = pts(launch, mau.length - 1);
+out += `<path d="${area(pre)}" fill="url(#before)"/>`;
+out += `<path d="${area(post)}" fill="url(#after)"/>`;
+out += `<path d="${path(pre)}" fill="none" stroke="${ink}" stroke-width="${7*s}" stroke-linecap="round" stroke-linejoin="round"/>`;
+out += `<path d="${path(post)}" fill="none" stroke="${accent}" stroke-width="${8*s}" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+// Launch marker
+const lx = X(launch), ly = Y(mau[launch]);
+out += `<line x1="${lx}" x2="${lx}" y1="${y0 - 10*s}" y2="${y1}" stroke="${ink}" stroke-width="${2.5*s}" stroke-dasharray="${8*s} ${7*s}"/>`;
+mau.forEach((v, i) => {
+  if (i === launch) return;
+  out += `<circle cx="${X(i)}" cy="${Y(v)}" r="${7*s}" fill="#f7ece8" stroke="${i > launch ? accent : ink}" stroke-width="${4*s}"/>`;
+});
+out += `<circle cx="${lx}" cy="${ly}" r="${20*s}" fill="${yellow}" fill-opacity="0.45"/>`;
+out += `<circle cx="${lx}" cy="${ly}" r="${11*s}" fill="${yellow}" stroke="${ink}" stroke-width="${4*s}"/>`;
+
+// Callout, placed in the empty space to the upper left of the launch line
+const cw = (layout === 'square' ? 430 : 410) * s, ch = 118 * s;
+const cx = lx - cw - 26*s, cy = y0 + 4*s;
+out += `<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${18*s}" fill="${yellow}" stroke="${ink}" stroke-width="${3*s}"/>`;
+out += `<text x="${cx + 26*s}" y="${cy + 48*s}" font-size="${28*s}" font-weight="700" fill="${ink}">New non-AI feature</text>`;
+out += `<text x="${cx + 26*s}" y="${cy + 88*s}" font-size="${24*s}" font-weight="400" fill="${ink}">Offline Scan Text ships here</text>`;
+out += `<path d="M${cx + cw} ${cy + ch/2} L${lx - 4*s} ${cy + ch/2}" stroke="${ink}" stroke-width="${3*s}"/>`;
+out += `<circle cx="${lx}" cy="${cy + ch/2}" r="${6*s}" fill="${ink}"/>`;
+
+// Growth label
+const last = mau.length - 1;
+if (layout === 'square') {
+  // Narrow space right of the launch line: stack the label under the curve
+  out += `<text x="${X(last)}" y="${Y(47)}" text-anchor="end" font-size="${30*s}" font-weight="700" fill="${accent}">growing<tspan x="${X(last)}" dy="${38*s}">again ↗</tspan></text>`;
+} else {
+  out += `<text x="${X(last)}" y="${Y(mau[last]) - 30*s}" text-anchor="end" font-size="${30*s}" font-weight="700" fill="${accent}">growing again ↗</text>`;
+}
+
+// X axis
+out += `<line x1="${x0}" x2="${x1}" y1="${y1}" y2="${y1}" stroke="${ink}" stroke-width="${2.5*s}"/>`;
+months.forEach((m, i) => {
+  if (layout === 'square' && i % 2 === 1 && i !== launch) return;
+  out += `<text x="${X(i)}" y="${y1 + 44*s}" text-anchor="middle" font-size="${22*s}" font-weight="${i === launch ? 700 : 400}" fill="${i === launch ? ink : muted}">${m}</text>`;
+});
+out += `<text x="${x1}" y="${H - 28*s}" text-anchor="end" font-size="${19*s}" fill="${muted}">Illustrative data</text>`;
+
+svg.innerHTML = out;
+document.fonts.ready.then(() => document.body.dataset.ready = '1');
+</script>
+</body>
+</html>

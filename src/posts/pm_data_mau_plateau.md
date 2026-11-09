@@ -4,6 +4,9 @@ date: 2026-11-03T10:00:00.000Z
 summary: "When usage stopped growing at Envision, the easy answer was to ship more AI. The data pointed somewhere less exciting: a core feature people used every day, but couldn't use offline."
 metaDescription: "A product management story from Envision: how usage, repeat usage and user interviews showed that bringing a heavily used core feature offline mattered more than adding new AI features."
 series: finding-the-bottleneck
+previewImage: "/assets/img/pm_data_mau_plateau/mau_plateau_preview.jpg"
+previewImageAlt: "Illustrative line chart of monthly active users: a slow climb from January to June, three flat months from June to September, then a steeper rise from September onwards, where a yellow note says a new non-AI feature, offline Scan Text, shipped."
+ogImage: "/assets/img/pm_data_mau_plateau/mau_plateau_og.jpg"
 tags:
   - Product
   - Data
@@ -11,6 +14,11 @@ tags:
 ---
 
 For about three months, our monthly active users barely moved. Not down, not up. Just flat.
+
+<figure style="margin:2rem 0">
+<img src="/assets/img/pm_data_mau_plateau/mau_plateau_chart.webp" alt="Illustrative line chart of monthly active users: a slow climb from January to June, three flat months from June to September, then a steeper rise from September onwards, where a yellow note says a new non-AI feature, offline Scan Text, shipped." width="1600" height="1000">
+<figcaption>Illustrative, not real data: the shape of our MAU before and after offline Scan Text.</figcaption>
+</figure>
 
 At Envision we built AI-powered tools for people who are blind or have low vision: an app and smartglasses that turn the visual world into speech. AI was moving fast, and so were we. So when growth stalled, the instinct in the room was clear: ship the next AI feature. Something new to talk about, something new to try.
 
