@@ -818,11 +818,12 @@
 }
 
 @media (hover: hover) {
-  .home-statement__polaroid:hover {
+  // Scale the whole stack on hover so the next photo in the loop is already zoomed
+  .home-statement__polaroids:hover {
     z-index: 2;
   }
 
-  .home-statement__polaroid:hover .home-statement__polaroid-frame {
+  .home-statement__polaroids:hover .home-statement__polaroid-frame {
     transform: rotate(var(--polaroid-rotation)) scale(1.3);
   }
 }
