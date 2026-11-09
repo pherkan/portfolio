@@ -25,11 +25,12 @@
   text-transform: lowercase !important;
 }
 
-/* Keep written content (blog posts, project pages, card titles and summaries) in normal case */
+/* Keep written content (blog posts, project pages and their back links, card titles and summaries) in normal case */
 html[data-current="post"] body.is-post .page-container article,
 html[data-current="post"] body.is-post .page-container article *:not(.tag):not(.btn),
 html[data-current="project"] body.is-project .page-container,
-html[data-current="project"] body.is-project .page-container *:not(.tag):not(.btn):not(nav):not(nav *),
+html[data-current="project"] body.is-project .page-container *:not(.tag):not(.btn),
+.page-container > nav a,
 .article-card__date,
 .article-card__title,
 .article-card__title *,
