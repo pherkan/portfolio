@@ -80,9 +80,9 @@ function getStaticFile(pathname) {
   const requested = safeStaticPath(pathname);
   if (!requested || !requested.startsWith(SITE_DIR)) return null;
 
-  const candidates = [requested];
+  // Always try the folder's index.html: a page slug can end in a dot (e.g. "low-vision."), which extname reads as an extension.
+  const candidates = [requested, path.join(requested, 'index.html')];
   if (!path.extname(requested)) {
-    candidates.push(path.join(requested, 'index.html'));
     candidates.push(`${requested}.html`);
   }
 
