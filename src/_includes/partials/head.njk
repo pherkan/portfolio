@@ -4,10 +4,8 @@
   <title>{{ renderData.title or title or metadata.title }}</title>
   <meta name="description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
 
-  {# Canonical URL #}
-  {% if canonical %}
-  <link rel="canonical" href="{{ canonical | url }}" />
-  {% endif %}
+  {% set canonicalUrl = canonical or (site.url + page.url) %}
+  <link rel="canonical" href="{{ canonicalUrl }}">
 
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"f0def9ef90f8400b97baa4de4e592337"}'></script>
 
@@ -22,20 +20,44 @@
   {# OG + Twitter meta tags #}
   {% set ogTitle = renderData.title or title or metadata.title %}
   {% set ogDescription = metaDescription or renderData.metaDescription or summary or metadata.description %}
-  {% set ogUrl = canonical or (site.url + page.url if site and site.url) %}
-  {% set ogImage = ogImage or "/assets/img/pherkan_og.jpg" %}
+  {% set ogUrl = canonicalUrl %}
+  {% set ogImagePath = ogImage or "/assets/img/pherkan_og.jpg" %}
+  {% set ogImageUrl = site.url + ogImagePath %}
 
   <meta property="og:title" content="{{ ogTitle }}">
   <meta property="og:description" content="{{ ogDescription }}">
   {% if ogUrl %}
   <meta property="og:url" content="{{ ogUrl }}">
   {% endif %}
-  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:image" content="{{ ogImageUrl }}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ ogTitle }}">
   <meta name="twitter:description" content="{{ ogDescription }}">
-  <meta name="twitter:image" content="{{ ogImage }}">
+  <meta name="twitter:image" content="{{ ogImageUrl }}">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "pherkan",
+          "url": "{{ site.url }}"
+        },
+        {
+          "@type": "Person",
+          "name": "Ferkan Metin",
+          "url": "{{ site.url }}",
+          "jobTitle": "Senior Product Manager",
+          "sameAs": [
+            "https://www.linkedin.com/in/ferkanmetin/",
+            "https://github.com/pherkan"
+          ]
+        }
+      ]
+    }
+  </script>
 
   {# Javascript #}
   <script>

@@ -41,6 +41,15 @@ module.exports = function (eleventyConfig) {
 
     return collection.slice(0, count);
   });
+  eleventyConfig.addFilter('isIndexable', (page) => {
+    if (!page || page.data?.draft || page.data?.eleventyExcludeFromCollections) {
+      return false;
+    }
+
+    const url = page.url || '';
+    const excludedPrefixes = ['/admin/', '/bbq/', '/iftar2026/', '/project-tags/', '/tags/'];
+    return url !== '/404.html' && !excludedPrefixes.some((prefix) => url.startsWith(prefix));
+  });
   eleventyConfig.addGlobalData('assetVersion', () => assetVersion);
 
   // Shortcodes

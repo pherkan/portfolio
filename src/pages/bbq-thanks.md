@@ -2,6 +2,7 @@
 title: suzan & ferkan's summer BBQ – RSVP confirmed!
 layout: page.njk
 permalink: /bbq/thanks/index.html
+eleventyExcludeFromCollections: true
 metaDescription: thank you for RSVPing to suzan & ferkan's summer BBQ in the hague!
 ---
 

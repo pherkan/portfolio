@@ -2,6 +2,7 @@
 title: suzkan's summer BBQ 2025
 layout: page.njk
 permalink: /bbq/index.html
+eleventyExcludeFromCollections: true
 metaDescription: start of summer BBQ party hosted by ferkan & suzan — with great food, friends, and a side of birthday.
 ogImage: "/assets/img/bbq.png"
 ---

@@ -19,7 +19,7 @@ currently, i work at **Exact** in product line accountancy, automation and AI. m
 
 ## before exact
 
-before Exact, i spent 5+ years at **[Envision](https://letsenvision.com)** building AI-powered accessibility products for people who are blind or have low vision.
+before Exact, i spent more than six years at **[Envision](https://letsenvision.com)** building AI-powered accessibility products for people who are blind or have low vision.
 
 i worked across **smartglasses**, **mobile apps**, **computer vision**, **LLMs**, and **conversational AI**, helping turn the visual world into speech and making technology more usable for more people.
 
